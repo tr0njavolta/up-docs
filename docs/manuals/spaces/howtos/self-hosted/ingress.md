@@ -2,6 +2,7 @@
 title: Exposing Spaces externally
 sidebar_position: 5
 description: Options for exposing Spaces externally
+draft: true
 ---
 
 import { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
