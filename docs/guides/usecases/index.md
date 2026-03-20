@@ -1,11 +1,13 @@
 ---
 title: 'Use cases'
 sidebar_position: 100
-description: "Curated use cases that use the IDP starter kit with Configurations to showcase use cases"
+description: "Use case examples and reference platforms for building internal developer platforms with Upbound Crossplane."
 ---
 
-The Internal Developer Platform starter kit gives you all the tools you
-need to create a streamlined self-service platform for infrastructure
-deployment. 
+This section covers two approaches to building infrastructure platforms with Upbound Crossplane.
 
-This section provides a collection of use cases demonstrating how to use the starter kit in combination with Configuration packages for various scenarios. Each example includes a detailed explanation.
+**Reference platforms** are complete, production-oriented platform configurations built by Upbound. They cover a full cloud provider stack — networking, Kubernetes clusters, databases, observability, and GitOps — and work as both runnable examples and starting points for your own platform. See [Reference platforms][refPlatforms] to get started.
+
+**IDP starter kit use cases** show how to extend the Internal Developer Platform starter kit with specific Configuration packages for common scenarios like databases-as-a-service, clusters-as-a-service, and application delivery.
+
+[refPlatforms]: ./reference-platforms.md
