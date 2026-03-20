@@ -29,7 +29,7 @@ If the user gives you rich context upfront (e.g., pastes a PR description or fea
 
 ## Step 2: Research the repo before drafting
 
-This is the most important step. Before writing anything, search the repo for related existing content. The docs repo is at `/Users/rae/up-docs`.
+This is the most important step. Before writing anything, search the repo for related existing content. The docs repo is at https://github.com/upbound/docs
 
 **Why this matters:** The repo has rich, detailed docs for many features. If you skip this step, you'll produce a shallow stub that misses depth, structure, repo-specific components, and conventions that real docs in this codebase use.
 
