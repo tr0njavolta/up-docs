@@ -1,0 +1,55 @@
+{
+  "skill_name": "upbound-docs-gen",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Hey, I just merged a PR that adds support for automatic control plane upgrades in Self-Hosted Spaces. When you configure it, you set `autoUpgrade.channel` in the ControlPlane spec to either `Stable` or `Rapid`. Can you write the how-to doc for enabling this?",
+      "expected_output": "A complete how-to guide markdown file with proper frontmatter, prerequisites section, numbered steps, code examples showing the ControlPlane spec with autoUpgrade.channel field, and a see-also section. Should follow Upbound style: active voice, present tense, sentence-case headings, proper code formatting.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "We need a concept doc explaining control plane groups — what they are, why you'd use them, and how they relate to individual control planes. Can you write it?",
+      "expected_output": "A concept doc with proper frontmatter, definition of control plane groups, use cases, relationship to individual control planes, and related resources. Should use correct Upbound terminology (ControlPlaneGroup kind, kebab-case names), active voice, and follow concept template structure.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need to write release notes for Spaces v1.12.0. Changes: new SharedSecretStore feature that lets control planes share secrets within a group; bug fix where control planes sometimes got stuck in Pending state after a node restart; breaking change: the `spec.crossplane.version` field is now required.",
+      "expected_output": "Release notes entry (not a separate file) matching the actual spaces.md format: ## vX.Y.Z version heading, #### subsections (Breaking Changes, Features, Bug fixes), :::important admonition for breaking changes, SharedSecretStore and spec.crossplane.version both mentioned.",
+      "assertions": [
+        {
+          "id": "has-version-heading",
+          "text": "Document contains a `## v1.12.0` version heading (matching the single-file format)",
+          "type": "programmatic"
+        },
+        {
+          "id": "has-breaking-changes-section",
+          "text": "Document contains a `#### Breaking Changes` section",
+          "type": "programmatic"
+        },
+        {
+          "id": "important-admonition-in-breaking-changes",
+          "text": "`:::important` admonition appears in or near the breaking changes section",
+          "type": "programmatic"
+        },
+        {
+          "id": "has-features-or-whats-changed",
+          "text": "Document contains a `#### Features`, `#### What's Changed`, or `#### What's new` section",
+          "type": "programmatic"
+        },
+        {
+          "id": "SharedSecretStore-mentioned",
+          "text": "`SharedSecretStore` appears in the document",
+          "type": "programmatic"
+        },
+        {
+          "id": "required-field-mentioned",
+          "text": "`spec.crossplane.version` appears in the document",
+          "type": "programmatic"
+        }
+      ],
+      "files": []
+    }
+  ]
+}
