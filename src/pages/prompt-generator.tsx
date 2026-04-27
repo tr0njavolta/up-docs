@@ -22,11 +22,7 @@ function AuthGate({ baseDomain }: { baseDomain: string }) {
               strokeLinecap="round"
             />
             <rect
-              x="8"
-              y="14"
-              width="16"
-              height="11"
-              rx="2"
+              x="8" y="14" width="16" height="11" rx="2"
               stroke="var(--brand-purple-500)"
               strokeWidth="1.75"
             />
@@ -35,7 +31,7 @@ function AuthGate({ baseDomain }: { baseDomain: string }) {
         </div>
         <h1 className={styles.authGateTitle}>Sign in to use the Prompt Generator</h1>
         <p className={styles.authGateBody}>
-          The Prompt Generator connects to the{" "}
+          Generate optimized prompts for the{" "}
           <a
             href="https://github.com/upbound/marketplace-mcp-server"
             target="_blank"
@@ -43,8 +39,7 @@ function AuthGate({ baseDomain }: { baseDomain: string }) {
           >
             Upbound Marketplace MCP server
           </a>{" "}
-          using your session to fetch real provider schemas, CRD resource types, and YAML examples.
-          It then generates a ready-to-use prompt you can paste into Claude or any MCP-compatible AI client.
+          based on your infrastructure requirements and real provider schemas.
         </p>
         <a href={loginUrl} className={styles.authGateButton}>
           Sign in to Upbound
@@ -76,7 +71,10 @@ export default function PromptGeneratorPage() {
   const showApp = isDev || isAuthenticated
 
   return (
-    <Layout title="MCP Prompt Generator" description="Generate optimized prompts for the Upbound Marketplace MCP server based on your infrastructure requirements and real provider schemas.">
+    <Layout
+      title="MCP Prompt Generator"
+      description="Generate optimized prompts for the Upbound Marketplace MCP server based on your infrastructure requirements."
+    >
       <Head>
         <meta name="robots" content="noindex" />
       </Head>
@@ -85,23 +83,16 @@ export default function PromptGeneratorPage() {
           <span className={styles.badge}>MCP</span>
           <h1 className={styles.pageTitle}>Prompt Generator</h1>
           <p className={styles.pageSubtitle}>
-            Search the marketplace, select providers and resource types, then copy an optimized
-            prompt for use with the{" "}
+            Describe your infrastructure needs, then copy the generated prompt into Claude or any{" "}
             <a
               href="https://github.com/upbound/marketplace-mcp-server"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Upbound Marketplace MCP server
+              MCP-enabled client
             </a>
-            .
+            . Requires the Marketplace MCP server running locally on port 8765.
           </p>
-          {isDev && (
-            <p className={styles.devNotice}>
-              Dev mode — auth gate bypassed. Marketplace API calls require a valid session on{" "}
-              <code>*.upbound.io</code> and will fail on localhost.
-            </p>
-          )}
         </div>
       </div>
 

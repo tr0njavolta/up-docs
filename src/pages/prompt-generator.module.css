@@ -60,15 +60,112 @@ html[data-theme="dark"] .badge {
   margin: 0.5rem 0 0;
   flex-basis: 100%;
   font-size: 0.75rem;
-  color: var(--brand-neutral-500);
+  color: var(--brand-neutral-600);
   background: var(--brand-neutral-200);
   border-radius: 5px;
-  padding: 0.375rem 0.625rem;
+  padding: 0.5rem 0.75rem;
   border-left: 3px solid var(--brand-dandelion);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 html[data-theme="dark"] .devNotice {
   background: var(--brand-neutral-800);
+  color: var(--brand-neutral-400);
+}
+
+.devToken {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.devTokenLabel {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.devTokenCmd {
+  display: block;
+  font-size: 0.6875rem;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  background: var(--brand-neutral-300);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  user-select: all;
+  color: var(--brand-neutral-700);
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+html[data-theme="dark"] .devTokenCmd {
+  background: var(--brand-neutral-700);
+  color: var(--brand-neutral-300);
+}
+
+.devTokenRow {
+  display: flex;
+  gap: 0.375rem;
+  align-items: center;
+}
+
+.devTokenInput {
+  flex: 1;
+  min-width: 0;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.75rem;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  border: 1px solid var(--upbound-border-color);
+  border-radius: 4px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
+.devTokenInput:focus {
+  outline: none;
+  border-color: var(--brand-purple-400);
+}
+
+.devTokenSave {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.625rem;
+  border-radius: 4px;
+  border: 1px solid var(--brand-purple-400);
+  background: var(--brand-purple-50);
+  color: var(--brand-purple-700);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.devTokenSave:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+html[data-theme="dark"] .devTokenSave {
+  background: rgba(154, 94, 252, 0.12);
+  color: var(--brand-purple-300);
+}
+
+.devTokenClear {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--upbound-border-color);
+  background: transparent;
+  color: var(--brand-neutral-500);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.devTokenClear:hover {
+  border-color: var(--brand-accent-red);
+  color: var(--brand-accent-red);
 }
 
 /* ── Loading ──────────────────────────────────────────────────────────────────── */

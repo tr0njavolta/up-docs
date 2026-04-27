@@ -108,6 +108,24 @@ const config = {
                     const webpack = require("webpack");
                     const path = require("path");
                     return {
+                        devServer: {
+                            proxy: [
+                                {
+                                    context: ["/api/marketplace"],
+                                    target: "https://marketplace.upbound.io",
+                                    changeOrigin: true,
+                                    pathRewrite: { "^/api/marketplace": "" },
+                                    secure: true,
+                                },
+                                {
+                                    context: ["/api/mcp-local"],
+                                    target: "http://localhost:8765",
+                                    changeOrigin: true,
+                                    pathRewrite: { "^/api/mcp-local": "/mcp" },
+                                    secure: false,
+                                },
+                            ],
+                        },
                         plugins: [
                             new webpack.ProvidePlugin({
                                 process: "process/browser.js",

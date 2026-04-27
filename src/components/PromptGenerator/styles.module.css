@@ -47,6 +47,23 @@
   margin: 0;
 }
 
+.sectionHint {
+  font-size: 0.75rem;
+  color: var(--brand-neutral-500);
+  margin: 0;
+}
+
+.detectedLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--brand-purple-600);
+  margin: 0;
+}
+
+html[data-theme="dark"] .detectedLabel {
+  color: var(--brand-purple-300);
+}
+
 /* ── Textarea / Input ────────────────────────────────────────────────────────── */
 
 .textarea {
@@ -470,6 +487,19 @@ html[data-theme="dark"] .resourceChipSelected {
   line-height: 1.2;
 }
 
+.resourceLink {
+  font-size: 0.625rem;
+  color: var(--brand-neutral-400);
+  text-decoration: none;
+  margin-top: auto;
+  line-height: 1;
+  transition: color 0.1s;
+}
+
+.resourceLink:hover {
+  color: var(--brand-purple-500);
+}
+
 /* ── Output style radio ──────────────────────────────────────────────────────── */
 
 .radioGroup {
@@ -598,6 +628,164 @@ html[data-theme="dark"] .copyButton:hover {
 
 html[data-theme="dark"] .promptText {
   background: var(--brand-neutral-900);
+}
+
+/* ── Skill toggle ────────────────────────────────────────────────────────────── */
+
+.skillToggle {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 0.5rem;
+  row-gap: 0.1rem;
+  align-items: start;
+  cursor: pointer;
+}
+
+.skillToggle input[type="checkbox"] {
+  margin-top: 0.15rem;
+  accent-color: var(--brand-purple-500);
+  grid-row: 1;
+}
+
+.skillToggleLabel {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ifm-font-color-base);
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.skillToggleHint {
+  font-size: 0.725rem;
+  color: var(--brand-neutral-500);
+  grid-column: 2;
+  grid-row: 2;
+  line-height: 1.4;
+}
+
+/* ── Build button ────────────────────────────────────────────────────────────── */
+
+.buildButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 7px;
+  background: var(--brand-purple-500);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.buildButton:hover:not(:disabled) {
+  background: var(--brand-purple-600);
+}
+
+.buildButton:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ── Error state ─────────────────────────────────────────────────────────────── */
+
+.errorBox {
+  padding: 0.875rem;
+  background: rgba(197, 80, 75, 0.06);
+  border: 1px solid rgba(197, 80, 75, 0.25);
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.errorTitle {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--brand-accent-red);
+}
+
+.errorDetail {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--brand-neutral-500);
+  word-break: break-all;
+}
+
+.errorHint {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: var(--brand-neutral-600);
+  font-weight: 500;
+}
+
+.errorCmd {
+  display: block;
+  font-size: 0.6875rem;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  background: var(--brand-neutral-200);
+  padding: 0.5rem 0.625rem;
+  border-radius: 5px;
+  white-space: pre;
+  overflow-x: auto;
+  color: var(--brand-neutral-700);
+}
+
+html[data-theme="dark"] .errorCmd {
+  background: var(--brand-neutral-800);
+  color: var(--brand-neutral-300);
+}
+
+/* ── Found providers ─────────────────────────────────────────────────────────── */
+
+.foundBox {
+  padding: 0.75rem;
+  background: rgba(112, 173, 71, 0.05);
+  border: 1px solid rgba(112, 173, 71, 0.25);
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.foundTitle {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--brand-accent-green);
+}
+
+.foundList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.foundItem {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.foundName {
+  font-size: 0.75rem;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  color: var(--ifm-font-color-base);
+}
+
+.foundVersion {
+  font-size: 0.6875rem;
+  color: var(--brand-neutral-500);
+  font-family: "SFMono-Regular", Consolas, monospace;
 }
 
 /* ── Shared utilities ────────────────────────────────────────────────────────── */
