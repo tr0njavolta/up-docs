@@ -36,15 +36,10 @@ by default. Set `GEMINI_API_KEY` before running any commands. See the
 
    ```shell
    docker run --name mcp-marketplace --rm -d -p 8765:8765 \
+     --platform linux/amd64 \
      -v "$HOME/.up:/mcp/.up:ro" \
      xpkg.upbound.io/upbound/marketplace-mcp-server-http:v0.1.0
    ```
-
-   :::tip
-   The image is built for `linux/amd64`. On Apple Silicon or other ARM64 hosts,
-   add `--platform linux/amd64` to the `docker run` command to avoid a platform
-   mismatch warning. 
-   :::
 
 2. Register the server with your MCP client:
 
