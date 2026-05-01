@@ -11,7 +11,9 @@ access to Upbound resources. Use them to connect your AI coding assistant or
 Kubernetes CLI to the Upbound Marketplace, or deploy them inside your control
 plane to give AI operations access to cluster data at runtime.
 
+<!-- vale Google.Headings = NO -->
 ## Marketplace MCP server
+<!-- vale Google.Headings = YES -->
 
 The marketplace MCP server lets your AI coding assistant search and explore the
 [Upbound Marketplace][marketplace]. Use it to find packages, browse provider
@@ -173,7 +175,13 @@ Replace `/home/your-username` with your home directory path:
 
 ## Control plane AI operations
 
-The control plane MCP server runs as a sidecar inside your control plane and gives AI functions access to pod logs and events at runtime. It's not a tool you configure in your local AI coding assistant — it's deployed as part of the function pipeline that powers [intelligent control plane operations][intelligentOps].
+<!-- vale write-good.Passive = NO -->
+The control plane MCP server runs as a sidecar inside your control plane and
+gives AI functions access to pod logs and events at runtime. The control plane
+MCP is deployed as part of the
+function pipeline that powers [intelligent control plane
+operations][intelligentOps].
+<!-- vale write-good.Passive = YES -->
 
 ### Available tools
 
