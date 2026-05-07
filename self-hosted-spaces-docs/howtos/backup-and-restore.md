@@ -227,7 +227,7 @@ the deletion policy.
 
 Set the `spec.deletionPolicy` to define backup deletion actions, including the
 deletion of the backup file from the bucket. The Deletion Policy value defaults
-to `Orphan`. Set it to `Delete` to remove uploaded files in the bucket. more
+to `Orphan`. Set it to `Delete` to remove uploaded files in the bucket. For more
 information on the backup and restore process, review the [Spaces API
 documentation][spaces-api-documentation].
 

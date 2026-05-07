@@ -16,6 +16,7 @@ planes as secrets in an external secret store.
 
 This feature is a wrapper around the [External Secrets Operator (ESO)][external-secrets-operator-eso] that pulls secrets from external vaults and distributes them across your platform.
 
+
 ## Benefits
 
 The Shared Secrets feature allows you to:

@@ -10,6 +10,7 @@ aliases:
 ---
 
 
+
 :::important
 This feature is in preview and is off by default. To enable, set `features.alpha.argocdPlugin.enabled=true` when installing Spaces:
 

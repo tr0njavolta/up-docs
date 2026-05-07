@@ -31,7 +31,7 @@ Once the control plane is ready, connect to it.
 up ctx my-control-plane
 ```
 
-For convenience, install a an Upbound [platform reference Configuration][platform-reference-configuration] from the marketplace. production scenarios, replace this with your own Crossplane Configurations or compositions.
+For convenience, install an Upbound [platform reference Configuration][platform-reference-configuration] from the marketplace. For production scenarios, replace this with your own Crossplane Configurations or compositions.
 
 ```bash
 up ctp configuration install xpkg.upbound.io/upbound/platform-ref-aws:v1.4.0

@@ -63,7 +63,7 @@ spec:
 
 ## Supported Crossplane versions
 
-Spaces supports the three [preceding minor versions][preceding-minor-versions] from the last supported minor version. example, if the last supported minor version is `1.14`, minor versions `1.13` and `1.12` are also supported. Versions older than the three most recent minor versions aren't supported. Only supported Crossplane versions are valid specifications for new control planes.
+Spaces supports the three [preceding minor versions][preceding-minor-versions] from the last supported minor version. For example, if the last supported minor version is `1.14`, minor versions `1.13` and `1.12` are also supported. Versions older than the three most recent minor versions aren't supported. Only supported Crossplane versions are valid specifications for new control planes.
 
 Current Crossplane version support by Spaces version:
 

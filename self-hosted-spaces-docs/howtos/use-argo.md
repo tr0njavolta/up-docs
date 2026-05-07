@@ -148,7 +148,7 @@ Be sure to [configure Argo][configure-argo-1] after it's installed.
 
 ## Configure Argo
 
-Argo's default configuration causes it to try to query for resource kinds that don't exist in control planes. You should configure Argo's [general configmap][general-configmap] to include the resource group/kinds which make sense in the context of control planes. example, the concept of `nodes` isn't exposed in control planes.
+Argo's default configuration causes it to try to query for resource kinds that don't exist in control planes. You should configure Argo's [general configmap][general-configmap] to include the resource group/kinds which make sense in the context of control planes. For example, the concept of `nodes` isn't exposed in control planes.
 
 To configure Argo CD, connect to the cluster where you've installed it and edit the configmap:
 

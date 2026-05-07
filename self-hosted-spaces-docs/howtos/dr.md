@@ -10,7 +10,7 @@ This guide applies to **Spaces v1.9.0 and later** (Self-Hosted only). Space Back
 - **v1.9.0-v1.13.x**: Alpha feature (requires manual enablement)
 - **v1.14.0+**: GA (enabled by default)
 
-For version-specific features and backup resources, see the . control-plane backups, see [Backup and Restore](./backup-and-restore.md).
+For control-plane backups, see [Backup and Restore](./backup-and-restore.md).
 :::
 
 :::important

@@ -1331,11 +1331,6 @@
             "permanent": true
         },
         {
-            "source": "/self-hosted-spaces/howtos/workload-id/backup-restore-config(/)?",
-            "destination": "/self-hosted-spaces/howtos/workload-id/backup-restore-config/",
-            "permanent": true
-        },
-        {
             "source": "/manuals/marketplace(/)?",
             "destination": "/manuals/marketplace/overview/",
             "permanent": true
@@ -1403,6 +1398,56 @@
         {
             "source": "/concepts/upbound-spaces(/)?",
             "destination": "/self-hosted-spaces/overview",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/platform/howtos/enable-sso(/)?",
+            "destination": "/manuals/platform/sso",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/platform/howtos/oidc(/)?",
+            "destination": "/manuals/platform/oidc",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/spaces/concepts/control-planes(/)?",
+            "destination": "/self-hosted-spaces/concepts/control-planes",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/spaces/howtos/secrets-management(/)?",
+            "destination": "/self-hosted-spaces/howtos/secrets-management",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/spaces/features/backup-and-restore(/)?",
+            "destination": "/self-hosted-spaces/howtos/backup-and-restore",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/spaces/howtos/observability(/)?",
+            "destination": "/self-hosted-spaces/howtos/observability",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/spaces/howtos/cloud-spaces/gitops(/)?",
+            "destination": "/cloud-spaces/howtos/gitops-on-upbound",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/spaces/howtos/self-hosted/attach-detach(/)?",
+            "destination": "/self-hosted-spaces/howtos/attach-detach",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/spaces/concepts/deployment-modes(/)?",
+            "destination": "/cloud-spaces/concepts/deployment-modes",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/spaces/howtos/cloud-spaces/private-network-agent(/)?",
+            "destination": "/cloud-spaces/howtos/private-network-agent",
             "permanent": true
         }
     ]

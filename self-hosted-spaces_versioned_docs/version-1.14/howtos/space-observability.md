@@ -6,7 +6,7 @@ description: Configure Space-level observability
 
 
 :::important
-This feature is GA since `v1.14.0`, requires Spaces `v1.6.0`, and is off by default. 
+This feature is GA since `v1.14.0`, requires Spaces `v1.6.0`, and is off by default.
 
 To enable, set `observability.enabled=true` when installing Spaces:
 
@@ -89,10 +89,10 @@ This feature requires the [OpenTelemetry Operator][opentelemetry-operator] on
 the Space cluster. Install this now if you haven't already:
 
 ```bash
-kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.116.0/opentelemetry-operator.yaml
+kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.139.0/opentelemetry-operator.yaml
 ```
 
-If running Spaces v1.11 or later, use OpenTelemetry Operator v0.110.0 or later
+If running Spaces v1.14 or later, use OpenTelemetry Operator v0.139.0 or later
 due to breaking changes in the OpenTelemetry Operator.
 
 ## Configuration

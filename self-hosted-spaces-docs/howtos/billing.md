@@ -9,7 +9,7 @@ Spaces are a self-hosting feature of Upbound's [flagship product][flagship-produ
 
 <!--vale gitlab.SubstitutionWarning = NO -->
 :::info
-This guide describes the traditional usage-based billing model using object storage. disconnected or air-gapped environments, consider [Capacity Licensing](/self-hosted-spaces/howtos/capacity-licensing), which provides a simpler fixed-capacity model with local usage tracking.
+This guide describes the traditional usage-based billing model using object storage. For disconnected or air-gapped environments, consider [Capacity Licensing](/self-hosted-spaces/howtos/capacity-licensing), which provides a simpler fixed-capacity model with local usage tracking.
 :::
 <!--vale gitlab.SubstitutionWarning = YES -->
 ## Billing details

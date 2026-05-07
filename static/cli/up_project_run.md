@@ -126,6 +126,7 @@ up project run --init-resources=imageconfig.yaml --extra-resources=providerconfi
 | `--no-build-cache` | | Don't cache image layers while building. |
 | `--build-cache-dir` | | Path to the build cache directory. |
 | `--max-concurrency` | | Maximum number of functions to build and push at once. |
+| `--tag` | `-t` | Tag for the built package. If not provided, a tag of the form v0.0.0-{timestamp} will be generated. |
 | `--control-plane-group` | | The control plane group that the control plane to use is contained in. This defaults to the group specified in the current context. |
 | `--control-plane-name` | | Name of the control plane to use. It will be created if not found. Defaults to the project name. |
 | `--control-plane-version` | | Version of Crossplane to use for the control plane. By default, the latest compatible version will be used. |

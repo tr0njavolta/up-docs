@@ -219,7 +219,7 @@ path uses a **free Community license**.
     Add the Upbound repository and upgrade your Crossplane cluster:
     ```shell
     helm repo add upbound-stable https://charts.upbound.io/stable && helm repo update
-    helm upgrade --install crossplane --namespace crossplane-system oci://xpkg.upbound.io/upbound/crossplane --version "${UXP_VERSION}"
+    helm upgrade --install crossplane --namespace crossplane-system upbound-stable/crossplane --version "${UXP_VERSION}"
     ```
     </TabItem>
 
@@ -276,7 +276,7 @@ for more information.
     Add the Upbound repository and upgrade your Crossplane cluster:
     ```shell
     helm repo add upbound-stable https://charts.upbound.io/stable && helm repo update
-    helm upgrade --install crossplane --namespace crossplane-system oci://xpkg.upbound.io/upbound/crossplane --version "${UXP_VERSION}"
+    helm upgrade --install crossplane --namespace crossplane-system upbound-stable/crossplane --version "${UXP_VERSION}"
     ```
     </TabItem>
 

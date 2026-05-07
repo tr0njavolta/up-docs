@@ -126,7 +126,7 @@ Use the `--include-extra-resources=` CLI option to select other CRD types to inc
 
 ### Set the kubecontext
 
-Currently `--context` isn't supported in the migration CLI. You should be able to use the `--kubeconfig` CLI option to use a file that's set to the correct context. example:
+Currently `--context` isn't supported in the migration CLI. You should be able to use the `--kubeconfig` CLI option to use a file that's set to the correct context. For example:
 
 ```bash
 up controlplane migration export --kubeconfig
@@ -348,7 +348,7 @@ included in the backup:
 - Resources directly managed via Helm (ArgoCD's helm implementation, which templates
 Helm resources and then applies them, get included in the backup). The migration creates the exclusion list by looking for:
   - Any Resource with the label `"app.kubernetes.io/managed-by" == "Helm"`
-  - Kubernetes Secrets with the label prefix `helm.sh/release`. example, `helm.sh/release.v1`
+  - Kubernetes Secrets with the label prefix `helm.sh/release`. For example, `helm.sh/release.v1`
 - Resources installed via a Crossplane package. These have an `ownerReference` with
 a prefix `pkg.crossplane.io`. The expectation is that during import, the Crossplane Package Manager bears responsibility for installing the resources.
 - Crossplane Locks: Any `Lock.pkg.crossplane.io` resource isn't included in the

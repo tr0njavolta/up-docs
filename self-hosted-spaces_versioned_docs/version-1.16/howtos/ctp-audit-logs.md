@@ -7,9 +7,10 @@ in Self-Hosted Upbound Spaces.
 
 Starting in Spaces `v1.14.0`, each control plane contains an API server that
 supports audit log collection. You can use audit logging to track creation,
-updates, and deletions of Crossplane resources. Control plane audit logs 
+updates, and deletions of Crossplane resources. Control plane audit logs
 use observability features to collect audit logs with `SharedTelemetryConfig` and
 send logs to an OpenTelemetry (`OTEL`) collector.
+
 
 ## Prerequisites
 

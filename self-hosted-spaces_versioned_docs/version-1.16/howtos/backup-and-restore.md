@@ -9,6 +9,7 @@ plan: "enterprise"
 
 Upbound's _Shared Backups_ is a built-in backup and restore feature. Shared Backups lets you configure automatic schedules for taking snapshots of your control planes. You can restore data from these backups by making new control planes. This guide explains how to use Shared Backups for disaster recovery or upgrade scenarios.
 
+
 ## Benefits
 
 The Shared Backups feature provides the following benefits:

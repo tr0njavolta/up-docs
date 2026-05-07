@@ -1,16 +1,15 @@
 ---
-title: GitOps with control planes
+title: GitOps with ArgoCD in Self-Hosted Spaces
 sidebar_position: 80
-description: An introduction to doing GitOps with control planes on Upbound
+description: Set up GitOps workflows with Argo CD in self-hosted Spaces
 plan: "business"
 ---
 
-<Business />
+:::info Deployment Model
+This guide applies to **self-hosted Spaces** deployments. For Upbound Cloud Spaces, see [GitOps with Upbound Control Planes](/cloud-spaces/howtos/gitops-on-upbound/).
+:::
 
-GitOps is an approach for managing a system by declaratively describing desired
-resources' configurations in Git and using controllers to realize the desired
-state. Upbound's control planes are compatible with this pattern and it's
-strongly recommended you integrate GitOps in the platforms you build on Upbound.
+GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. Upbound's control planes are compatible with this pattern and it's strongly recommended you integrate GitOps in the platforms you build on Upbound.
 
 <!-- vale Google.Headings = NO -->
 ## Integrate with Argo CD

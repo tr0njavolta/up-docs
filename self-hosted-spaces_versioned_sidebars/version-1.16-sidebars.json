@@ -36,6 +36,7 @@
       "items": [
         "howtos/configure-ha",
         "howtos/oidc-configuration",
+        "howtos/hub-rbac",
         "howtos/scaling-resources",
         "howtos/spaces-management"
       ]
@@ -89,6 +90,7 @@
       "type": "category",
       "label": "GitOps & Automation",
       "items": [
+        "howtos/automation-and-gitops/overview",
         "howtos/gitops",
         "howtos/use-argo"
       ]

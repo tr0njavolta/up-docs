@@ -1,0 +1,242 @@
+# Upbound Documentation
+
+> Upbound builds Universal Crossplane (UXP) and Upbound Spaces — products that let platform engineering teams build internal cloud platforms and manage infrastructure as code using Kubernetes. UXP is an enterprise distribution of Crossplane. Spaces provides managed and self-hosted control plane hosting at scale.
+
+Upbound documentation covers two primary products: UXP (a single Crossplane control plane with enterprise features) and Spaces (a platform for running many control planes at scale). Both build on Crossplane and Kubernetes primitives — Composite Resource Definitions (XRDs), Compositions, Providers, and managed resources.
+
+## Getting Started
+
+- [Get Upbound](https://docs.upbound.io/getstarted/overview): Overview of the getting-started path — choose between building a platform locally or working through guided tutorials.
+- [Build a platform with Upbound](https://docs.upbound.io/getstarted/platform-tutorial): End-to-end tutorial deploying an app with an AWS RDS database, demonstrating XRDs, Compositions, KCL functions, drift detection, Kyverno policy enforcement, and live infrastructure changes.
+- [AI controller tutorial](https://docs.upbound.io/getstarted/ai-controller-tutorial): Tutorial showing how to build an AI-powered Kubernetes controller using Upbound and Claude.
+- [Builders workshop](https://docs.upbound.io/getstarted/builders-workshop/1-project-foundations): Multi-part workshop covering project foundations, creating configurations, testing, and deployment.
+- [Upgrade to UXP](https://docs.upbound.io/getstarted/upgrade-to-upbound/upgrade-to-uxp): Migration guide for moving from open-source Crossplane to UXP.
+- [Upgrade to Projects](https://docs.upbound.io/getstarted/upgrade-to-upbound/upgrade-to-projects): Guide for adopting the Upbound project model for managing configurations.
+- [Migrate configurations to v2](https://docs.upbound.io/getstarted/upgrade-to-upbound/migrate-configurations-v2): Migration path for upgrading Composition configurations to the v2 API.
+
+## UXP (Universal Crossplane)
+
+Universal Crossplane is Upbound's enterprise distribution of Crossplane. It adds commercial support, a web UI, intelligent operations (AI-assisted), observability views, and extended package capabilities.
+
+- [UXP Overview](https://docs.upbound.io/manuals/uxp/overview): What UXP is, how it differs from upstream Crossplane, and when to use it.
+- [Deploy UXP](https://docs.upbound.io/manuals/uxp/howtos/uxp-deployment): Install and configure UXP on a Kubernetes cluster.
+- [Official package support](https://docs.upbound.io/manuals/uxp/official-package-support): Support policy and lifecycle for Upbound official providers, configurations, and functions.
+- [Crossplane web UI](https://docs.upbound.io/manuals/uxp/crossplane-web-ui): Using the browser-based UI for browsing and managing Crossplane resources.
+- [Backup and restore](https://docs.upbound.io/manuals/uxp/howtos/backup-and-restore): How to back up and restore a UXP control plane.
+- [Configure packages](https://docs.upbound.io/manuals/uxp/howtos/configure-packages): Runtime configuration for installed providers and functions.
+- [Secrets proxy](https://docs.upbound.io/manuals/uxp/howtos/secrets-proxy): Route provider secret access through a proxy for security.
+- [Function scale to zero](https://docs.upbound.io/manuals/uxp/howtos/function-scale-to-zero): Configure composition functions to scale down when idle.
+- [License management](https://docs.upbound.io/manuals/uxp/howtos/license-management): Manage UXP license keys and entitlements.
+- [Usage metering](https://docs.upbound.io/manuals/uxp/howtos/usage-metering): Understand how resource usage is measured and reported.
+- [Query API](https://docs.upbound.io/manuals/uxp/howtos/query-api): Use the UXP Query API to search and filter control plane resources.
+
+### UXP Concepts: Composition
+
+- [Composition overview](https://docs.upbound.io/manuals/uxp/concepts/composition/overview): How Crossplane compositions turn user-facing APIs into sets of managed resources.
+- [Composite Resource Definitions (XRDs)](https://docs.upbound.io/manuals/uxp/concepts/composition/composite-resource-definitions): Define custom platform APIs using XRDs — schema, validation, and claim behavior.
+- [Composite resources](https://docs.upbound.io/manuals/uxp/concepts/composition/composite-resources): The instances created from XRDs, including namespaced claims and cluster-scoped composites.
+- [Compositions](https://docs.upbound.io/manuals/uxp/concepts/composition/compositions): Map composite resource fields to managed resource configurations via pipeline functions.
+- [Composition revisions](https://docs.upbound.io/manuals/uxp/concepts/composition/composition-revisions): Pin composites to specific composition versions for safe rollouts.
+- [Environment configs](https://docs.upbound.io/manuals/uxp/concepts/composition/environment-configs): Inject cluster-level or namespace-level data into compositions at runtime.
+- [Intelligent compositions](https://docs.upbound.io/manuals/uxp/concepts/composition/intelligent-compositions): AI-assisted composition functions that reason about resource state dynamically.
+
+### UXP Concepts: Managed Resources
+
+- [Managed resources overview](https://docs.upbound.io/manuals/uxp/concepts/managed-resources/overview): The fundamental unit of Crossplane — a Kubernetes object that maps to an external resource (cloud API, service, etc.).
+- [Usages](https://docs.upbound.io/manuals/uxp/concepts/managed-resources/usages): Declare dependencies between managed resources to control deletion ordering.
+
+### UXP Concepts: Packages
+
+- [Providers](https://docs.upbound.io/manuals/uxp/concepts/packages/providers): Install and configure Crossplane providers — the controllers that reconcile managed resources against external APIs.
+- [Configurations](https://docs.upbound.io/manuals/uxp/concepts/packages/configurations): Package and distribute XRDs and Compositions as reusable OCI artifacts.
+- [Functions](https://docs.upbound.io/manuals/uxp/concepts/packages/functions): Composition pipeline steps — executable logic for mapping composite resources to managed resources (Go, KCL, Python, Go templates).
+- [Add-ons](https://docs.upbound.io/manuals/uxp/concepts/packages/add-ons): Install operational extensions into UXP (monitoring, policy engines, MCP servers).
+- [Provider authentication](https://docs.upbound.io/manuals/uxp/concepts/packages/provider-authentication): How providers authenticate to cloud APIs — secrets, IRSA, workload identity, OIDC.
+- [Image configs](https://docs.upbound.io/manuals/uxp/concepts/packages/image-configs): Control image pull behavior, registries, and pull secrets for packages.
+
+### UXP Concepts: Operations
+
+- [Operations overview](https://docs.upbound.io/manuals/uxp/concepts/operations/overview): Automated and AI-assisted lifecycle operations on control plane resources.
+- [Watch operations](https://docs.upbound.io/manuals/uxp/concepts/operations/watch-operation): Trigger operations in response to resource state changes.
+- [Cron operations](https://docs.upbound.io/manuals/uxp/concepts/operations/cron-operation): Schedule recurring operations on a cron expression.
+- [Intelligent operations](https://docs.upbound.io/manuals/uxp/concepts/operations/intelligent-operations): AI-driven operations that interpret resource state and take corrective action.
+
+### UXP Concepts: Other
+
+- [Intelligent control planes](https://docs.upbound.io/manuals/uxp/concepts/intelligent-control-planes): How Upbound integrates LLM reasoning into control plane reconciliation.
+- [Observability views](https://docs.upbound.io/manuals/uxp/concepts/observability-views): Structured views of resource health, events, and conditions across the control plane.
+
+## Cloud Spaces
+
+Cloud Spaces is Upbound's hosted control plane service. Upbound manages the Spaces infrastructure; you create and manage control planes through the Upbound Console or API without operating Kubernetes yourself.
+
+- [Cloud Spaces overview](https://docs.upbound.io/cloud-spaces/overview): What Cloud Spaces is, how it works, and when to use it.
+- [Control planes](https://docs.upbound.io/cloud-spaces/concepts/control-planes): The managed control plane model — lifecycle, isolation, and versioning.
+- [Control plane groups](https://docs.upbound.io/cloud-spaces/concepts/groups): Organize control planes into groups for access control and management.
+- [Deployment modes](https://docs.upbound.io/cloud-spaces/concepts/deployment-modes): Dedicated vs. managed deployment options for Cloud Spaces.
+- [Dedicated Spaces deployment](https://docs.upbound.io/cloud-spaces/howtos/dedicated-spaces-deployment): Deploy a dedicated Cloud Spaces environment for your organization.
+- [Managed Upbound control planes](https://docs.upbound.io/cloud-spaces/howtos/managed-service): Use Upbound-managed control planes without operating your own Spaces infrastructure.
+- [Automation and GitOps](https://docs.upbound.io/cloud-spaces/howtos/automation-and-gitops/overview): Manage control plane configuration through GitOps workflows.
+- [GitOps with Upbound control planes](https://docs.upbound.io/cloud-spaces/howtos/gitops-on-upbound): Connect ArgoCD or Flux to control planes running in Cloud Spaces.
+- [API Connector](https://docs.upbound.io/cloud-spaces/howtos/api-connector): Connect external APIs and services to control planes in Cloud Spaces.
+- [Control Plane Connector](https://docs.upbound.io/cloud-spaces/howtos/ctp-connector): Consume control plane APIs from an app cluster using the control plane connector.
+- [MCP Connector](https://docs.upbound.io/cloud-spaces/howtos/mcp-connector-guide): Connect managed control planes to your hub cluster.
+- [Private Network Agent](https://docs.upbound.io/cloud-spaces/howtos/private-network-agent): Route control plane traffic through a private network agent for air-gapped or restricted environments.
+- [Secrets management](https://docs.upbound.io/cloud-spaces/howtos/secrets-management): Manage secrets used by control planes in Cloud Spaces.
+- [Backup and restore](https://docs.upbound.io/cloud-spaces/howtos/backup-and-restore): Back up and restore control plane state in Cloud Spaces.
+- [Observability](https://docs.upbound.io/cloud-spaces/howtos/observability): Monitor control plane health, metrics, and logs in Cloud Spaces.
+- [Query API](https://docs.upbound.io/cloud-spaces/howtos/query-api): Use the Query API to search and filter resources across Cloud Spaces control planes.
+- [Simulations](https://docs.upbound.io/cloud-spaces/howtos/simulations): Simulate changes to control plane configuration before applying them.
+- [Auto-upgrade](https://docs.upbound.io/cloud-spaces/howtos/auto-upgrade): Configure automatic version upgrades for control planes.
+- [Migrate to Upbound control planes](https://docs.upbound.io/cloud-spaces/howtos/migrating-to-mcps): Migrate existing Crossplane installations to Upbound-managed control planes.
+- [Debugging a control plane](https://docs.upbound.io/cloud-spaces/howtos/debugging-a-ctp): Diagnose and troubleshoot control planes in Cloud Spaces.
+
+## Self-Hosted Spaces
+
+Self-Hosted Spaces runs the Spaces platform in your own Kubernetes cluster. You operate the hub cluster; Spaces manages the lifecycle of many isolated control planes on top of it. Self-Hosted Spaces is versioned — the current release is the latest version. Older versions (1.13–1.16) are available at versioned URL paths (e.g., `/self-hosted-spaces/1.15/`).
+
+- [Self-Hosted Spaces overview](https://docs.upbound.io/self-hosted-spaces/overview): Architecture, components, and when to choose self-hosted over Cloud Spaces.
+- [Quickstart with kind](https://docs.upbound.io/self-hosted-spaces/self-hosted-spaces-quickstart): Deploy Self-Hosted Spaces locally using kind for evaluation and development.
+- [Control planes](https://docs.upbound.io/self-hosted-spaces/concepts/control-planes): The control plane lifecycle model in Self-Hosted Spaces.
+- [Control plane groups](https://docs.upbound.io/self-hosted-spaces/concepts/groups): Namespace isolation and group-level access control for control planes.
+- [Deployment requirements](https://docs.upbound.io/self-hosted-spaces/howtos/deployment-reqs): Prerequisites and infrastructure requirements for a Self-Hosted Spaces installation.
+- [Deploy Self-Hosted Spaces](https://docs.upbound.io/self-hosted-spaces/howtos/self-hosted-spaces-deployment): Install Spaces onto a Kubernetes cluster using the Spaces Helm chart.
+- [Managed Spaces deployment](https://docs.upbound.io/self-hosted-spaces/howtos/managed-spaces-deployment): Deploy a Managed Spaces environment backed by your own infrastructure.
+- [Production scaling and HA](https://docs.upbound.io/self-hosted-spaces/howtos/configure-ha): Configure high availability and scale Spaces for production workloads.
+- [Control plane topologies](https://docs.upbound.io/self-hosted-spaces/howtos/control-plane-topologies): Design control plane layouts for different organizational and network topologies.
+- [Declaratively create control planes](https://docs.upbound.io/self-hosted-spaces/howtos/declarative-ctps): Manage control plane lifecycle with GitOps using the Spaces API.
+- [Spaces management](https://docs.upbound.io/self-hosted-spaces/howtos/spaces-management): Manage the Spaces installation itself — upgrades, configuration, and administration.
+- [Controllers](https://docs.upbound.io/self-hosted-spaces/howtos/controllers): Configure and manage Spaces controller components.
+- [Ingress](https://docs.upbound.io/self-hosted-spaces/howtos/ingress): Expose Spaces externally through an ingress controller.
+- [Certificates](https://docs.upbound.io/self-hosted-spaces/howtos/certs): Configure TLS certificates for Spaces components and control planes.
+- [Migrate from ingress-nginx](https://docs.upbound.io/self-hosted-spaces/howtos/ingress-nginx-migration): Migrate away from ingress-nginx to a supported ingress controller.
+- [Hub RBAC](https://docs.upbound.io/self-hosted-spaces/howtos/hub-rbac): Configure Kubernetes RBAC on the hub cluster for Spaces access control.
+- [OIDC configuration](https://docs.upbound.io/self-hosted-spaces/howtos/oidc-configuration): Configure OIDC for authentication to Spaces and control planes.
+- [Connect or disconnect a Space](https://docs.upbound.io/self-hosted-spaces/howtos/attach-detach): Attach or detach a Self-Hosted Space from the Upbound platform.
+- [Automation and GitOps](https://docs.upbound.io/self-hosted-spaces/howtos/automation-and-gitops/overview): Automate control plane management through GitOps in Self-Hosted Spaces.
+- [GitOps with ArgoCD](https://docs.upbound.io/self-hosted-spaces/howtos/gitops): Manage Self-Hosted Spaces control planes using ArgoCD.
+- [Use ArgoCD plugin](https://docs.upbound.io/self-hosted-spaces/howtos/use-argo): Use the Upbound ArgoCD plugin for enhanced GitOps integration.
+- [API Connector](https://docs.upbound.io/self-hosted-spaces/howtos/api-connector): Connect external APIs to control planes in Self-Hosted Spaces.
+- [Control Plane Connector](https://docs.upbound.io/self-hosted-spaces/howtos/ctp-connector): Consume control plane APIs from app clusters in Self-Hosted Spaces.
+- [MCP Connector](https://docs.upbound.io/self-hosted-spaces/howtos/mcp-connector-guide): Connect managed control planes to the hub cluster in Self-Hosted Spaces.
+- [Secrets management](https://docs.upbound.io/self-hosted-spaces/howtos/secrets-management): Manage secrets for control planes and Spaces components.
+- [Backup and restore](https://docs.upbound.io/self-hosted-spaces/howtos/backup-and-restore): Back up and restore control plane etcd state.
+- [Disaster recovery](https://docs.upbound.io/self-hosted-spaces/howtos/dr): Configure and execute disaster recovery for a Self-Hosted Spaces installation.
+- [Mirror images](https://docs.upbound.io/self-hosted-spaces/howtos/mirror-images): Mirror Spaces and UXP images to a private registry for air-gapped deployments.
+- [Scaling vCluster and etcd](https://docs.upbound.io/self-hosted-spaces/howtos/scaling-resources): Scale vCluster and etcd resources per control plane for performance tuning.
+- [Observability](https://docs.upbound.io/self-hosted-spaces/howtos/observability): Monitor control plane health and metrics in Self-Hosted Spaces.
+- [Space-level observability](https://docs.upbound.io/self-hosted-spaces/howtos/space-observability): Configure observability at the Space (hub) level — metrics, logs, and alerting.
+- [Distributed tracing](https://docs.upbound.io/self-hosted-spaces/howtos/tracing/overview): Enable and configure distributed tracing for Spaces components.
+- [Query API](https://docs.upbound.io/self-hosted-spaces/howtos/query-api): Use the Query API to search resources across Self-Hosted Spaces control planes.
+- [Deploy Query API infrastructure](https://docs.upbound.io/self-hosted-spaces/howtos/deploy-query-api): Install the Query API backend for Self-Hosted Spaces.
+- [Control plane audit logging](https://docs.upbound.io/self-hosted-spaces/howtos/ctp-audit-logs): Enable and forward audit logs from control planes.
+- [Auto-upgrade](https://docs.upbound.io/self-hosted-spaces/howtos/auto-upgrade): Configure automatic version upgrades for control planes in Self-Hosted Spaces.
+- [Simulations](https://docs.upbound.io/self-hosted-spaces/howtos/simulations): Simulate control plane changes before applying them.
+- [Debugging a control plane](https://docs.upbound.io/self-hosted-spaces/howtos/debugging-a-ctp): Diagnose and resolve control plane issues in Self-Hosted Spaces.
+- [Troubleshooting](https://docs.upbound.io/self-hosted-spaces/howtos/troubleshooting): Diagnose and fix common Self-Hosted Spaces installation and operational issues.
+- [Migrate to Upbound control planes](https://docs.upbound.io/self-hosted-spaces/howtos/migrating-to-mcps): Migrate existing Crossplane installations to control planes in Self-Hosted Spaces.
+- [Workload identity — backup/restore](https://docs.upbound.io/self-hosted-spaces/howtos/workload-id/backup-restore-config): Configure workload identity for backup and restore operations.
+- [Workload identity — billing](https://docs.upbound.io/self-hosted-spaces/howtos/workload-id/billing-config): Configure workload identity for Spaces billing integration.
+- [Workload identity — shared secrets (ESO)](https://docs.upbound.io/self-hosted-spaces/howtos/workload-id/eso-config): Configure workload identity with External Secrets Operator for shared secret access.
+- [Billing](https://docs.upbound.io/self-hosted-spaces/howtos/billing): Understand and configure usage billing for Self-Hosted Spaces.
+- [Capacity licensing](https://docs.upbound.io/self-hosted-spaces/howtos/capacity-licensing): Configure and manage capacity-based licensing for Self-Hosted Spaces.
+- [Managed Upbound control planes](https://docs.upbound.io/self-hosted-spaces/howtos/managed-service): Use Upbound-managed control planes within a Self-Hosted Spaces deployment.
+- [Spaces Helm Chart Reference](https://docs.upbound.io/reference/spaces-helm-reference): All Helm values for installing and configuring Self-Hosted Spaces.
+- [Spaces API Reference](https://docs.upbound.io/self-hosted-spaces/reference/): API reference for Spaces CRDs (ControlPlane, SharedBackup, SpaceGroup, etc.).
+- [Spaces Release Notes](https://docs.upbound.io/reference/release-notes/spaces): Changelog for Spaces releases.
+
+## CLI (`up`)
+
+The `up` CLI is the primary developer tool for Upbound. It manages projects, builds and pushes packages, runs local development control planes, and interacts with Spaces.
+
+- [CLI overview](https://docs.upbound.io/manuals/cli/overview): What the `up` CLI does and how it fits into the development workflow.
+- [Projects](https://docs.upbound.io/manuals/cli/concepts/projects): The project model — `upbound.yaml`, dependency declarations, and workspace layout.
+- [Dependencies](https://docs.upbound.io/manuals/cli/concepts/dependencies): Declare and resolve provider, function, and configuration dependencies.
+- [Embedded functions](https://docs.upbound.io/manuals/cli/concepts/embedded-functions): Write composition functions directly in a project without a separate package.
+- [Configuration](https://docs.upbound.io/manuals/cli/concepts/configuration): Project-level and profile-level CLI configuration.
+- [Contexts](https://docs.upbound.io/manuals/cli/concepts/contexts): Named clusters and credential sets for switching between environments.
+- [Tests](https://docs.upbound.io/manuals/cli/concepts/tests): Unit and integration testing for compositions and functions.
+- [Run a project locally](https://docs.upbound.io/manuals/cli/howtos/project): Use `up project run --local` to develop and test against a local kind cluster.
+- [Build and push packages](https://docs.upbound.io/manuals/cli/howtos/building-pushing): Build OCI packages and push them to the Upbound Marketplace or any OCI registry.
+- [Adding dependencies](https://docs.upbound.io/manuals/cli/howtos/adding-dependencies): Add providers, functions, and configurations to a project.
+- [Author XRDs](https://docs.upbound.io/manuals/cli/howtos/authoring-xrds): Write and validate Composite Resource Definitions with CLI tooling.
+- [Write compositions in KCL](https://docs.upbound.io/manuals/cli/howtos/compositions/kcl): Implement composition functions using KCL.
+- [Write compositions in Go](https://docs.upbound.io/manuals/cli/howtos/compositions/go): Implement composition functions using Go.
+- [Write compositions in Python](https://docs.upbound.io/manuals/cli/howtos/compositions/python): Implement composition functions using Python.
+- [Write compositions in Go templates](https://docs.upbound.io/manuals/cli/howtos/compositions/go-template): Implement compositions using Go template rendering.
+- [Testing](https://docs.upbound.io/manuals/cli/howtos/testing): Write and run composition tests with the `up` CLI.
+- [Simulations](https://docs.upbound.io/manuals/cli/howtos/simulations): Simulate resource reconciliation locally without a running cluster.
+- [CLI Reference](https://docs.upbound.io/reference/cli-reference): Full reference for all `up` CLI commands and flags.
+- [CLI Release Notes](https://docs.upbound.io/reference/release-notes/up-cli): Changelog for `up` CLI releases.
+
+## Official Packages
+
+Upbound maintains official providers, configurations, and functions for major cloud platforms and services.
+
+- [Official packages overview](https://docs.upbound.io/manuals/packages/overview): What Upbound official packages are, support tiers, and how to install them.
+- [Providers](https://docs.upbound.io/manuals/packages/providers/index): Install and authenticate official Upbound providers for AWS, Azure, GCP, and more.
+- [Provider families](https://docs.upbound.io/manuals/packages/providers/provider-families): How monolithic providers are split into per-service family providers for faster installs.
+- [Provider authentication](https://docs.upbound.io/manuals/packages/providers/authentication): Configure credentials for official providers.
+- [AWS authentication methods](https://docs.upbound.io/manuals/packages/providers/aws-auth/aws-access-keys): Access key, IRSA, OIDC, pod identity, and web identity authentication for AWS providers.
+- [Configurations](https://docs.upbound.io/manuals/packages/configurations): Install and use official Upbound configuration packages.
+- [Functions](https://docs.upbound.io/manuals/packages/functions): Official Upbound function packages for use in composition pipelines.
+- [Add-ons](https://docs.upbound.io/manuals/packages/add-ons): Official add-on packages for extending UXP capabilities.
+- [Policies](https://docs.upbound.io/manuals/packages/policies): Policy packages for enforcing platform governance with Kyverno and OPA.
+- [Pull secrets](https://docs.upbound.io/manuals/packages/providers/pull-secrets): Configure image pull secrets for private package registries.
+- [Signature verification](https://docs.upbound.io/manuals/packages/providers/signature-verification): Verify the integrity of Upbound packages using cosign signatures.
+- [Provider Terraform](https://docs.upbound.io/manuals/packages/providers/provider-terraform/index): Use Terraform modules as Crossplane managed resources via provider-terraform.
+
+## Marketplace
+
+The Upbound Marketplace is the package registry for Crossplane providers, configurations, functions, and add-ons.
+
+- [Marketplace overview](https://docs.upbound.io/manuals/marketplace/overview): How the marketplace works, package tiers, and discovery.
+- [Packages](https://docs.upbound.io/manuals/marketplace/packages): Install packages from the marketplace into a UXP control plane.
+- [Repositories overview](https://docs.upbound.io/manuals/marketplace/repositories/overview): Public and private repository hosting on the marketplace.
+- [Publish packages](https://docs.upbound.io/manuals/marketplace/repositories/publish-packages): Push packages to the marketplace for distribution.
+- [Repository management](https://docs.upbound.io/manuals/marketplace/repositories/management): Create and manage marketplace repositories.
+- [Marketplace authentication](https://docs.upbound.io/manuals/marketplace/authentication): Authenticate to the marketplace for pulling private packages.
+- [Security features](https://docs.upbound.io/manuals/marketplace/security-features): Package scanning, signature verification, and security policies on the marketplace.
+
+## Platform Access & Accounts
+
+- [Platform overview](https://docs.upbound.io/manuals/platform/overview): Upbound account model — organizations, teams, users, and robots.
+- [Organizations](https://docs.upbound.io/manuals/platform/organizations): Create and manage Upbound organizations.
+- [Teams](https://docs.upbound.io/manuals/platform/teams): Group users and assign permissions at the team level.
+- [Users](https://docs.upbound.io/manuals/platform/users): Manage individual user accounts and access.
+- [Robots](https://docs.upbound.io/manuals/platform/robots): Create service accounts (robots) for CI/CD and automated workflows.
+- [IAM](https://docs.upbound.io/manuals/platform/iam): Role-based access control at the Upbound platform level.
+- [Kubernetes RBAC](https://docs.upbound.io/manuals/platform/k8s-rbac): Kubernetes RBAC integration for control plane access.
+- [OIDC](https://docs.upbound.io/manuals/platform/oidc): Connect external identity providers via OIDC.
+- [SSO](https://docs.upbound.io/manuals/platform/sso): Configure single sign-on for your organization.
+- [Data residency](https://docs.upbound.io/manuals/platform/data-residency): Where Upbound stores data and options for controlling data location.
+
+## Guides
+
+- [Use cases overview](https://docs.upbound.io/guides/usecases/index): Reference architectures — Database-as-a-Service, App-as-a-Service, Cloud-as-a-Service, and managed resources.
+- [Intelligent control planes guide](https://docs.upbound.io/guides/intelligent-control-planes/intelligent-control-planes): How to build control planes that use AI for dynamic composition and operations.
+- [Compose resources dynamically](https://docs.upbound.io/guides/intelligent-control-planes/compose-resources-dynamically): Use AI function steps to determine resource configurations at runtime.
+- [Scale database with AI](https://docs.upbound.io/guides/intelligent-control-planes/scale-database): Implement AI-driven scaling decisions in a composition function.
+- [Deploy a developer portal](https://docs.upbound.io/guides/solutions/portal): Build a self-service developer portal backed by Crossplane.
+
+## Reference
+
+- [Reference overview](https://docs.upbound.io/reference/index): Index of all reference documentation.
+- [API Reference](https://docs.upbound.io/reference/apis/index): Crossplane, UXP, Spaces, Query, and Testing API references.
+- [UXP API Reference](https://docs.upbound.io/reference/apis/uxp-api/index): CRD reference for UXP-specific resources.
+- [Crossplane API Reference](https://docs.upbound.io/reference/apis/crossplane-api/index): CRD reference for core Crossplane resources (XRD, Composition, Provider, Function, etc.).
+- [Query API Reference](https://docs.upbound.io/reference/apis/query-api/index): Reference for the UXP Query API used to search resources across the control plane.
+- [UXP Helm Chart Reference](https://docs.upbound.io/reference/uxp-helm-reference): All Helm values for installing and configuring UXP.
+- [Upbound Pricing](https://docs.upbound.io/reference/pricing): Pricing tiers and included entitlements for UXP and Spaces.
+- [Support](https://docs.upbound.io/reference/usage/support): How to file support tickets and what's covered under each plan.
+- [Support bundles](https://docs.upbound.io/reference/usage/support-bundles): Collect diagnostic information for Upbound support.
+- [Feature lifecycle](https://docs.upbound.io/reference/usage/feature-lifecycle): Alpha, beta, and GA feature lifecycle definitions.
+- [Product lifecycle](https://docs.upbound.io/reference/usage/lifecycle): Support and maintenance lifecycle for UXP and Spaces versions.
+- [Telemetry](https://docs.upbound.io/reference/usage/telemetry): What telemetry Upbound collects and how to configure it.
+- [UXP Release Notes](https://docs.upbound.io/reference/release-notes/uxp): Changelog for UXP releases.
+
+## Optional
+
+- [Upbound Marketplace](https://marketplace.upbound.io/): Browse providers, configurations, functions, and add-ons.
+- [Marketplace llms.txt](https://marketplace.upbound.io/llms.txt): LLM-optimized index of official marketplace packages.
+- [Crossplane Documentation](https://docs.crossplane.io/): Upstream Crossplane documentation — concepts, API reference, and guides.

@@ -41,7 +41,7 @@ Upbound Spaces offers two levels of observability:
 <!-- vale write-good.Passive = NO -->
 <!-- vale write-good.TooWordy = NO -->
 **Control plane observability** is enabled by default. No additional setup is
-required. 
+required.
 <!-- vale write-good.TooWordy = YES -->
 <!-- vale write-good.Passive = YES -->
 
@@ -59,11 +59,11 @@ before `v1.14.0`.
 
 2. **Install OpenTelemetry Operator** (required for Space-level observability):
    ```bash
-   kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.116.0/opentelemetry-operator.yaml
+   kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.139.0/opentelemetry-operator.yaml
    ```
-   
+
    :::important
-   If running Spaces `v1.11` or later, use OpenTelemetry Operator `v0.110.0` or later due to breaking changes.
+   If running Spaces `v1.15` or later, use OpenTelemetry Operator `v0.139.0` or later due to breaking changes.
    :::
 
 
@@ -124,16 +124,16 @@ Collectors pass data to external observability backends.
 
 :::important
 From Spaces `v1.13` and beyond, telemetry only includes user-facing control
-plane workloads (Crossplane, providers, functions). 
+plane workloads (Crossplane, providers, functions).
 
 Self-hosted users can include system workloads (`api-server`, `etcd`) by setting
-`observability.collectors.includeSystemTelemetry=true` in Helm. 
+`observability.collectors.includeSystemTelemetry=true` in Helm.
 :::
 
 :::important
 Spaces validates `SharedTelemetryConfig` resources before applying them by
 sending telemetry to configured exporters. self-hosted Spaces, ensure that
-`spaces-controller` can reach the exporter endpoints. 
+`spaces-controller` can reach the exporter endpoints.
 :::
 
 ### `SharedTelemetryConfig`

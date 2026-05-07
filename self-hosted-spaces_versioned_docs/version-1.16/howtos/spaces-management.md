@@ -2,7 +2,6 @@
 title: Interacting with Disconnected Spaces
 sidebar_position: 10
 description: Common operations in Spaces
-draft: true
 ---
 
 ## Spaces management
@@ -210,5 +209,5 @@ kubectl delete controlplane ctp1
 [release-notes]: /reference/release-notes/spaces
 [up-space-destroy]: /reference/cli-reference
 [up-cli]: /reference/cli-reference
-[upbound-s-saas-environment]: /self-hosted-spaces/howtos/spaces-management
+[upbound-s-saas-environment]: /self-hosted-spaces/howtos/gitops
 [spaces-git-integration]: /self-hosted-spaces/howtos/gitops

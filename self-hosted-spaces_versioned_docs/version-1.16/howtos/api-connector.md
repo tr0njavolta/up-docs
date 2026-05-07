@@ -6,10 +6,11 @@ aliases:
     - /api-connector
     - /concepts/api-connector
 ---
+
 :::warning
 API Connector is currently in **Preview**. The feature is under active
 development and subject to breaking changes. Use for testing and evaluation
-purposes only. 
+purposes only.
 :::
 
 API Connector enables seamless integration between Kubernetes application

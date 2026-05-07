@@ -21,29 +21,32 @@ reliability, performance, and developer experience.
 
 <!-- vale Microsoft.HeadingPunctuation = NO -->
 
-## Already using open source Crossplane?
+## Install Upbound Crossplane
 <!-- vale Google.WordList = NO -->
-If you're already using Crossplane and want to check out Upbound Crossplane
-2.0, you can upgrade an existing Crossplane cluster with Helm or the `up`
-CLI.
+Install Upbound Crossplane (UXP) into a fresh Kubernetes cluster with Helm or
+the `up` CLI.
+
+:::important
+Already running open source Crossplane? Don't run the commands below — follow
+the [Upgrade Guide][upgrade] instead.
+:::
 
 <Tabs>
 
 <TabItem value="Helm Install">
 
 ```shell
-helm upgrade --install crossplane --create-namespace --namespace crossplane-system oci://xpkg.upbound.io/upbound/crossplane --version 2.1.3-up.1
+helm repo add upbound-stable https://charts.upbound.io/stable && helm repo update
+helm install crossplane --namespace crossplane-system --create-namespace upbound-stable/crossplane --devel
 ```
-:::important
-For more details, follow our [Upgrade Guide][upgrade] to see how Upbound can enhance your existing workflow.
-:::
 
 </TabItem>
 
 
 <TabItem value="Up CLI">
 
-Download the `up` CLI and upgrade an existing test cluster.
+Download the `up` CLI and install UXP into the cluster pointed to by your
+current kubeconfig context.
 
 **Download the CLI:**
 
@@ -51,10 +54,10 @@ Download the `up` CLI and upgrade an existing test cluster.
 curl -sL "https://cli.upbound.io" | sh
 ```
 
-**Upgrade an existing Crossplane cluster to UXP:**
+**Install Upbound Crossplane:**
 
 ```shell
-up uxp upgrade
+up uxp install
 ```
 
 </TabItem>

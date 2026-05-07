@@ -9,6 +9,7 @@ plan: "standard"
 
 Upbound Spaces can automatically upgrade the version of Upbound Crossplane in managed control plane instances. You can edit the `spec.crossplane.autoUpgrade` field in your `ControlPlane` specification with the available release channels below.
 
+
 | Channel  | Description                                                                                                                                                                              | Example |
 |------------|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | **None**    | Disables auto upgrades.  | _Uses version specified in `spec.crossplane.version`._ |

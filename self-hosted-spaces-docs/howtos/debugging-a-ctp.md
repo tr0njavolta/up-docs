@@ -76,7 +76,7 @@ The rendered YAML shows this MR is referencing a sibling MR that shares the same
 
 ![Use control plane explorer view to view status for a sibling MR](/img/debug-mr-dependency-status.png)
 
-The sibling MR event stream shows the Provider processed the resource create request. Ignore the `CannotInitalizeManagedResrouce` event. EKS clusters can take 15 minutes or more to provision in AWS. The root cause is everything is fine -- all the resources are still provisioning. Waiting longer and then looking at the control plane explorer again, shows all resources are healthy. reference, below is an example status field for a resource that's healthy and provisioned.
+The sibling MR event stream shows the Provider processed the resource create request. Ignore the `CannotInitalizeManagedResrouce` event. EKS clusters can take 15 minutes or more to provision in AWS. The root cause is everything is fine -- all the resources are still provisioning. Waiting longer and then looking at the control plane explorer again, shows all resources are healthy. For reference, below is an example status field for a resource that's healthy and provisioned.
 
 ```yaml
 ...

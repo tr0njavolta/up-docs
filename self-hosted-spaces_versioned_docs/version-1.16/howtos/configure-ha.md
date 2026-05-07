@@ -12,6 +12,7 @@ production operation at scale.
 Use this guide when you're ready to deploy production scaling, high availability,
 and monitoring in your Space.
 
+
 ## Prerequisites
 
 Before you begin scaling your Spaces deployment, make sure you have:

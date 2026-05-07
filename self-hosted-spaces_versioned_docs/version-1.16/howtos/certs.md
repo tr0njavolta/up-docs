@@ -40,10 +40,8 @@ EOF
 
 ## Install cert-manager
 
-Replace `<version>` with the [latest release](https://github.com/cert-manager/cert-manager/releases).
-
 ```shell
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/<version>/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.16.2/cert-manager.yaml
 ```
 
 <!-- vale Google.Headings = NO -->

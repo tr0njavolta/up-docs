@@ -24,6 +24,7 @@ NAMESPACE                                         NAME                          
 cert-manager                                      cert-manager-6d6769565c-mc5df                                     1/1     Running   0             25m
 cert-manager                                      cert-manager-cainjector-744bb89575-nw4fg                          1/1     Running   0             25m
 cert-manager                                      cert-manager-webhook-759d6dcbf7-ps4mq                             1/1     Running   0             25m
+ingress-nginx                                     ingress-nginx-controller-7f8ccfccc6-6szlp                         1/1     Running   0             25m
 kube-system                                       coredns-5d78c9869d-4p477                                          1/1     Running   0             26m
 kube-system                                       coredns-5d78c9869d-pdxt6                                          1/1     Running   0             26m
 kube-system                                       etcd-kind-control-plane                                           1/1     Running   0             26m
@@ -59,7 +60,7 @@ What you are seeing is:
 
 - Pods in the `upbound-system` namespace are components required to run the management plane of the Space. This includes the `spaces-controller`, `spaces-router`, and install of UXP.
 - Pods in the `mxp-{GUID}-system` namespace are components that collectively power a control plane. Notable call outs include pod names that look like `vcluster-api-{GUID}` and `vcluster-controller-{GUID}`, which are integral components of a control plane.
-- Pods in other namespaces such as `cert-manager` are prerequisites. If you expose Spaces with an ingress controller or Gateway API, you also see pods in that component's namespace (for example, `ingress-nginx` or `envoy-gateway-system`). See [Exposing Spaces externally][expose] for options.
+- Pods in other notable namespaces, including `cert-manager` and `ingress-nginx`, are prerequisite components that support a Space's successful operation.
 
 
 
@@ -129,4 +130,3 @@ If you try to install a Space on an existing cluster that previously had Crosspl
 
 [observability]: /self-hosted-spaces/howtos/observability
 [remove-old-crossplane-crds]: https://docs.crossplane.io/latest/guides/uninstall-crossplane/
-[expose]: /self-hosted-spaces/howtos/ingress/

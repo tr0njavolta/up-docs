@@ -81,7 +81,7 @@ next section.
 <!-- vale Upbound.Spelling = NO -->
 <!-- vale gitlab.FutureTense = NO -->
 For this guide, you'll use Grafana's `docker-otel-lgtm` bundle to validate audit log
-generation. production environments, configure a dedicated observability
+generation. For production environments, configure a dedicated observability
 backend like Datadog, Splunk, or an enterprise-grade Grafana stack.
 <!-- vale gitlab.FutureTense = YES -->
 <!-- vale Upbound.Spelling = YES -->
@@ -265,7 +265,7 @@ This configuration:
 
 :::note
 You can configure the `SharedTelemetryConfig` to select control planes in
-several ways. more information on control plane selection, see the [control
+several ways. For more information on control plane selection, see the [control
 plane selection][ctp-selection] documentation.
 :::
 

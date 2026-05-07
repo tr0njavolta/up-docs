@@ -60,7 +60,7 @@ The _up_ CLI operates upon a single [Upbound context][upbound-context]. Whatever
 
 1. A Space in Upbound
 2. A group within a Space
-3. a control plane within a group
+3. A control plane within a group
 
 To set the group preference, use `up ctx` to choose a group as your preferred Upbound context. For example:
 

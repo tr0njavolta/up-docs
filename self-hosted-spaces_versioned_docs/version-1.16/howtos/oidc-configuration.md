@@ -15,6 +15,7 @@ This guide walks you through how to create and apply an authentication
 configuration to validate Upbound with an external identity provider. Each
 section focuses on a specific part of the configuration file.
 
+
 ## Creating the `AuthenticationConfiguration` file
 
 First, create a file called `config.yaml` with an `AuthenticationConfiguration`

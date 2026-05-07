@@ -6,6 +6,7 @@ description: A guide for how to debug resources on a control plane running in Up
 <!--- TODO(tr0njavolta): update screenshots --->
 This guide provides troubleshooting guidance for how to identify and fix issues on a control plane.
 
+
 ## Start from Upbound Console
 <!-- vale write-good.Weasel = NO -->
 <!-- ignore "only" -->

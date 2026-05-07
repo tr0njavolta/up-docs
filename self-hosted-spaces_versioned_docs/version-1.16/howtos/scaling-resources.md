@@ -11,6 +11,7 @@ In large workloads or control plane migration, you may performance impacting
 resource constraints. This guide explains how to scale vCluster and `etcd`
 resources for optimal performance in your self-hosted Space.
 
+
 ## Signs of resource constraints
 
 You may need to scale your vCluster or `etcd` resources if you observe:

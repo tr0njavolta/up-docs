@@ -6,7 +6,7 @@ description: Use the Up CLI to mock operations before deploying to your environm
 
 
 :::important
-The Simulations feature is in private preview. more information, [reach out to Upbound][reach-out-to-upbound].
+The Simulations feature is in private preview. For more information, [reach out to Upbound][reach-out-to-upbound].
 :::
 
 Control plane simulations allow you to preview changes to your resources before
@@ -36,7 +36,7 @@ packages.
 ## Requirements
 
 Simulations are available to select customers on Upbound Cloud with Team
-Tier or higher. more information, [reach out to Upbound][reach-out-to-upbound-1].
+Tier or higher. For more information, [reach out to Upbound][reach-out-to-upbound-1].
 
 ## How to simulate your control planes
 

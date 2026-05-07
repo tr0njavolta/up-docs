@@ -3,10 +3,11 @@ title: Connect or disconnect a Space
 sidebar_position: 12
 description: Enable and connect self-hosted Spaces to the Upbound console
 ---
+
 :::important
-This feature is in preview. Starting in Spaces `v1.8.0` and later, you must
+This feature is in preview. You must
 deploy and [enable the Query API][enable-the-query-api] and [enable Upbound
-RBAC][enable-upbound-rbac] to connect a Space to Upbound. 
+RBAC][enable-upbound-rbac] to connect a Space to Upbound.
 :::
 
 [Upbound][upbound] allows you to connect self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.

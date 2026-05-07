@@ -87,10 +87,10 @@ This feature requires the [OpenTelemetry Operator][opentelemetry-operator] on
 the Space cluster. Install this now if you haven't already:
 
 ```bash
-kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.116.0/opentelemetry-operator.yaml
+kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.139.0/opentelemetry-operator.yaml
 ```
 
-If running Spaces v1.11 or later, use OpenTelemetry Operator v0.110.0 or later
+If running Spaces v1.15 or later, use OpenTelemetry Operator v0.139.0 or later
 due to breaking changes in the OpenTelemetry Operator.
 
 ## Configuration

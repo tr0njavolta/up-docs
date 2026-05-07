@@ -4,7 +4,7 @@ sidebar_position: 20
 description: Configure OIDC in your Space
 ---
 :::important
-This guide is only applicable for administrators who've deployed self-hosted Spaces. general RBAC in Upbound, read [Upbound RBAC][upbound-rbac].
+This guide is only applicable for administrators who've deployed self-hosted Spaces. For general RBAC in Upbound, read [Upbound RBAC][upbound-rbac].
 :::
 
 Upbound uses the Kubernetes [Structured Authentication Configuration][structured-auth-config]  to validate OIDC tokens sent to the API. Upbound stores this

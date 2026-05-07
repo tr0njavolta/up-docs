@@ -166,9 +166,34 @@ Any important warnings or necessary information
 - Reactively reconcile legacy connection Secrets and ingress-ca ConfigMap upon root CA changes.
 - Added default resource requests to external-secrets-operator deployments.
 
+## v1.14.6
+
+### Release Date: 2026-05-04
+
+:::info
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.48.0 or later.
+:::
+
+#### Important Changes
+
+- Upgrade the OpenTelemetry Operator to v0.139.0 or later before you upgrade
+  Spaces. This release updates OpenTelemetry dependencies in the
+  `opentelemetry-collector-spaces` image, which require that operator version.
+
+#### What's Changed
+
+- Control plane images updated (VCluster, CoreDNS, etcd, external-secrets-operator).
+- Updated the Spaces Router Envoy image and mxp-charts.
+- Kube-state-metrics and Vector are not installed unless legacy loop-based
+  billing is enabled (`billing.enabled`); on upgrade, existing deployments are
+  uninstalled under the same condition.
+- XGQL is disabled by default and is no longer required to connect a Space
+  (`controlPlanes.uxp.xgql.enabled`).
+- Resolved CVEs in `opentelemetry-collector-spaces` and `hyperspace` images.
+
 ## v1.14.4
 
-### Release Date: 2026-3-16
+### Release Date: 2026-03-16
 
 :::info
 **Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.45.0 or later.

@@ -4,6 +4,15 @@ sidebar_position: 13
 description: Configure Space-wide backups for disaster recovery.
 ---
 
+:::info API Version Information
+This guide applies to **Spaces v1.9.0 and later** (Self-Hosted only). Space Backups is a alpha feature enabled by default starting in v1.14.0.
+
+- **v1.9.0-v1.13.x**: Alpha feature (requires manual enablement)
+- **v1.14.0+**: GA (enabled by default)
+
+For version-specific features and backup resources, see the . control-plane backups, see [Backup and Restore](./backup-and-restore.md).
+:::
+
 :::important
 For Connected and Disconnected Spaces, this feature requires Spaces `v1.9.0` and, starting with `v1.14.0`, Spaces enables it by default.
 

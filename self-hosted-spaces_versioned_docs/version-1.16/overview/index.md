@@ -7,16 +7,21 @@ Upbound Spaces is the platform for running managed Crossplane control planes at
 scale. Spaces handles the lifecycle, networking, and operations of your control
 planes so you can focus on building your platform.
 
-There are two deployment options depending on where you want to run Spaces
-infrastructure:
+Crossplane is the open-source foundation that enables infrastructure 
+provisioning and management through Kubernetes APIs. The Crossplane control
+plane is a Kubernetes cluster running Crossplane that can provision and manage
+resources across multiple providers.
 
-## Upbound-hosted Spaces
+Upbound can run as a hosted service in our Cloud Space or you can host your own
+Upbound instance as a Self-Hosted Space.
 
-Upbound hosts and manages the Spaces infrastructure for you. Cloud Spaces come
-in two flavors:
+## Cloud Spaces
 
-- **Cloud Spaces** — Multi-tenant, Upbound-hosted and Upbound-managed environment.
-- **Dedicated Spaces** — Single-tenant, Upbound-hosted and Upbound-managed
+Upbound hosts and manages the Spaces infrastructure for you. Cloud Spaces offers
+two forms of tenancy:
+
+- **Cloud Spaces**: Multi-tenant, Upbound-hosted and Upbound-managed environment.
+- **Dedicated Spaces**: Single-tenant, Upbound-hosted and Upbound-managed
   environment with additional isolation guarantees.
 
 Use Cloud Spaces if you want a fully managed SaaS experience with no cluster to
@@ -24,8 +29,10 @@ maintain. See the [Cloud Spaces documentation](/cloud-spaces/overview/).
 
 ## Self-Hosted Spaces (you are here)
 
-You run the Spaces software on your own Kubernetes cluster. Use Self-Hosted
-Spaces if you need control over your infrastructure or data residency.
+You run the Spaces software on your own Kubernetes cluster. You deploy and manage Spaces on your own cluster.
+
+Use Self-Hosted Spaces if you need control over your infrastructure or data
+residency.
 
 ## Get Started with Self-Hosted Spaces
 
