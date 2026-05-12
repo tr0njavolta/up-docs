@@ -265,6 +265,13 @@ const config = {
                 searchPagePath: "search",
                 ...(process.env.ALGOLIA_ASK_AI_KEY && { askAi: process.env.ALGOLIA_ASK_AI_KEY }),
                 searchParameters: {},
+                placeholder: "Search the docs or Ask AI",
+                translations: {
+                    button: {
+                        buttonText: "Search the docs or Ask AI",
+                        buttonAriaLabel: "Search the docs or Ask AI",
+                    },
+                },
             },
             footer: {
                 style: "dark",
