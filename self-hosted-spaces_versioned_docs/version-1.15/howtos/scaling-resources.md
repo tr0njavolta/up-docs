@@ -78,8 +78,8 @@ controlPlanes:
 
 For AWS:
 - Use GP3 volumes with adequate IOPS
--. AWS GP3 volumes, IOPS scale with volume size (3000 IOPS baseline)
--. optimal performance, provision at least 32Gi to support up to 16,000 IOPS
+- For AWS GP3 volumes, IOPS scale with volume size (3000 IOPS baseline)
+- For optimal performance, provision at least 32Gi to support up to 16,000 IOPS
 
 For GCP and Azure:
 - Use SSD-based persistent disk types for optimal performance
@@ -157,7 +157,7 @@ controlPlanes:
         cpu: "500m"
         memory: "512Mi"
   ha:
-    enabled: true  #. production environments
+    enabled: true  # For production environments
 ```
 
 Apply the configuration using Helm:

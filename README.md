@@ -3,6 +3,7 @@
 This repo contains the Upbound documentation built with Docusaurus. 
 
 * [Local Development](#local-development)
+* [Self-Hosted Spaces versioning](#self-hosted-spaces-versioning)
 * [Style Guide](#style-guide)
 * [Code style guide](#code-style-guide)
 * [Markdown](#markdown)
@@ -83,6 +84,74 @@ common errors.
 | `make version` | Show versions of all tools |
 | `make help` | Display all available commands |
 
+
+## Self-Hosted Spaces versioning
+
+The Self-Hosted Spaces docs are the only versioned plugin in this repo. UXP,
+Cloud Spaces, and the rest are unversioned.
+
+### Layout
+
+- `self-hosted-spaces-docs/` — the live latest version. Served at
+  `/self-hosted-spaces/`.
+- `self-hosted-spaces_versioned_docs/version-X.Y/` — frozen snapshots of past
+  versions. Served at `/self-hosted-spaces/X.Y/`.
+- `self-hosted-spaces_versioned_sidebars/version-X.Y-sidebars.json` — sidebar
+  config for each frozen version.
+- `self-hosted-spaces_versions.json` — the list of frozen versions, newest
+  first. Does **not** include the live latest.
+
+The label for the live latest is set in two places (keep them in sync):
+
+- `versions.current.label` in `docusaurus.config.js`
+- `LATEST_VERSION` in `src/theme/DocSidebar/Desktop/Content/index.js`
+
+### Patching docs
+
+- **Live latest** — edit files in `self-hosted-spaces-docs/`. Changes go live at
+  `/self-hosted-spaces/...` on the next deploy.
+- **An older version** — edit files in
+  `self-hosted-spaces_versioned_docs/version-X.Y/`. Older versions don't
+  inherit edits from the live latest. If a fix applies to multiple versions,
+  apply it to each tree.
+
+### Cutting a new version
+
+When shipping a new version, you snapshot the *current* state under the label
+it currently represents, then bump the label for the next cycle. For example,
+shipping 1.17 when the live latest is labeled 1.16:
+
+1. Make sure `self-hosted-spaces-docs/` reflects the final state of 1.16.
+2. Snapshot current as 1.16:
+
+   ```bash
+   npm run docusaurus -- docs:version:self-hosted-spaces 1.16
+   ```
+
+   This copies `self-hosted-spaces-docs/` to
+   `self-hosted-spaces_versioned_docs/version-1.16/`, generates
+   `self-hosted-spaces_versioned_sidebars/version-1.16-sidebars.json` from the
+   current sidebar, and prepends `"1.16"` to `self-hosted-spaces_versions.json`.
+
+3. Bump the live-latest label in both places:
+
+   - `versions.current.label` in `docusaurus.config.js` → `"1.17"`
+   - `LATEST_VERSION` in `src/theme/DocSidebar/Desktop/Content/index.js` →
+     `'1.17'`
+
+4. Apply 1.17 content changes to `self-hosted-spaces-docs/`.
+5. Run `npm run clear && npm start` to verify the dropdown shows
+   `1.17 (Latest)` and `/self-hosted-spaces/1.16/` resolves to the new
+   snapshot.
+6. Commit and open a PR.
+
+### Dropping an old version
+
+To stop publishing (for example) 1.13:
+
+1. Delete `self-hosted-spaces_versioned_docs/version-1.13/`.
+2. Delete `self-hosted-spaces_versioned_sidebars/version-1.13-sidebars.json`.
+3. Remove `"1.13"` from `self-hosted-spaces_versions.json`.
 
 ## Style guide
 

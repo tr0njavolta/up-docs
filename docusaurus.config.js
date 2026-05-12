@@ -95,6 +95,12 @@ const config = {
                 routeBasePath: "/self-hosted-spaces",
                 sidebarPath: require.resolve("./src/sidebars/self-hosted-spaces.js"),
                 includeCurrentVersion: true,
+                lastVersion: "current",
+                versions: {
+                    current: {
+                        label: "1.16",
+                    },
+                },
             },
         ],
         [

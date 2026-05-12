@@ -171,7 +171,7 @@ Any important warnings or necessary information
 ### Release Date: 2026-05-04
 
 :::info
-**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.48.0 or later.
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.48.1 or later.
 :::
 
 #### Important Changes

@@ -271,6 +271,28 @@ nav[aria-label="Main"] .text-neutral-0, nav[aria-label="Main"] .text-neutral-0:h
     color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+/* Spaces sidebar version selector — @upbound/elements Select uses Tailwind */
+/* utility classes (bg-background, border-input, etc.) that are compiled with */
+/* hardcoded light values and no `.dark:` variants, so dark mode needs explicit overrides. */
+html[data-theme="dark"] .spaces-version-trigger,
+html[data-theme="dark"] .spaces-version-content {
+    background-color: var(--ifm-background-color);
+    border-color: var(--upbound-border-color);
+    color: var(--ifm-font-color-base);
+}
+html[data-theme="dark"] .spaces-version-trigger svg,
+html[data-theme="dark"] .spaces-version-content svg {
+    color: var(--ifm-font-color-base);
+}
+html[data-theme="dark"] .spaces-version-item {
+    color: var(--ifm-font-color-base);
+}
+html[data-theme="dark"] .spaces-version-item:focus,
+html[data-theme="dark"] .spaces-version-item[data-highlighted] {
+    background-color: var(--upbound-light-bg);
+    color: var(--ifm-font-color-base);
+}
+
 /* Navbar dropdown popover - theme agnostic */
 /* Target navigation menu dropdowns rendered via Radix portal */
 /* Dropdown has white background in both modes, so always use dark text */

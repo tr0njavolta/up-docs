@@ -88,7 +88,7 @@ logs, and traces to your configured observability backends.
 This feature requires the [OpenTelemetry Operator][opentelemetry-operator] on
 the Space cluster.
 
-Note: If running Spaces v1.11 or later, use OpenTelemetry Operator v0.110.0 or
+Note: If running Spaces v1.16 or later, use OpenTelemetry Operator v0.139.0 or
 later due to breaking changes in the OpenTelemetry Operator.
 
 ## Configuration

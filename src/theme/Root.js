@@ -24,7 +24,7 @@ export default function Root({ children }) {
   
   useEffect(() => {
     if (!isBrowser) return;
-    
+
     // Add Scarf pixel
     const scarfImg = document.createElement('img');
     scarfImg.referrerPolicy = 'no-referrer-when-downgrade';

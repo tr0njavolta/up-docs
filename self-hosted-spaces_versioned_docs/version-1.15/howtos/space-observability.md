@@ -173,7 +173,7 @@ The sampling behavior depends on whether a parent trace context exists:
 
 - **With parent context**: If a `traceparent` header is present, the parent's
   sampling decision is respected, enabling proper distributed tracing across services.
-- **Root spans**:. new traces without a parent, Envoy samples based on
+- **Root spans**: For new traces without a parent, Envoy samples based on
   `x-request-id` hashing. The default sampling rate is 10%.
 
 #### TLS configuration for external collectors

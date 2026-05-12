@@ -185,7 +185,7 @@ up robot create "${UPBOUND_SPACE_NAME}" --description="Robot used for connect ag
 export UPBOUND_TOKEN=$(up robot token create "${UPBOUND_SPACE_NAME}" "${UPBOUND_SPACE_NAME}-token" -ojson | jq -r .token)
 ```
 
-Create a Kubernetes secret from the token:
+Create a secret containing the robot token:
 
 ```bash
 kubectl create secret -n upbound-system generic connect-token \
@@ -195,8 +195,7 @@ kubectl create secret -n upbound-system generic connect-token \
 Log into the Helm OCI registry using your license token:
 
 ```bash
-jq -r .token $SPACES_TOKEN_PATH | helm registry login xpkg.upbound.io \
-  --username upbound --password-stdin
+jq -r .token $SPACES_TOKEN_PATH | helm registry login xpkg.upbound.io -u $(jq -r .accessId $SPACES_TOKEN_PATH) --password-stdin
 ```
 
 Install the connect agent:
@@ -204,11 +203,15 @@ Install the connect agent:
 ```bash
 helm -n upbound-system upgrade --install agent \
   oci://xpkg.upbound.io/spaces-artifacts/agent \
-  --set "imagePullSecrets[0].name=upbound-pull-secret" \
+  --version "0.0.0-1116.g14cbfe6" \
+  --set "global.space=${UPBOUND_SPACE_NAME}" \
+  --set "global.organization=${UPBOUND_ORG_NAME}" \
+  --set "global.tokenSecret=connect-token" \
+  --set "image.repository=xpkg.upbound.io/spaces-artifacts/agent" \
+  --set "registration.image.repository=xpkg.upbound.io/spaces-artifacts/register-init" \
   --set "registration.enabled=true" \
-  --set "space=${UPBOUND_SPACE_NAME}" \
-  --set "organization=${UPBOUND_ORG_NAME}" \
-  --set "tokenSecret=connect-token" \
+  --set "imagePullSecrets[0].name=upbound-pull-secret" \
+  --set "billing.enabled=false" \
   --wait
 ```
 

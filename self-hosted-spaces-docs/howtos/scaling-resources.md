@@ -157,7 +157,7 @@ controlPlanes:
         cpu: "500m"
         memory: "512Mi"
   ha:
-    enabled: true  #. production environments
+    enabled: true  # For production environments
 ```
 
 Apply the configuration using Helm:

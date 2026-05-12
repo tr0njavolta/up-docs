@@ -13,11 +13,13 @@ import styles from './styles.module.css';
 const versionsJson = require('../../../../../self-hosted-spaces_versions.json');
 
 const LATEST = 'latest';
+// Must match `versions.current.label` for the self-hosted-spaces plugin in docusaurus.config.js.
+const LATEST_VERSION = '1.16';
 
-const versions = versionsJson.map((version, index) => ({
-  label: index === 0 ? `${version} (Latest)` : version,
-  value: index === 0 ? LATEST : version,
-}));
+const versions = [
+  { label: `${LATEST_VERSION} (Latest)`, value: LATEST },
+  ...versionsJson.map((version) => ({ label: version, value: version })),
+];
 
 function getVersionFromPath(pathname) {
   const segments = pathname.split('/').filter(Boolean);
@@ -52,12 +54,12 @@ export default function DocSidebarDesktopContentWrapper(props) {
             value={getVersionFromPath(location.pathname)}
             onValueChange={handleVersionChange}
           >
-            <SelectTrigger className={styles.trigger}>
+            <SelectTrigger className={`${styles.trigger} spaces-version-trigger`}>
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="spaces-version-content">
               {versions.map((v) => (
-                <SelectItem key={v.value} value={v.value}>
+                <SelectItem key={v.value} value={v.value} className="spaces-version-item">
                   {v.label}
                 </SelectItem>
               ))}
