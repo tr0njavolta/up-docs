@@ -184,7 +184,7 @@ const config = {
                     {
                         label: "Get Started",
                         position: "left",
-                        to: "/getstarted/",
+                        to: "/",
                     },
                     {
                         type: "dropdown",

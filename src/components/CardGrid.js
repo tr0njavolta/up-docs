@@ -6,7 +6,7 @@ const CardGrid = ({ sections }) => {
       <style>{`
         .documentation-cards-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
           gap: 1.5rem;
           margin: 2rem auto;
           max-width: 1200px;
@@ -14,7 +14,7 @@ const CardGrid = ({ sections }) => {
 
         .documentation-card {
           display: block;
-          padding: 1.25rem;
+          padding: 1.75rem;
           border: 1px solid var(--upbound-border-color) !important;
           border-radius: 0.75rem;
           text-decoration: none !important;
@@ -46,21 +46,13 @@ const CardGrid = ({ sections }) => {
           color: var(--ifm-color-content-secondary);
         }
 
-        @media (max-width: 900px) {
-          .documentation-cards-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.25rem;
-          }
-        }
-
         @media (max-width: 600px) {
           .documentation-cards-grid {
-            grid-template-columns: 1fr;
             gap: 1rem;
           }
 
           .documentation-card {
-            padding: 1rem;
+            padding: 1.25rem;
           }
 
           .documentation-card-title {
