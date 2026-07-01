@@ -13,4 +13,4 @@ materials for Upbound.
 
 For more information on how Upbound builds on Crossplane, review the [learning overview][learning-overview].
 
-[learning-overview]: /
+[learning-overview]: /getstarted/

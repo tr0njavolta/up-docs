@@ -4,6 +4,9 @@ sidebar_position: 1
 slug: "/getstarted"
 ---
 import { GetStarted } from '@site/src/components/GetStartedCallout';
+import GetUpboundHero from '@site/src/components/GetUpboundHero';
+
+<GetUpboundHero />
 
 <!-- vale gitlab.SentenceLength = NO -->
 Welcome to Upbound, the enterprise platform for Crossplane that helps you build
