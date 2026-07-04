@@ -17,7 +17,7 @@ function displayLabel(value) {
 // stale *selected* language/cloud the new page never registers, which
 // silently hid every CodeBlock on the page (none can match a selection that
 // doesn't exist here).
-function useRefCountedSet() {
+export function useRefCountedSet() {
   const [counts, setCounts] = useState(new Map());
 
   const register = useCallback((value) => {

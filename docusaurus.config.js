@@ -73,12 +73,6 @@ const config = {
     ],
     plugins: [
         [
-            "docusaurus-pushfeedback",
-            {
-                project: "0p5hvygqxb",
-            },
-        ],
-        [
             "@docusaurus/plugin-content-docs",
             {
                 id: "docs",
