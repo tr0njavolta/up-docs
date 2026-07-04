@@ -1,13 +1,54 @@
-import React, { useState, useEffect, createContext, useContext } from 'react';
+import React, { useState, useEffect, useCallback, createContext, useContext } from 'react';
 
 // Simple context for language state
 const LanguageContext = createContext();
 
+// Display labels for values that don't look right as plain toUpperCase()
+const DISPLAY_LABELS = { 'kcl': 'KCL', 'python': 'Python', 'go': 'Go', 'go-templating': 'Go Templating', };
+
+function displayLabel(value) {
+  return DISPLAY_LABELS[value] || value.toUpperCase();
+}
+
+// Ref-counted so an option disappears once the last CodeBlock using it
+// unmounts. LanguageProvider lives at the site root (src/theme/Root.js) and
+// survives client-side navigation, so a plain Set that only ever grew meant
+// options from a previously visited page stuck around forever -- including a
+// stale *selected* language/cloud the new page never registers, which
+// silently hid every CodeBlock on the page (none can match a selection that
+// doesn't exist here).
+function useRefCountedSet() {
+  const [counts, setCounts] = useState(new Map());
+
+  const register = useCallback((value) => {
+    setCounts(prev => {
+      const next = new Map(prev);
+      next.set(value, (next.get(value) || 0) + 1);
+      return next;
+    });
+    return () => {
+      setCounts(prev => {
+        const count = prev.get(value) || 0;
+        const next = new Map(prev);
+        if (count <= 1) {
+          next.delete(value);
+        } else {
+          next.set(value, count - 1);
+        }
+        return next;
+      });
+    };
+  }, []);
+
+  const values = new Set(counts.keys());
+  return [values, register];
+}
+
 export function LanguageProvider({ children }) {
   const [selectedLanguage, setSelectedLanguage] = useState('kcl');
   const [selectedCloud, setSelectedCloud] = useState('aws');
-  const [availableLanguages, setAvailableLanguages] = useState(new Set());
-  const [availableClouds, setAvailableClouds] = useState(new Set());
+  const [availableLanguages, registerLanguage] = useRefCountedSet();
+  const [availableClouds, registerCloud] = useRefCountedSet();
 
   useEffect(() => {
     const savedLang = localStorage.getItem('selected-language') || 'kcl';
@@ -16,9 +57,12 @@ export function LanguageProvider({ children }) {
     setSelectedCloud(savedCloud);
   }, []);
 
-  // Auto-select first available if current selection isn't available
+  // Auto-select first available if current selection isn't available on this
+  // page. Must still correct when only one option is registered -- with only
+  // one choice there's no ambiguity, so there's no reason to leave a mismatch
+  // uncorrected.
   useEffect(() => {
-    if (availableLanguages.size > 1 && !availableLanguages.has(selectedLanguage)) {
+    if (availableLanguages.size > 0 && !availableLanguages.has(selectedLanguage)) {
       const firstLang = Array.from(availableLanguages)[0];
       setSelectedLanguage(firstLang);
       localStorage.setItem('selected-language', firstLang);
@@ -26,7 +70,7 @@ export function LanguageProvider({ children }) {
   }, [availableLanguages, selectedLanguage]);
 
   useEffect(() => {
-    if (availableClouds.size > 1 && !availableClouds.has(selectedCloud)) {
+    if (availableClouds.size > 0 && !availableClouds.has(selectedCloud)) {
       const firstCloud = Array.from(availableClouds)[0];
       setSelectedCloud(firstCloud);
       localStorage.setItem('selected-cloud', firstCloud);
@@ -41,14 +85,6 @@ export function LanguageProvider({ children }) {
   const updateCloud = (cloud) => {
     setSelectedCloud(cloud);
     localStorage.setItem('selected-cloud', cloud);
-  };
-
-  const registerLanguage = (language) => {
-    setAvailableLanguages(prev => new Set([...prev, language]));
-  };
-
-  const registerCloud = (cloud) => {
-    setAvailableClouds(prev => new Set([...prev, cloud]));
   };
 
   return (
@@ -92,35 +128,39 @@ export default function GlobalLanguageSelector() {
       <div className="selector-controls">
         {availableClouds.size > 0 && (
           <div className="selector-group">
-            <label>Cloud Provider:</label>
-            <select 
-              value={selectedCloud} 
-              onChange={(e) => updateCloud(e.target.value)}
-              className="cloud-select"
-            >
+            <span className="selector-group-label">Cloud provider</span>
+            <div className="selector-pills" role="group" aria-label="Cloud provider">
               {Array.from(availableClouds).sort().map(cloud => (
-                <option key={cloud} value={cloud}>
-                  {cloud.toUpperCase()}
-                </option>
+                <button
+                  key={cloud}
+                  type="button"
+                  className="selector-pill"
+                  aria-pressed={cloud === selectedCloud}
+                  onClick={() => updateCloud(cloud)}
+                >
+                  {displayLabel(cloud)}
+                </button>
               ))}
-            </select>
+            </div>
           </div>
         )}
-        
+
         {availableLanguages.size > 0 && (
           <div className="selector-group">
-            <label>Language:</label>
-            <select 
-              value={selectedLanguage} 
-              onChange={(e) => updateLanguage(e.target.value)}
-              className="language-select"
-            >
+            <span className="selector-group-label">Language</span>
+            <div className="selector-pills" role="group" aria-label="Language">
               {Array.from(availableLanguages).sort().map(language => (
-                <option key={language} value={language}>
-                  {language.toUpperCase()}
-                </option>
+                <button
+                  key={language}
+                  type="button"
+                  className="selector-pill"
+                  aria-pressed={language === selectedLanguage}
+                  onClick={() => updateLanguage(language)}
+                >
+                  {displayLabel(language)}
+                </button>
               ))}
-            </select>
+            </div>
           </div>
         )}
       </div>
@@ -133,10 +173,15 @@ export default function GlobalLanguageSelector() {
 export function CodeBlock({ cloud, language, children }) {
   const { selectedLanguage, selectedCloud, registerLanguage, registerCloud } = useLanguageContext();
   
-  // Register this content's options
+  // Register this content's options, and unregister on unmount so switching
+  // pages doesn't leave stale options (or a stale selection) behind.
   useEffect(() => {
-    if (language) registerLanguage(language);
-    if (cloud) registerCloud(cloud);
+    const unregisterLanguage = language ? registerLanguage(language) : undefined;
+    const unregisterCloud = cloud ? registerCloud(cloud) : undefined;
+    return () => {
+      unregisterLanguage?.();
+      unregisterCloud?.();
+    };
   }, [language, cloud, registerLanguage, registerCloud]);
   
   const shouldShow = (!cloud || cloud === selectedCloud) && 

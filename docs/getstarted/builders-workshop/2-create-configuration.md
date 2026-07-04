@@ -4,6 +4,8 @@ description: Create a composition function
 ---
 
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <GlobalLanguageSelector />
 
@@ -96,6 +98,21 @@ up function generate example-function apis/storagebuckets/composition.yaml --lan
 
 </CodeBlock>
 
+<CodeBlock language="go">
+
+```shell
+up function generate example-function apis/storagebuckets/composition.yaml --language=go
+```
+
+</CodeBlock>
+
+<CodeBlock language="go-templating">
+
+```shell
+up function generate example-function apis/storagebuckets/composition.yaml --language=go-templating
+```
+
+</CodeBlock>
 
 This command creates a function directory and creates a new file based on your
 chosen language.
@@ -161,6 +178,55 @@ Paste the following into `main.py`:
 
 </CodeBlock>
 
+<CodeBlock language="go">
+
+This example targets AWS. Paste the following into `fn.go`:
+
+```go title="upbound-hello-world/functions/example-function/fn.go" manifest="/manifests/getstarted/create-configuration/aws-fn.go"
+```
+
+For the full Go composition function guide, including working with generated
+models, see [Create a composition with Go][go-compositions].
+
+</CodeBlock>
+
+<CodeBlock language="go-templating">
+
+This example targets AWS and covers the bucket, ACL, and versioning resources.
+Paste each file below into your function's directory, matching the filenames:
+
+<Tabs>
+<TabItem value="00-prelude" label="00-prelude.yaml.gotmpl">
+
+```yaml manifest="/manifests/getstarted/create-configuration/aws-00-prelude.yaml.gotmpl"
+```
+
+</TabItem>
+<TabItem value="01-bucket" label="01-bucket.yaml.gotmpl">
+
+```yaml manifest="/manifests/getstarted/create-configuration/aws-01-bucket.yaml.gotmpl"
+```
+
+</TabItem>
+<TabItem value="02-acl" label="02-acl.yaml.gotmpl">
+
+```yaml manifest="/manifests/getstarted/create-configuration/aws-02-acl.yaml.gotmpl"
+```
+
+</TabItem>
+<TabItem value="03-versioning" label="03-versioning.yaml.gotmpl">
+
+```yaml manifest="/manifests/getstarted/create-configuration/aws-03-versioning.yaml.gotmpl"
+```
+
+</TabItem>
+</Tabs>
+
+For the full Go templating guide, including the bucket ownership, public
+access block, and encryption resources this example skips, see [Create a
+composition with Go Templates][go-template-compositions].
+
+</CodeBlock>
 
 Save your composition file.
 
@@ -1046,3 +1112,5 @@ the built-in test suite.
 [up-cli]: /manuals/cli/overview
 [kubectl-installed]: https://kubernetes.io/docs/tasks/tools/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
+[go-compositions]: /manuals/cli/howtos/compositions/go
+[go-template-compositions]: /manuals/cli/howtos/compositions/go-template

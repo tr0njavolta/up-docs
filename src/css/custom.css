@@ -959,64 +959,70 @@ html[data-theme="light"] .footer-copyright {
     background-color: var(--ifm-background-color);
     border: 1px solid var(--upbound-border-color);
     border-radius: 0.75rem;
-    padding: 1.5rem;
+    padding: 1rem 1.25rem;
     margin: 0 0 2rem 0;
-    box-shadow: var(--upbound-card-shadow);
 }
 
 .selector-controls {
     display: flex;
-    gap: 1.5rem;
-    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1.5rem 2rem;
+    align-items: center;
 }
 
 .selector-group {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 0.75rem;
 }
 
-.selector-group label {
+.selector-group-label {
     font-weight: 600;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     color: var(--font-color-medium);
-    line-height: 1.2;
-    margin: 0 0 0.5rem 0;
+    white-space: nowrap;
 }
 
-.cloud-select,
-.language-select {
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--upbound-border-color);
-    border-radius: 0.5rem;
-    background-color: var(--ifm-background-color);
-    color: var(--ifm-font-color-base);
-    font-size: 0.9rem;
-    font-family: var(--ifm-font-family-base);
-    cursor: pointer;
-    width: 160px;
-    height: 44px;
-    box-sizing: border-box;
+.selector-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+}
+
+.selector-pill {
     appearance: none;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236C6F7E' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-    background-position: right 0.75rem center;
-    background-repeat: no-repeat;
-    background-size: 1.25rem;
-    padding-right: 2.5rem;
-    transition: all 0.2s ease;
+    border: 1px solid var(--upbound-border-color);
+    border-radius: 0.375rem;
+    background: transparent;
+    color: var(--font-color-medium);
+    font-size: 0.8rem;
+    font-family: var(--ifm-font-family-base);
+    font-weight: 500;
+    padding: 0.4rem 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.2s ease, color 0.15s ease;
 }
 
-.cloud-select:hover,
-.language-select:hover {
-    border-color: var(--grape);
-    background-color: var(--upbound-light-bg);
+.selector-pill:hover {
+    color: var(--brand-purple-700);
+    border-color: var(--brand-purple-300);
+    box-shadow: 0 0 8px rgba(154, 94, 252, 0.25);
 }
 
-.cloud-select:focus,
-.language-select:focus {
-    outline: none;
-    border-color: var(--grape);
-    box-shadow: 0 0 0 3px rgba(154, 94, 252, 0.1);
+.selector-pill[aria-pressed="true"] {
+    color: var(--brand-purple-600);
+    border-color: var(--brand-purple-300);
+    box-shadow: 0 0 8px rgba(154, 94, 252, 0.25);
+}
+
+html[data-theme="dark"] .selector-pill:hover {
+    color: var(--brand-purple-100);
+    box-shadow: 0 0 8px rgba(196, 167, 255, 0.3);
+}
+
+html[data-theme="dark"] .selector-pill[aria-pressed="true"] {
+    color: var(--brand-purple-200);
+    box-shadow: 0 0 8px rgba(196, 167, 255, 0.3);
 }
 
 /* ============================================================ */
@@ -1114,12 +1120,7 @@ html[data-theme="dark"] code[class*="language-"] {
 
     .selector-controls {
         flex-direction: column;
-        align-items: stretch;
-    }
-
-    .cloud-select,
-    .language-select {
-        width: 100%;
+        align-items: flex-start;
     }
 }
 
