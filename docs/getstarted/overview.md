@@ -2,6 +2,8 @@
 title: Welcome
 sidebar_position: 1
 slug: "/"
+pagination_prev: null
+pagination_next: null
 ---
 import CardGrid from '@site/src/components/CardGrid';
 import GetUpboundHero from '@site/src/components/GetUpboundHero';
@@ -41,12 +43,12 @@ Find more installation methods on the [Up CLI installation guide][up].
   {
     title: 'New to Crossplane and Upbound?',
     description: 'Follow the introduction guide to build your first control plane from scratch.',
-    link: '/getstarted/introduction/project'
+    link: '/getstarted/new-users/new-to-control-planes'
   },
   {
     title: 'Already running open source Crossplane?',
     description: 'Follow the upgrade guide to migrate your existing Crossplane install to Upbound Crossplane.',
-    link: '/getstarted/upgrade-to-upbound/upgrade-to-uxp'
+    link: '/getstarted/upgrade-to-upbound/upgrading-to-upbound'
   }
 ]} />
 

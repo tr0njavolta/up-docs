@@ -1,5 +1,7 @@
 ---
-title: New user quickstart
+title: Quickstart
+pagination_prev: null
+pagination_next: null
 ---
 
 In this quickstart, you'll run your first control plane project with UXP.

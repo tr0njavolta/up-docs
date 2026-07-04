@@ -1,6 +1,6 @@
 ---
 title: Upgrade to Spaces
-sidebar_position: 3
+sidebar_position: 4
 description: A guide to how to update to a control plane in an Upbound Space
 ---
 

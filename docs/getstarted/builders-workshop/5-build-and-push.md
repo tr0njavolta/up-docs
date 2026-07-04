@@ -1,6 +1,6 @@
 ---
-title: Build and push your first Configuration
-sidebar_position: 3
+title: 5. Build and push your first Configuration
+description: Package your control plane and share it via the Upbound Marketplace
 ---
 
 <!-- vale gitlab.FutureTense = NO -->
@@ -25,7 +25,8 @@ Before you begin, make sure you have:
 * The `up` CLI installed
 * A control plane project ready to package
 
-Read the [Create a Control Plane][create] quickstart if you haven't yet.
+If you missed any of the previous steps, go to the [project
+foundations][project-foundations] guide to get started.
 
 ## Sign in to Upbound
 
@@ -109,10 +110,11 @@ extensions.
 
 ## Next steps
 
-Read the [What's Next][whats-next] to continue your learning journey.
+Continue the workshop with [Create an AI-augmented operation][integrate-ai] to
+add AI-powered monitoring to your control plane.
 
-[create]: /getstarted/introduction/project
+[project-foundations]: /getstarted/builders-workshop/project-foundations
 [configurations]: /manuals/uxp/concepts/packages/configurations
 [repositories]: /manuals/marketplace/repositories/overview
 [marketplace]: https://marketplace.upbound.io/
-[whats-next]: /getstarted/introduction/whats-next
+[integrate-ai]: /getstarted/builders-workshop/integrate-ai

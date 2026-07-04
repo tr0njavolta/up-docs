@@ -1,7 +1,7 @@
 ---
 title: Upgrade to Control Plane Projects
 description: Adopt control plane projects
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 If you're already running Crossplane and want to use Upbound Crossplane's

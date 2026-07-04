@@ -1,6 +1,7 @@
 ---
 title: Create a control plane project
 sidebar_position: 1
+unlisted: true
 ---
 
 Now that you have an Upbound account and the up CLI installed, you're ready to

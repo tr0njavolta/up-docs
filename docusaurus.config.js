@@ -85,6 +85,7 @@ const config = {
                 path: "docs",
                 routeBasePath: "/",
                 sidebarPath: require.resolve("./src/sidebars/main.js"),
+                remarkPlugins: [require("./scripts/manifest-embed-plugin")],
             },
         ],
         [

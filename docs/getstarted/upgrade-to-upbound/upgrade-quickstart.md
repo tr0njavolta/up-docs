@@ -1,11 +1,17 @@
 ---
 title: Migration quickstart
+sidebar_position: 2
+pagination_prev: null
+pagination_next: null
 ---
+
+import CardGrid from '@site/src/components/CardGrid';
+
 
 This guide is for existing Crossplane users to see how to upgrade to UXP and see
 a subset of some of the added functionality.
 
-In this guide, you'll create a kind cluster, install Crossplane ${version}, and
+In this guide, you'll create a kind cluster, install Crossplane `${version}`, and
 deploy a single composite resource. Next, you'll begin the upgrade process to
 UXP on the cluster and watch as your composite resource is migrated to the new
 control plane.

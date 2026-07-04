@@ -1,5 +1,5 @@
 ---
-title: Build your first platform with Upbound Crossplane
+title: Build your first platform with UXP
 description: Deploy a real app with a cloud database, observe drift detection, enforce policies, and change infrastructure live, all from a single control plane.
 weight: 5
 validation:

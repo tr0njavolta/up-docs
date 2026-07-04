@@ -1,6 +1,7 @@
 ---
 title: What's Next
 sidebar_position: 4
+unlisted: true
 ---
 
 <!-- vale Google.Exclamation = NO -->

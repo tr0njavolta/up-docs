@@ -1,7 +1,10 @@
 ---
-title: New to control planes?
+title: What is a control plane?
 sidebar_position: 2
+pagination_prev: null
+pagination_next: null
 ---
+import CardGrid from '@site/src/components/CardGrid';
 
 If you're new to Crossplane and Upbound, you should start by getting familiar
 with _control planes_. A control plane in Kubernetes is the layer that makes
@@ -62,3 +65,14 @@ planes at scale.
 In next guide, you'll install UXP on a local kind cluster and use it to deploy
 an image to see the control plane workflow. You'll also see the single pane of
 glass Upbound gives you to monitor your control plane.
+
+
+<CardGrid sections={[
+  {
+    title: 'Create a UXP control plane',
+    description: 'Follow the introduction guide to build your first control plane from scratch.',
+    link: '/getstarted/new-users/controlplanes-quickstart'
+  }
+]} />
+
+

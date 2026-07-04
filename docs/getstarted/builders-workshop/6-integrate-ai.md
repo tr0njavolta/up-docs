@@ -1,7 +1,6 @@
 ---
-title: Create an AI-augmented operation
+title: 6. Create an AI-augmented operation
 description: "Use Upbound Crossplane to build and manage an AI-powered control plane"
-sidebar_position: 2
 ---
 
 <!-- vale gitlab.Uppercase = NO -->
@@ -29,7 +28,7 @@ practitioners.
 
 Before you begin, make sure you have:
 
-* a defined project from the [previous guide][project]
+* a defined project from the [project foundations][project-foundations] guide
 * an Anthropic API key for Claude AI integration
 * `kubectl` access to your Kubernetes cluster
 * the [Upbound CLI][up] installed and configured
@@ -608,15 +607,14 @@ remediation steps.
 
 ## Next steps
 
-Now that your control plane is running locally with AI-powered operations, consider these next steps:
-
-* Package your control plane as a [Configuration][Configuration] image and push it to the Upbound Marketplace
-* Complete the [Build and push your first Configuration][buildAndPush] tutorial
-* Explore additional [AI-powered operations][aiOperations] for other infrastructure scenarios
+Now that your control plane is running locally with AI-powered operations,
+explore additional [AI-powered operations][aiOperations] for other
+infrastructure scenarios, or try out an [Intelligent Control Plane
+solution][intelligentControlPlanes].
 
 [up]: /manuals/cli/overview
-[project]: /getstarted/introduction/project
+[project-foundations]: /getstarted/builders-workshop/project-foundations
 [anthropic-key]: https://docs.anthropic.com/en/api/admin-api/apikeys/get-api-key
 [Configuration]: /manuals/uxp/concepts/packages/configurations
 [aiOperations]: /manuals/uxp/concepts/operations/intelligent-operations/
-[buildAndPush]: /getstarted/introduction/build-and-push
+[intelligentControlPlanes]: /guides/intelligent-control-planes/

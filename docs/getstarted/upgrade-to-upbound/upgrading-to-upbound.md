@@ -1,7 +1,12 @@
 ---
 title: Already using Crossplane?
-sidebar_position: 3
+sidebar_position: 1
+pagination_prev: null
+pagination_next: null
 ---
+
+import CardGrid from '@site/src/components/CardGrid';
+
 If you're already using Crossplane in your organization, you understand how
 control planes manage your resources. This guide shows you what Upbound
 Crossplane and Spaces add on top of that and helps you determine an upgrade
