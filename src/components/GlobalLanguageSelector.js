@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback, createContext, useContext } fr
 const LanguageContext = createContext();
 
 // Display labels for values that don't look right as plain toUpperCase()
-const DISPLAY_LABELS = { 'kcl': 'KCL', 'python': 'Python', 'go': 'Go', 'go-templating': 'Go Templating', };
+const DISPLAY_LABELS = { 'kcl': 'KCL', 'python': 'Python', 'go': 'Go', 'go-templating': 'Go Templating', 'azure' : 'Azure', };
 
 function displayLabel(value) {
   return DISPLAY_LABELS[value] || value.toUpperCase();
