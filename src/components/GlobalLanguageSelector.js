@@ -10,6 +10,20 @@ function displayLabel(value) {
   return DISPLAY_LABELS[value] || value.toUpperCase();
 }
 
+// Fixed display order for language pills; anything unlisted sorts alphabetically after.
+const LANGUAGE_ORDER = ['kcl', 'python', 'go', 'go-templating'];
+
+function sortLanguages(values) {
+  return [...values].sort((a, b) => {
+    const ia = LANGUAGE_ORDER.indexOf(a);
+    const ib = LANGUAGE_ORDER.indexOf(b);
+    if (ia === -1 && ib === -1) return a.localeCompare(b);
+    if (ia === -1) return 1;
+    if (ib === -1) return -1;
+    return ia - ib;
+  });
+}
+
 // Ref-counted so an option disappears once the last CodeBlock using it
 // unmounts. LanguageProvider lives at the site root (src/theme/Root.js) and
 // survives client-side navigation, so a plain Set that only ever grew meant
@@ -45,25 +59,25 @@ export function useRefCountedSet() {
 }
 
 export function LanguageProvider({ children }) {
-  const [selectedLanguage, setSelectedLanguage] = useState('kcl');
-  const [selectedCloud, setSelectedCloud] = useState('aws');
+  const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const [selectedCloud, setSelectedCloud] = useState(null);
   const [availableLanguages, registerLanguage] = useRefCountedSet();
   const [availableClouds, registerCloud] = useRefCountedSet();
 
   useEffect(() => {
-    const savedLang = localStorage.getItem('selected-language') || 'kcl';
-    const savedCloud = localStorage.getItem('selected-cloud') || 'aws';
-    setSelectedLanguage(savedLang);
-    setSelectedCloud(savedCloud);
+    setSelectedLanguage(localStorage.getItem('selected-language'));
+    setSelectedCloud(localStorage.getItem('selected-cloud'));
   }, []);
 
-  // Auto-select first available if current selection isn't available on this
-  // page. Must still correct when only one option is registered -- with only
-  // one choice there's no ambiguity, so there's no reason to leave a mismatch
-  // uncorrected.
+  // Auto-select first available (alphabetically, matching pill order) if
+  // current selection isn't available on this page -- including the initial
+  // null state, so a first-time visitor lands on the first pill instead of a
+  // hardcoded default. Must still correct when only one option is
+  // registered -- with only one choice there's no ambiguity, so there's no
+  // reason to leave a mismatch uncorrected.
   useEffect(() => {
     if (availableLanguages.size > 0 && !availableLanguages.has(selectedLanguage)) {
-      const firstLang = Array.from(availableLanguages)[0];
+      const firstLang = sortLanguages(availableLanguages)[0];
       setSelectedLanguage(firstLang);
       localStorage.setItem('selected-language', firstLang);
     }
@@ -71,7 +85,7 @@ export function LanguageProvider({ children }) {
 
   useEffect(() => {
     if (availableClouds.size > 0 && !availableClouds.has(selectedCloud)) {
-      const firstCloud = Array.from(availableClouds)[0];
+      const firstCloud = Array.from(availableClouds).sort()[0];
       setSelectedCloud(firstCloud);
       localStorage.setItem('selected-cloud', firstCloud);
     }
@@ -149,7 +163,7 @@ export default function GlobalLanguageSelector() {
           <div className="selector-group">
             <span className="selector-group-label">Language</span>
             <div className="selector-pills" role="group" aria-label="Language">
-              {Array.from(availableLanguages).sort().map(language => (
+              {sortLanguages(availableLanguages).map(language => (
                 <button
                   key={language}
                   type="button"

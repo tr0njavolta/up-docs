@@ -213,32 +213,32 @@ path uses a **free Community license**.
 
 2. Choose your upgrade method and run the upgrade:
 
-    <Tabs>
-    <TabItem value="Helm Install">
+<Tabs groupId="upgrade-method">
+<TabItem value="Helm Install">
 
-    Add the Upbound repository and upgrade your Crossplane cluster:
-    ```shell
-    helm repo add upbound-stable https://charts.upbound.io/stable && helm repo update
-    helm upgrade --install crossplane --namespace crossplane-system upbound-stable/crossplane --version "${UXP_VERSION}"
-    ```
-    </TabItem>
+Add the Upbound repository and upgrade your Crossplane cluster:
+```shell
+helm repo add upbound-stable https://charts.upbound.io/stable && helm repo update
+helm upgrade --install crossplane --namespace crossplane-system upbound-stable/crossplane --version "${UXP_VERSION}"
+```
+</TabItem>
 
-    <TabItem value="Up CLI">
+<TabItem value="Up CLI">
 
-    First, download the CLI:
+First, download the CLI:
 
-    ```shell
-    curl -sL "https://cli.upbound.io" | sh
-    ```
+```shell
+curl -sL "https://cli.upbound.io" | sh
+```
 
-    Next, upgrade your Crossplane cluster to UXP:
+Next, upgrade your Crossplane cluster to UXP:
 
-    ```shell
-    up uxp upgrade "${UXP_VERSION}"
-    ```
+```shell
+up uxp upgrade "${UXP_VERSION}"
+```
 
-    </TabItem>
-    </Tabs>
+</TabItem>
+</Tabs>
 
 <!-- vale Google.Headings = NO -->
 ## Upgrade to Commercial UXP
@@ -270,32 +270,32 @@ for more information.
 
 2. Choose your upgrade method and run the upgrade:
 
-    <Tabs>
-    <TabItem value="Helm Install">
+<Tabs groupId="upgrade-method">
+<TabItem value="Helm Install">
 
-    Add the Upbound repository and upgrade your Crossplane cluster:
-    ```shell
-    helm repo add upbound-stable https://charts.upbound.io/stable && helm repo update
-    helm upgrade --install crossplane --namespace crossplane-system upbound-stable/crossplane --version "${UXP_VERSION}"
-    ```
-    </TabItem>
+Add the Upbound repository and upgrade your Crossplane cluster:
+```shell
+helm repo add upbound-stable https://charts.upbound.io/stable && helm repo update
+helm upgrade --install crossplane --namespace crossplane-system upbound-stable/crossplane --version "${UXP_VERSION}"
+```
+</TabItem>
 
-    <TabItem value="Up CLI">
+<TabItem value="Up CLI">
 
-    First, download the CLI:
+First, download the CLI:
 
-    ```shell
-    curl -sL "https://cli.upbound.io" | sh
-    ```
+```shell
+curl -sL "https://cli.upbound.io" | sh
+```
 
-    Next, upgrade your Crossplane cluster to UXP:
+Next, upgrade your Crossplane cluster to UXP:
 
-    ```shell
-    up uxp upgrade "${UXP_VERSION}"
-    ```
+```shell
+up uxp upgrade "${UXP_VERSION}"
+```
 
-    </TabItem>
-    </Tabs>
+</TabItem>
+</Tabs>
 
 3. Install your Commercial License:
 

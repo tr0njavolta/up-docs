@@ -48,7 +48,7 @@ outputs.
 Generate the composition function scaffolding and choose your preferred
 language:
 
-<CodeBlock cloud="aws" language="kcl">
+<CodeBlock language="kcl">
 
 ```shell
 up function generate example-function apis/storagebuckets/composition.yaml --language=kcl
@@ -56,41 +56,7 @@ up function generate example-function apis/storagebuckets/composition.yaml --lan
 
 </CodeBlock>
 
-<CodeBlock cloud="aws" language="python">
-
-```shell
-up function generate example-function apis/storagebuckets/composition.yaml --language=python
-```
-
-</CodeBlock>
-
-
-<CodeBlock cloud="azure" language="kcl">
-
-```shell
-up function generate example-function apis/storagebuckets/composition.yaml --language=kcl
-```
-
-</CodeBlock>
-
-<CodeBlock cloud="azure" language="python">
-
-```shell
-up function generate example-function apis/storagebuckets/composition.yaml --language=python
-```
-
-</CodeBlock>
-
-
-<CodeBlock cloud="gcp" language="kcl">
-
-```shell
-up function generate example-function apis/storagebuckets/composition.yaml --language=kcl
-```
-
-</CodeBlock>
-
-<CodeBlock cloud="gcp" language="python">
+<CodeBlock language="python">
 
 ```shell
 up function generate example-function apis/storagebuckets/composition.yaml --language=python
@@ -178,7 +144,7 @@ Paste the following into `main.py`:
 
 </CodeBlock>
 
-<CodeBlock language="go">
+<CodeBlock cloud="aws" language="go">
 
 This example targets AWS. Paste the following into `fn.go`:
 
@@ -190,7 +156,7 @@ models, see [Create a composition with Go][go-compositions].
 
 </CodeBlock>
 
-<CodeBlock language="go-templating">
+<CodeBlock cloud="aws" language="go-templating">
 
 This example targets AWS and covers the bucket, ACL, and versioning resources.
 Paste each file below into your function's directory, matching the filenames:
