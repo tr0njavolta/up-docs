@@ -105,4 +105,4 @@ Your Prometheus needs to scrape UXP components and have these metrics available:
 - `upjet_resource_external_api_calls_total`—emitted by **provider-aws only**; Azure and GCP upjet-based providers don't support this metric.
 - `function_run_function_seconds_bucket`, `_sum`, `_count`
 
-[web-ui]: /manuals/console/self-service
+[web-ui]: /manuals/platform/insights/overview

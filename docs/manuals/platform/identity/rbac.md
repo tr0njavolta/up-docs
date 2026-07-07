@@ -3,6 +3,7 @@ title: Upbound RBAC
 sidebar_position: 7
 description: A guide to implementing and configuring access control in Upbound
 plan: "standard"
+slug: /manuals/platform/rbac
 ---
 
 <Standard />

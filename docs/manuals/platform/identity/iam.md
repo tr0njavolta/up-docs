@@ -2,6 +2,7 @@
 title: Upbound IAM
 sidebar_position: 2
 tier: "standard"
+slug: /manuals/platform/iam
 ---
 
 Upbound allows administrators to deploy Role-based Access Control (RBAC)

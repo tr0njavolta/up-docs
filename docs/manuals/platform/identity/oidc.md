@@ -2,6 +2,7 @@
 title: Connect control planes to external services
 sidebar_position: 9
 description: A guide for authenticating control plane with external services, including using OIDC
+slug: /manuals/platform/oidc
 ---
 
 <!-- vale gitlab.SentenceLength = NO -->

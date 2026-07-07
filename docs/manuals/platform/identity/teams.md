@@ -2,6 +2,7 @@
 title: Teams
 sidebar_position: 5
 description: Creating and managing Upbound teams
+slug: /manuals/platform/teams
 ---
 Teams are groups of Upbound [users][users] within an [organization][organization]. Teams provide more fine-grained permissions controls for users and robots accessing control planes and repositories.
 

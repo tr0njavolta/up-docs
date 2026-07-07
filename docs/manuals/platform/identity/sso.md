@@ -4,6 +4,7 @@ sidebar_position: 10
 description: Configure single sign-on in your Upbound organization to manage user
   access
 plan: "enterprise"
+slug: /manuals/platform/sso
 ---
 
 <Enterprise />

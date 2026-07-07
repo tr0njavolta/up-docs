@@ -2,6 +2,7 @@
 title: Organizations
 sidebar_position: 3
 description: Configuring Organizations for Upbound
+slug: /manuals/platform/organizations
 ---
 
 Organizations allow multiple [user accounts][user-accounts] to share Upbound resources and collaborate.

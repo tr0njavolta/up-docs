@@ -220,12 +220,12 @@ const config = {
                                 to: "/self-hosted-spaces/overview/",
                             },
                             {
-                                label: "CLI",
-                                to: "/manuals/cli/overview/",
+                                label: "Platform",
+                                to: "/manuals/platform/overview/",
                             },
                             {
-                                label: "Console",
-                                to: "/manuals/console/upbound-console/",
+                                label: "CLI",
+                                to: "/manuals/cli/overview/",
                             },
                             {
                                 label: "Packages",
@@ -234,10 +234,6 @@ const config = {
                             {
                                 label: "Marketplace",
                                 to: "/manuals/marketplace/overview/",
-                            },
-                            {
-                                label: "Platform",
-                                to: "/manuals/platform/overview/",
                             },
                         ],
                     },

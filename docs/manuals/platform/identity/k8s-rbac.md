@@ -2,6 +2,7 @@
 title: Authorize actions in control planes
 sidebar_position: 8
 description: A guide to implementing and configuring Kuberentes RBAC in Upbound
+slug: /manuals/platform/k8s-rbac
 ---
 
 :::note

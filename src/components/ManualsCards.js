@@ -18,14 +18,14 @@ const sections = [
     link: '/self-hosted-spaces/overview/'
   },
   {
+    title: 'Platform',
+    description: 'Identity management, RBAC, organizations, teams, and SSO integration for enterprise deployments.',
+    link: './platform/overview'
+  },
+  {
     title: 'CLI',
     description: 'Command-line tools for managing Upbound configurations, contexts, and project tooling.',
     link: '/manuals/cli/overview'
-  },
-  {
-    title: 'Console',
-    description: 'Web-based management interface with MCP Query API and self-service capabilities.',
-    link: '/manuals/console/upbound-console/'
   },
   {
     title: 'Official Packages',
@@ -37,11 +37,6 @@ const sections = [
     description: 'Package discovery, publishing, and repository management platform for internal and public distribution.',
     link: '/manuals/marketplace/overview'
   },
-  {
-    title: 'Platform',
-    description: 'Identity management, RBAC, organizations, teams, and SSO integration for enterprise deployments.',
-    link: './platform/overview'
-  }
 ];
 
 const ManualsCards = () => <CardGrid sections={sections} />;

@@ -2,6 +2,7 @@
 title: Robots
 sidebar_position: 6
 description: Creating and assigning Upbound robot tokens
+slug: /manuals/platform/robots
 ---
 
 Robot accounts are non-user accounts with unique credentials and permissions. Organization _admins_ grant robot accounts access to individual repositories. Robot accounts access the repositories without using credentials tied to an individual user.
@@ -41,6 +42,6 @@ You should use a robot token for your Upbound Marketplace CI to push new tags or
 </details>
 
 [up-cli]: /reference/cli-reference
-[personal-access-token]: /manuals/console/upbound-console/
+[personal-access-token]: /manuals/platform/insights/navigating/
 [team]: /manuals/platform/teams/#manage-repository-permissions
 [upbound-console]: https://console.upbound.io/
