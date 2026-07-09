@@ -6,8 +6,12 @@ module.exports = {
       label: 'Overview',
     },
     {
-      type: 'doc',
-      id: 'hub-quickstart',
+      type: 'category',
+      label: 'Quickstart',
+      items: [
+        'quickstart/demo',
+        'quickstart/connect-second-cluster',
+      ],
     },
     {
       type: 'category',
@@ -18,16 +22,40 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'How-tos',
+      label: 'Deploy',
       items: [
+        'howtos/prerequisites',
+        'howtos/oidc-configuration',
+        {
+          type: 'category',
+          label: 'Databases',
+          link: { type: 'doc', id: 'howtos/databases/overview' },
+          items: [
+            'howtos/databases/aws-rds',
+          ],
+        },
         'howtos/install',
       ],
     },
     {
       type: 'category',
-      label: 'API Reference',
+      label: 'Production',
+      link: { type: 'doc', id: 'howtos/production-overview' },
       items: [
-        'reference/index',
+        'howtos/sizing',
+        'howtos/high-availability',
+        'howtos/autoscaling',
+        'howtos/rbac',
+        'howtos/upgrades',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Reference',
+      link: { type: 'doc', id: 'reference/index' },
+      items: [
+        'reference/feature-flags',
+        'reference/feature-releases',
       ],
     },
   ],

@@ -1,11 +1,12 @@
 ---
-title: Hub API Reference
-description: Documentation for the Hub API resources (v1.0 - Latest)
+title: Reference
 sidebar_position: 1
+description: Reference material for Hub, including feature flags and the feature lifecycle.
 ---
 
-This page documents the APIs and custom resources for Hub.
+Reference material for operating Hub.
 
-:::info
-This page is mock content used to bootstrap the Hub documentation environment.
-:::
+- [Feature flags](./feature-flags.md). Enable optional Hub features through Helm
+  values.
+- [Feature lifecycle](./feature-releases.md). The alpha, beta, and GA feature
+  stages and the Hub release cycle.

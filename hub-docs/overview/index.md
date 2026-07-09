@@ -1,23 +1,44 @@
 ---
 title: Hub
 sidebar_position: 0
+description: Upbound Hub is the central management layer of the Upbound Platform.
 ---
 
-Hub is a self-hosted software package you deploy and operate on your own
-infrastructure.
+Upbound Hub is the central piece of the Upbound Platform responsible for
+managing all of the services and data. Upbound Hub acts as the single entrypoint
+for accessing data across all of your clusters to understand the state of your
+distributed system.
 
-:::info
-This page is mock content used to bootstrap the Hub documentation environment.
-Replace it with the real overview when the source docs are ready.
-:::
+## Why Hub?
 
-## What is Hub?
+Upbound Hub is the central location for all of the services which make up the
+Upbound Platform. Through the Hub, users can manage the access to each of these
+features and operate them securely and at scale. Hub includes a web interface
+to manage and interact with these features. By default, Hub includes the
+following features:
 
-Add a short, plain-language description of what Hub does and who it's for here.
+- Insights
+- Control Plane Management
+- IAM
 
-## Get Started with Hub
+### Insights
 
-- **[Quickstart](/hub/hub-quickstart/)**: Deploy Hub and complete your first workflow
-- **[Concepts](/hub/concepts/architecture/)**: Core concepts behind Hub
-- **[How-tos](/hub/howtos/install/)**: Step-by-step operational guides
-- **[API Reference](/hub/reference/)**: Custom resources and APIs
+Insights is a single pane of glass for managing all of your distributed
+Kubernetes clusters at scale. Through Insights, Hub exposes one live view of all
+resources with a unified search and filtering system. Saving these views as
+"Lenses" gives a reproducible slice of your resources that can be quickly and
+safely shared with coworkers.
+
+### Control Plane Management
+
+`<TODO>`
+
+### IAM
+
+`<TODO>`
+
+## Next Step
+
+Try out a basic two-cluster installation of Hub in demo mode to see how Hub
+aggregates data across multiple control planes. See [the Hub
+quickstart](../quickstart/demo.md).
