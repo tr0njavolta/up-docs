@@ -107,6 +107,22 @@ const config = {
                 sidebarPath: require.resolve("./src/sidebars/cloud-spaces.js"),
             },
         ],
+        [
+            "@docusaurus/plugin-content-docs",
+            {
+                id: "hub",
+                path: "hub-docs",
+                routeBasePath: "/hub",
+                sidebarPath: require.resolve("./src/sidebars/hub.js"),
+                includeCurrentVersion: true,
+                lastVersion: "current",
+                versions: {
+                    current: {
+                        label: "1.0",
+                    },
+                },
+            },
+        ],
                 "./scripts/plan-plugin.js",
         function (context, options) {
             return {
@@ -218,6 +234,10 @@ const config = {
                             {
                                 label: "Self-Hosted Spaces",
                                 to: "/self-hosted-spaces/overview/",
+                            },
+                            {
+                                label: "Hub",
+                                to: "/hub/overview/",
                             },
                             {
                                 label: "Platform",
