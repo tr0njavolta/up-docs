@@ -857,15 +857,15 @@ Conditions:
   Reason:                Success
 ```
 
-[policies]: /controlplanes/uxp/concepts/managed-resources/overview#managementpolicies
-[providerconfig]: /controlplanes/uxp/concepts/packages/providers#provider-configuration
+[policies]: /manuals/uxp/concepts/managed-resources/overview#managementpolicies
+[providerconfig]: /manuals/uxp/concepts/packages/providers#provider-configuration
 [official-provider-aws]: https://marketplace.upbound.io/providers/provider-family-aws
 [official-provider-azure]: https://marketplace.upbound.io/providers/provider-family-azure
 [official-provider-gcp]: https://marketplace.upbound.io/providers/provider-family-gcp
 [aws]: https://marketplace.upbound.io/providers/provider-family-aws
 [gcp]: https://marketplace.upbound.io/providers/provider-family-gcp
 [azure]: https://marketplace.upbound.io/providers/provider-family-azure
-[xrs]: /controlplanes/uxp/concepts/composition/composite-resources
+[xrs]: /manuals/uxp/concepts/composition/composite-resources
 [crossplane-discussion]: https://github.com/crossplane/crossplane/issues/4839
 [k8s-finalizers]: https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/
 [upjet]: https://github.com/upbound/upjet

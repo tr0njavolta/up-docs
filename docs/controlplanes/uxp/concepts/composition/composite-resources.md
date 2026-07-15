@@ -347,9 +347,9 @@ Namespace:    default
 Labels:       crossplane.io/composite=my-database-x9rx9
 ```
 
-[xrds]: /controlplanes/uxp/concepts/composition/composite-resource-definitions/
-[xrs]: /controlplanes/uxp/concepts/composition/composite-resources/
-[composition]: /controlplanes/uxp/concepts/composition/compositions/
-[composition-match]: /controlplanes/uxp/concepts/composition/compositions/#match-composite-resources
-[composition-revisions]: /controlplanes/uxp/concepts/composition/composition-revisions/
+[xrds]: /manuals/uxp/concepts/composition/composite-resource-definitions/
+[xrs]: /manuals/uxp/concepts/composition/composite-resources/
+[composition]: /manuals/uxp/concepts/composition/compositions/
+[composition-match]: /manuals/uxp/concepts/composition/compositions/#match-composite-resources
+[composition-revisions]: /manuals/uxp/concepts/composition/composition-revisions/
 [k8s]: https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/

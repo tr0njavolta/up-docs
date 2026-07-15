@@ -96,6 +96,6 @@ spec:
 ```
 
 
-[up-cli]: /controlplanes/cli/overview
+[up-cli]: /manuals/cli/overview
 
 [semver]: https://semver.org/

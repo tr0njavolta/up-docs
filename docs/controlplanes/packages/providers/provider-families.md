@@ -182,9 +182,9 @@ metadata:
 ```
 </div>
 
-[uxp]: /controlplanes/uxp/overview/
-[monolithic-providers]: /controlplanes/packages/providers/monolithic
-[family-providers-migration-guide]: /controlplanes/packages/providers/migration
+[uxp]: /manuals/uxp/overview/
+[monolithic-providers]: /manuals/packages/providers/monolithic
+[family-providers-migration-guide]: /manuals/packages/providers/migration
 [upbound-marketplace]: https://marketplace.upbound.io/providers?tier=official
 [controllerconfig]: https://docs.crossplane.io/latest/packages/#speccontrollerconfigref
-[package-policies]: /controlplanes/packages/policies
+[package-policies]: /manuals/packages/policies

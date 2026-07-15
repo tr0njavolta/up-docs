@@ -79,9 +79,9 @@ spec:
 ```
 :::
 
-[composition]: /controlplanes/uxp/concepts/composition/overview
-[composite-resources]: /controlplanes/uxp/concepts/composition/composite-resources/
-[compositions]: /controlplanes/uxp/concepts/composition/compositions/
-[providers]: /controlplanes/uxp/concepts/packages/providers/
-[configurations]: /controlplanes/uxp/concepts/packages/configurations/
+[composition]: /manuals/uxp/concepts/composition/overview
+[composite-resources]: /manuals/uxp/concepts/composition/composite-resources/
+[compositions]: /manuals/uxp/concepts/composition/compositions/
+[providers]: /manuals/uxp/concepts/packages/providers/
+[configurations]: /manuals/uxp/concepts/packages/configurations/
 [pods]: https://docs.crossplane.io/v2.0/guides/pods/ 

@@ -160,5 +160,5 @@ project][add-dependencies-to-your-project] guide.
 [workshop]: /getstarted/builders-workshop/project-foundations
 [up-project-init]: /reference/cli-reference
 [cli-reference-documentation]: /reference/cli-reference
-[add-dependencies-to-your-project]: /controlplanes/cli/howtos/adding-dependencies
+[add-dependencies-to-your-project]: /manuals/cli/howtos/adding-dependencies
 [github-com-upbound-project-template]: https://github.com/upbound/project-template

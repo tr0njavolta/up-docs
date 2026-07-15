@@ -328,6 +328,6 @@ kubectl rollout restart deployment \
 <!-- vale write-good.Passive = YES -->
 
 
-[irsa]: /controlplanes/packages/providers/aws-auth/aws-irsa
-[eks]: /controlplanes/packages/providers/aws-auth/aws-pod-identity
-[webidentity]: /controlplanes/packages/providers/aws-auth/aws-web-identity
+[irsa]: /manuals/packages/providers/aws-auth/aws-irsa
+[eks]: /manuals/packages/providers/aws-auth/aws-pod-identity
+[webidentity]: /manuals/packages/providers/aws-auth/aws-web-identity

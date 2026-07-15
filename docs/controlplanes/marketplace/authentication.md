@@ -167,9 +167,9 @@ spec:
 </div>
 
 [crossplane-xpkg-push]: https://docs.crossplane.io/latest/cli/command-reference/#xpkg-push
-[upbound-account]: /insights/administration/users
-[up-command-line]: /controlplanes/cli/overview
-[up-cli-configuration]:/controlplanes/cli/howtos/profile-config/#configure-docker-credential-helper
+[upbound-account]: /manuals/platform/users
+[up-command-line]: /manuals/cli/overview
+[up-cli-configuration]:/manuals/cli/howtos/profile-config/#configure-docker-credential-helper
 [image-pull-secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials
-[team-repo-permissions]: /insights/administration/teams/#manage-repository-permissions
+[team-repo-permissions]: /manuals/platform/teams/#manage-repository-permissions
 [docker-login-action]: https://github.com/docker/login-action

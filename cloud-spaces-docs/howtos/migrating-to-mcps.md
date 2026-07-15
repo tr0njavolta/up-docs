@@ -170,6 +170,6 @@ up controlplane migration import --unpause-after-import
 
 [cli-command]: /reference/cli-reference
 [up-cli]: /reference/cli-reference
-[up-cli-1]: /controlplanes/cli/overview
+[up-cli-1]: /manuals/cli/overview
 [create-command]: /reference/cli-reference
 [up-ctx]: /reference/cli-reference

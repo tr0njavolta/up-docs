@@ -558,8 +558,8 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 
 
 [s3-provider-1]: https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v2.0.0
-[go]: /controlplanes/cli/howtos/compositions/go
-[go-templates]: /controlplanes/cli/howtos/compositions/go-template
-[kcl]: /controlplanes/cli/howtos/compositions/kcl
-<!-- [python]: /controlplanes/cli/projects/compositions/python -->
+[go]: /manuals/cli/howtos/compositions/go
+[go-templates]: /manuals/cli/howtos/compositions/go-template
+[kcl]: /manuals/cli/howtos/compositions/kcl
+<!-- [python]: /manuals/cli/projects/compositions/python -->
 [python-tutorial]: https://docs.python.org/3/tutorial/

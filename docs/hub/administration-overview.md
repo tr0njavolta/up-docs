@@ -19,7 +19,7 @@ collaboration.
 * [Single Sign-On integration][sso] - Set up and configure SSO with an identity
     provider
 
-[iam]: /hub/iam
-[uprbac]: /hub/rbac
-[data]: /hub/data-residency
-[sso]: /hub/sso
+[iam]: /manuals/platform/iam
+[uprbac]: /manuals/platform/rbac
+[data]: /manuals/platform/data-residency
+[sso]: /manuals/platform/sso

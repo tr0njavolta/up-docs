@@ -495,7 +495,7 @@ clusters connected through Upbound tokens, you don't need to give out any cloud
 credentials to the clusters.
 
 
-[kubeconfig]: /controlplanes/cli/howtos/context-config/#generate-a-kubeconfig-for-a-control-plane-in-a-group
+[kubeconfig]: /manuals/cli/howtos/context-config/#generate-a-kubeconfig-for-a-control-plane-in-a-group
 [kubeconfig-1]:/self-hosted-spaces/concepts/control-planes/#connect-directly-to-your-control-plane 
 [these-instructions]:/manuals/console/upbound-console/#create-a-personal-access-token 
 [kubernetes-api-aggregationlayer]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/

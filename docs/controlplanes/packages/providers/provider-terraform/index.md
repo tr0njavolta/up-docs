@@ -50,7 +50,7 @@ If you're migrating from standalone Terraform to provider-terraform, or migratin
 
 For more information on the release cadence and support protocol refer to the provider [support and maintenance][support-and-maintenance] page.
 
-[migrate-hcl]: /controlplanes/packages/providers/provider-terraform/migrate-hcl/
-[migrate-provider-tf]: /controlplanes/packages/providers/provider-terraform/migrate-provider-tf/
+[migrate-hcl]: /manuals/packages/providers/provider-terraform/migrate-hcl/
+[migrate-provider-tf]: /manuals/packages/providers/provider-terraform/migrate-provider-tf/
 [upbound-marketplace]: https://marketplace.upbound.io/providers/upbound/provider-terraform/latest
 [support-and-maintenance]: /reference/usage/support

@@ -576,6 +576,6 @@ guide shows you how to [build and push your projects][build-and-push-your-projec
 <!-- ignore "aggregate" -->
 <!-- vale write-good.TooWordy = YES -->
 
-[build-and-push-your-projects]: /controlplanes/cli/howtos/building-pushing
+[build-and-push-your-projects]: /manuals/cli/howtos/building-pushing
 [installed]: /reference/cli-reference
 [upbound-s-pricing]: https://www.upbound.io/pricing

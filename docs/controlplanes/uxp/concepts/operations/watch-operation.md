@@ -575,6 +575,6 @@ operational considerations, see [Operation best practices][operation-best-practi
 1. Review function logs for processing errors
 1. Ensure functions can handle the specific resource types under watch
 
-[operation]: /controlplanes/uxp/concepts/operations/overview/
-[cronoperation]: /controlplanes/uxp/concepts/operations/cronoperation
-[operation-best-practices]: /controlplanes/uxp/concepts/operations/overview#best-practices
+[operation]: /manuals/uxp/concepts/operations/overview/
+[cronoperation]: /manuals/uxp/concepts/operations/cronoperation
+[operation-best-practices]: /manuals/uxp/concepts/operations/overview#best-practices

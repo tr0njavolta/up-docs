@@ -66,15 +66,15 @@ Authentication guide][authentication-guide].
 
 The latest versions of the Upbound Official Providers are available for use by anyone in the Crossplane community. For full access and use details, read the [policies page][policies-page] on access, support and more.
 
-[migration-guides-tf]: /controlplanes/packages/providers/provider-terraform/migrate-provider-tf/
-[authentication-guide]: /controlplanes/packages/providers/authentication/
-[kcl]: /controlplanes/cli/howtos/compositions/kcl/
-[python]: /controlplanes/cli/howtos/compositions/python/
-[go]: /controlplanes/cli/howtos/compositions/go/
-[gotemplating]: /controlplanes/cli/howtos/compositions/go-template/
-[signed-by-upbound]: /controlplanes/packages/providers/signature-verification
-[pull-an-official-provider]: /controlplanes/packages/policies
-[policies-page]: /controlplanes/packages/policies
+[migration-guides-tf]: /manuals/packages/providers/provider-terraform/migrate-provider-tf/
+[authentication-guide]: /manuals/packages/providers/authentication/
+[kcl]: /manuals/cli/howtos/compositions/kcl/
+[python]: /manuals/cli/howtos/compositions/python/
+[go]: /manuals/cli/howtos/compositions/go/
+[gotemplating]: /manuals/cli/howtos/compositions/go-template/
+[signed-by-upbound]: /manuals/packages/providers/signature-verification
+[pull-an-official-provider]: /manuals/packages/policies
+[policies-page]: /manuals/packages/policies
 [upbound-marketplace]: https://marketplace.upbound.io/providers?tier=official
 [provider-family-aws]: https://github.com/crossplane-contrib/provider-upjet-aws
 [account-on-upbound]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_providers

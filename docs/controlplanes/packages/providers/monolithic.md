@@ -25,4 +25,4 @@ Upbound released [migration tooling][migration-tooling] to automate the upgrade 
 :::
 
 
-[migration-tooling]: /controlplanes/packages/providers/migration
+[migration-tooling]: /manuals/packages/providers/migration

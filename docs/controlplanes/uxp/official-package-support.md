@@ -39,6 +39,6 @@ spec:
 +  package: xpkg.upbound.io/upbound/provider-family-aws:v1.23.0
 ```
 
-[official-packages]: /controlplanes/packages/overview
-[package-concept]: /controlplanes/uxp/concepts/packages/providers
-[policies]: /controlplanes/packages/policies
+[official-packages]: /manuals/packages/overview
+[package-concept]: /manuals/uxp/concepts/packages/providers
+[policies]: /manuals/packages/policies

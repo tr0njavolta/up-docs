@@ -120,7 +120,7 @@ Yes, however, it's only the latest release that can be pulled anonymously. When 
 <!-- vale on -->
 
 
-[pull-policy]: /controlplanes/packages/policies
+[pull-policy]: /manuals/packages/policies
 
 [crossplane-contrib]: https://github.com/crossplane-contrib
 [provider-aws]: https://github.com/crossplane-contrib/provider-upjet-aws

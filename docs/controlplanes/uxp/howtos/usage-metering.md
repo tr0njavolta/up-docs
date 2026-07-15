@@ -83,4 +83,4 @@ encoded in the license.
 <!-- vale write-good.Passive = YES --> You can see your license's capacity limit by viewing
 your license's `.status.capacity` field.
 
-[license-management]: /controlplanes/uxp/howtos/license-management
+[license-management]: /manuals/uxp/howtos/license-management

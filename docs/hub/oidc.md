@@ -2,7 +2,6 @@
 title: Connect control planes to external services
 sidebar_position: 9
 description: A guide for authenticating control plane with external services, including using OIDC
-slug: /hub/oidc
 ---
 
 <!-- vale gitlab.SentenceLength = NO -->
@@ -295,8 +294,8 @@ View [this Pull Request][this-pull-request] for a reference implementation.
 
 
 [control-plane-management]: /self-hosted-spaces/concepts/control-planes
-[provider-azure-authentication]:/controlplanes/packages/providers/authentication#azure-upbound-oidc
-[provider-gcp-authentication]:/controlplanes/packages/providers/authentication#gcp-upbound-oidc
+[provider-azure-authentication]:/manuals/packages/providers/authentication#azure-upbound-oidc
+[provider-gcp-authentication]:/manuals/packages/providers/authentication#gcp-upbound-oidc
 [crossplane-providers]: https://docs.crossplane.io/latest/packages/providers/
 [marketplace]: https://marketplace.upbound.io/providers
 [providerconfig]: https://docs.crossplane.io/latest/packages/providers/#provider-configuration
@@ -306,7 +305,7 @@ View [this Pull Request][this-pull-request] for a reference implementation.
 [workload-identity]: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 [openid-connect-oidc]: https://openid.net/connect/
 [oauth-2-0]: https://oauth.net/2/
-[provider-aws-authentication]:/controlplanes/packages/providers/authentication#aws-upbound-oidc
+[provider-aws-authentication]:/manuals/packages/providers/authentication#aws-upbound-oidc
 [_deploymentruntimeconfig_]: https://docs.crossplane.io/latest/packages/providers/#runtime-configuration
 [provider-helm]: https://marketplace.upbound.io/providers/upbound/provider-helm/
 [json-web-tokens-jwts]: https://www.rfc-editor.org/rfc/rfc7519

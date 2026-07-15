@@ -62,7 +62,7 @@ Upbound offers AI-enabled functions available for composition:
 - [function-openai][functionOpenAi]
 - [function-claude-status-transformer][functionStatusTransformer]
 
-[functions]: /controlplanes/uxp/concepts/packages/functions
+[functions]: /manuals/uxp/concepts/packages/functions
 [functionClaude]:https://marketplace.upbound.io/functions/upbound/function-claude/latest
 [functionOpenAi]:https://marketplace.upbound.io/functions/upbound/function-openai/latest
 [functionStatusTransformer]:https://marketplace.upbound.io/functions/upbound/function-claude-status-transformer/latest

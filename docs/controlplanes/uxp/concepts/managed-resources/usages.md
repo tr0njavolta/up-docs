@@ -270,5 +270,5 @@ spec:
 ```
 
 [pods]: https://docs.crossplane.io/v2.0/guides/pods/#change-pod-settings 
-[managed-resources-controller-ref]: /controlplanes/uxp/concepts/managed-resources/overview#matching-by-controller-reference
-[managed-resources-referencing]: /controlplanes/uxp/concepts/managed-resources/overview#referencing-other-resources
+[managed-resources-controller-ref]: /manuals/uxp/concepts/managed-resources/overview#matching-by-controller-reference
+[managed-resources-referencing]: /manuals/uxp/concepts/managed-resources/overview#referencing-other-resources

@@ -44,4 +44,4 @@ Inside your control plane project, you can define:
 UXP supports local development with the `up` CLI to run and test your control
 plane projects.
 
-[up]: /controlplanes/cli/overview
+[up]: /manuals/cli/overview

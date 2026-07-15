@@ -545,7 +545,7 @@ that exist in a single Space. You can't route resource requests to control
 planes that exist on a cross-Space boundary.
 
 
-[project-file]: /controlplanes/cli/howtos/project
+[project-file]: /manuals/cli/howtos/project
 [contact-us]: https://www.upbound.io/usage/support/contact
 [crossplane-management-policies]: https://docs.crossplane.io/latest/managed-resources/managed-resources/#managementpolicies
 [vscode-pretty-json]: https://marketplace.visualstudio.com/items?itemName=chrismeyers.vscode-pretty-json

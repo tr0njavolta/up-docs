@@ -428,5 +428,5 @@ No, _AddOns_ are a proprietary package format and are only available for Upbound
 [contact-us]: https://www.upbound.io/usage/support/contact
 [up-cli]: /reference/cli-reference
 [argo-cd]: https://argoproj.github.io/cd/
-[intelligent-compositions]: /controlplanes/uxp/concepts/composition/intelligent-compositions
-[intelligent-operations]: /controlplanes/uxp/concepts/operations/intelligent-operations
+[intelligent-compositions]: /manuals/uxp/concepts/composition/intelligent-compositions
+[intelligent-operations]: /manuals/uxp/concepts/operations/intelligent-operations

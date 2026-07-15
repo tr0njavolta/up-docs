@@ -519,10 +519,10 @@ test-package.xpkg
 ```
 
 [oci]: https://opencontainers.org/
-[compositions]: /controlplanes/uxp/concepts/composition/compositions
-[composite-resource-definitions]: /controlplanes/uxp/concepts/composition/composite-resource-definitions
-[providers]: /controlplanes/uxp/concepts/packages/providers
-[functions]: /controlplanes/uxp/concepts/packages/functions
+[compositions]: /manuals/uxp/concepts/composition/compositions
+[composite-resource-definitions]: /manuals/uxp/concepts/composition/composite-resource-definitions
+[providers]: /manuals/uxp/concepts/packages/providers
+[functions]: /manuals/uxp/concepts/packages/functions
 [getting-started-config]: https://github.com/upbound/configuration-quickstart
 [harbor]: https://goharbor.io/
 [k8s-image-pull-policy]: https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy
@@ -531,4 +531,4 @@ test-package.xpkg
 [crossplane-install-flags]: https://docs.crossplane.io/latest/get-started/install#feature-flags
 [crossplane-install]: https://docs.crossplane.io/latest/get-started/install
 [crossplane-package-spec]: https://github.com/crossplane/crossplane/blob/main/contributing/specifications/xpkg.md
-[crossplane-cli]: /controlplanes/cli/overview
+[crossplane-cli]: /manuals/cli/overview

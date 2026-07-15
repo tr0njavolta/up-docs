@@ -333,10 +333,10 @@ conditions:
 
 
 
-[go]: /controlplanes/cli/howtos/compositions/go
-<!-- [go-templates]: /controlplanes/cli/projects/compositions/go-template -->
-[kcl]: /controlplanes/cli/howtos/compositions/kcl
-[python]: /controlplanes/cli/howtos/compositions/python
+[go]: /manuals/cli/howtos/compositions/go
+<!-- [go-templates]: /manuals/cli/projects/compositions/go-template -->
+[kcl]: /manuals/cli/howtos/compositions/kcl
+[python]: /manuals/cli/howtos/compositions/python
 [go-templates]: https://pkg.go.dev/text/template
 [function-go-templating]: https://github.com/crossplane-contrib/function-go-templating
 [function-go-templating-documentation]: https://github.com/crossplane-contrib/function-go-templating?tab=readme-ov-file#function-go-templating

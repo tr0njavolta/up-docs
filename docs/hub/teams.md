@@ -2,7 +2,6 @@
 title: Teams
 sidebar_position: 5
 description: Creating and managing Upbound teams
-slug: /hub/teams
 ---
 Teams are groups of Upbound [users][users] within an [organization][organization]. Teams provide more fine-grained permissions controls for users and robots accessing control planes and repositories.
 
@@ -86,7 +85,7 @@ To create a new permission:
 3. Select **Create Repository Permission**.
 
 
-[users]: /hub/users
-[organization]: /hub/organizations
-[robots-documentation]: /hub/robots/#assign-a-robot-to-a-team
+[users]: /manuals/platform/users
+[organization]: /manuals/platform/organizations
+[robots-documentation]: /manuals/platform/robots/#assign-a-robot-to-a-team
 [multiple-organizations]: /img/user-org-team.png "A user can be in multiple orgs and multiple groups"

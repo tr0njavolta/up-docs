@@ -481,9 +481,9 @@ spec:
 The [Patch and Transform][function-patch-and-transform] documentation has more information on patching individual resources.
 :::
 
-[extra-resources]: /controlplanes/uxp/concepts/composition/compositions/
+[extra-resources]: /manuals/uxp/concepts/composition/compositions/
 [function-environment-configs]: https://github.com/crossplane-contrib/function-environment-configs
 [function-patch-and-transform]: https://docs.crossplane.io/v2.0/guides/function-patch-and-transform/ 
 [function-go-templating]: https://github.com/crossplane-contrib/function-go-templating
-[composition-functions]: /controlplanes/uxp/concepts/composition/compositions/
-[context]: /controlplanes/uxp/concepts/composition/compositions/#function-pipeline-context
+[composition-functions]: /manuals/uxp/concepts/composition/compositions/
+[context]: /manuals/uxp/concepts/composition/compositions/#function-pipeline-context

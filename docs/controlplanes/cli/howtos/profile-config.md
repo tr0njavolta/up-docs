@@ -97,4 +97,4 @@ installation documentation][cli]
 	}
 ```
 
-[cli]: /controlplanes/cli/overview
+[cli]: /manuals/cli/overview

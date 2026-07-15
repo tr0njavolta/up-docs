@@ -292,5 +292,5 @@ guide.
 [license-search]: /img/license-search.png
 [license-create]: /img/license-create-1.png
 [provisioning-instructions]: #add-a-license
-[usage]: /controlplanes/uxp/howtos/usage-metering
+[usage]: /manuals/uxp/howtos/usage-metering
 [uxp-source]: https://github.com/upbound/upbound-crossplane

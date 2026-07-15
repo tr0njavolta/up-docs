@@ -73,4 +73,4 @@ rules:
 <!-- vale Google.WordList = YES -->
 
 
-[upbound-rbac]: /insights/administration/rbac
+[upbound-rbac]: /manuals/platform/rbac

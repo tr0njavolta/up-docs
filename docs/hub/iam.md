@@ -2,7 +2,6 @@
 title: Upbound IAM
 sidebar_position: 2
 tier: "standard"
-slug: /hub/iam
 ---
 
 Upbound allows administrators to deploy Role-based Access Control (RBAC)
@@ -177,12 +176,12 @@ Key features:
 <!-- vale Google.WordList = YES -->
 
 
-[users]: /hub/users
-[organizations]: /hub/organizations
-[teams]: /hub/teams
-[robots]: /hub/robots
-[enabling-directory-sync]: /hub/sso
-[authenticate-jwt-tokens-from-your-oidc-provider]: /hub/oidc
+[users]: /manuals/platform/users
+[organizations]: /manuals/platform/organizations
+[teams]: /manuals/platform/teams
+[robots]: /manuals/platform/robots
+[enabling-directory-sync]: /manuals/platform/sso
+[authenticate-jwt-tokens-from-your-oidc-provider]: /manuals/platform/oidc
 
 
 [kubernetes-authentication-strategies]: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#authentication-strategies

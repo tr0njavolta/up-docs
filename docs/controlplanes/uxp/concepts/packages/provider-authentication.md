@@ -360,10 +360,10 @@ spec:
 Now that you have authenticated with your provider, the next step is to [build your control plane project][build-your-control-plane-project].
 
 
-[build-your-control-plane-project]: /controlplanes/cli/howtos/building-pushing
-[provider-documentation]: /controlplanes/packages/providers/authentication#aws-authentication
+[build-your-control-plane-project]: /manuals/cli/howtos/building-pushing
+[provider-documentation]: /manuals/packages/providers/authentication#aws-authentication
 [download-your-aws-access-key]: https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/welcome.html
-[provider-documentation-1]: /controlplanes/packages/providers/authentication#azure-authentication
+[provider-documentation-1]: /manuals/packages/providers/authentication#azure-authentication
 [install-guide]: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
-[provider-documentation-2]: /controlplanes/packages/providers/authentication#gcp-authentication
+[provider-documentation-2]: /manuals/packages/providers/authentication#gcp-authentication
 [download-your-gcp-service-account-key]: https://cloud.google.com/iam/docs/keys-create-delete#creating

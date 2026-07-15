@@ -126,7 +126,7 @@ SBOM and use it with external tools.
 [cve-detail]: /img/marketplace-cve-detail.png
 [Sigstore]: https://www.sigstore.dev/
 [cosign-verify]: /img/marketplace-cosign-commands.png
-[configuring signature verification]: /controlplanes/packages/providers/signature-verification
+[configuring signature verification]: /manuals/packages/providers/signature-verification
 [sbom]: /img/marketplace-simple-sbom.png
 [licensing]: https://www.hashicorp.com/en/license-faq
 [SLSA]: https://slsa.dev/

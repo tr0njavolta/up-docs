@@ -530,12 +530,12 @@ Composite Resource Definition and a Composition from your original Terraform
 configuration.
 
 
-[migrating-from-terraform-to-crossplane-guide]: /controlplanes/packages/providers/provider-terraform/migrate-provider-tf
-[authentication-keys]: /controlplanes/packages/providers/authentication#aws-access-keys
-[web-identity]: /controlplanes/packages/providers/authentication#aws-webidentity
-[service-accounts]: /controlplanes/packages/providers/authentication#aws-irsa
-[provider-azure]: /controlplanes/packages/providers/authentication#azure-service-principal
-[provider-gcp]: /controlplanes/packages/providers/authentication#gcp-service-account-keys
+[migrating-from-terraform-to-crossplane-guide]: /manuals/packages/providers/provider-terraform/migrate-provider-tf
+[authentication-keys]: /manuals/packages/providers/authentication#aws-access-keys
+[web-identity]: /manuals/packages/providers/authentication#aws-webidentity
+[service-accounts]: /manuals/packages/providers/authentication#aws-irsa
+[provider-azure]: /manuals/packages/providers/authentication#azure-service-principal
+[provider-gcp]: /manuals/packages/providers/authentication#gcp-service-account-keys
 
 
 [upbound-marketplace]: https://marketplace.upbound.io

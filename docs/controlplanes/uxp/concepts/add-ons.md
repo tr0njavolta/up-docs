@@ -17,6 +17,6 @@ plane with additional capabilities, such as:
 Read the [Add-Ons][add-ons-concept] concept documentation to learn how Add-Ons
 work in Upbound Crossplane. 
 
-[intelligent-compositions]: /controlplanes/uxp/concepts/composition/intelligent-compositions
-[intelligent-operations]: /controlplanes/uxp/concepts/operations/intelligent-operations
-[add-ons-concept]: /controlplanes/uxp/concepts/packages/add-ons
+[intelligent-compositions]: /manuals/uxp/concepts/composition/intelligent-compositions
+[intelligent-operations]: /manuals/uxp/concepts/operations/intelligent-operations
+[add-ons-concept]: /manuals/uxp/concepts/packages/add-ons

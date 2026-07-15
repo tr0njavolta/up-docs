@@ -2,7 +2,6 @@
 title: Users
 sidebar_position: 4
 description: Creating and managing Upbound users
-slug: /hub/users
 ---
 
 User accounts in Upbound belong to individuals. Each user can be a member of one or more [teams][teams], which have permissions on control planes within an [organization][organization]. A user can be a member of multiple organizations.
@@ -74,10 +73,10 @@ Organizations associated with this account aren't deleted.
 If the user is the primary account for an organization, contact [Upbound
 support][upbound-support] to transfer organization ownership.
 
-[teams]: /hub/teams
-[organization]: /hub/organizations
-[up-command-line]: /controlplanes/cli/overview
-[kubernetes-image-pull-secret]: /controlplanes/marketplace/authentication#kubernetes-image-pull-secrets
+[teams]: /manuals/platform/teams
+[organization]: /manuals/platform/organizations
+[up-command-line]: /manuals/cli/overview
+[kubernetes-image-pull-secret]: /manuals/marketplace/authentication#kubernetes-image-pull-secrets
 [upbound-support]: /reference/usage/support
 
 [account-settings]: https://accounts.upbound.io/settings

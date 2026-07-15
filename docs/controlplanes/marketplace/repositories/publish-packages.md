@@ -164,9 +164,9 @@ The Upbound Marketplace automatically renders specific metadata annotations into
 
 Upbound supports all annotations specified in the <a href="https://github.com/crossplane/crossplane/blob/master/contributing/specifications/xpkg.md#object-annotations">xpkg specification</a>.
 
-[up-cli]: /controlplanes/cli/overview
-[marketplace]: /controlplanes/marketplace/overview
-[auth-push]: /controlplanes/marketplace/authentication#authenticate-to-push-packages
+[up-cli]: /manuals/cli/overview
+[marketplace]: /manuals/marketplace/overview
+[auth-push]: /manuals/marketplace/authentication#authenticate-to-push-packages
 [crossplane-xpkg-build-command-reference]: https://docs.crossplane.io/latest/cli/command-reference/#xpkg-build
 [crossplane-slack]: https://slack.crossplane.io/
 [docker]: https://docs.docker.com/get-docker/

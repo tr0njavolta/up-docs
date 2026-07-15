@@ -330,10 +330,10 @@ operational considerations, see [Operation best practices][operation-best-practi
 1. Verify you set history limits appropriately
 1. Check for events about garbage collection failures
 
-[operation]: /controlplanes/uxp/concepts/operations/overview
+[operation]: /manuals/uxp/concepts/operations/overview
 [watchoperation]: /guides/projects/project
 [get-started-operations]: ../get-started/get-started-with-operations
-[operation-best-practices]: /controlplanes/uxp/concepts/operations/overview/#best-practices
+[operation-best-practices]: /manuals/uxp/concepts/operations/overview/#best-practices
 [cron]: https://en.wikipedia.org/wiki/Cron
 [compositions]: /uxp/composition/overview
 [ssa]: https://kubernetes.io/docs/reference/using-api/server-side-apply/

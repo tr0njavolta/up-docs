@@ -108,8 +108,8 @@ spec:
 ```
 
 [jq-install]: https://jqlang.org/download/
-[access-policy]: /controlplanes/packages/policies
-[robot-and-robot-token]: /insights/administration/robots
-[robot-and-robot-token-1]: /insights/administration/robots
+[access-policy]: /manuals/packages/policies
+[robot-and-robot-token]: /manuals/platform/robots
+[robot-and-robot-token-1]: /manuals/platform/robots
 [pull-secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials
 [pull-secret-1]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials

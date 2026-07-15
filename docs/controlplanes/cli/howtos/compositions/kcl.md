@@ -518,9 +518,9 @@ and then import that project as a dependency for the resources you define.
 * [KCL Comprehensions Documentation][comprehensions] - Detailed loop syntax reference
 * [function-kcl][function-kcl] - The underlying Crossplane function that enables KCL
 
-[go]: /controlplanes/cli/howtos/compositions/go
-[go-templates]: /controlplanes/cli/howtos/compositions/go-template
-[python]: /controlplanes/cli/howtos/compositions/python
+[go]: /manuals/cli/howtos/compositions/go
+[go-templates]: /manuals/cli/howtos/compositions/go-template
+[python]: /manuals/cli/howtos/compositions/python
 [kcl]: https://www.kcl-lang.io/
 [kcl-language-server]: https://www.kcl-lang.io/docs/user_docs/getting-started/install#install-language-server
 [kcl-visual-studio-code-extension]: https://www.kcl-lang.io/docs/user_docs/getting-started/install#install-kcl-extensions-for-ide

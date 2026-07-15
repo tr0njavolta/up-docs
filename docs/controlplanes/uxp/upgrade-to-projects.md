@@ -248,14 +248,14 @@ You're finished. You've refactored a composition to use embedded functions.
 Read the [concept][project-concept] documentation to learn more about using projects.
 
 [up-account]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_upgrade
-[up-cli]: /controlplanes/cli/overview
+[up-cli]: /manuals/cli/overview
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
-[project]: /controlplanes/cli/howtos/project 
-[configuration-overview]: /controlplanes/uxp/concepts/packages/configurations#the-crossplaneyaml-file
+[project]: /manuals/cli/howtos/project 
+[configuration-overview]: /manuals/uxp/concepts/packages/configurations#the-crossplaneyaml-file
 [up-dep]: /reference/cli-reference/#up-dependency-add
-[scaffold-api]: /controlplanes/cli/howtos/authoring-xrds/
-[self-managed-uxp]: /controlplanes/uxp/howtos/uxp-deployment
+[scaffold-api]: /manuals/cli/howtos/authoring-xrds/
+[self-managed-uxp]: /manuals/uxp/howtos/uxp-deployment
 [spaces]: /self-hosted-spaces/overview
-[project-concept]: /controlplanes/cli/howtos/project
+[project-concept]: /manuals/cli/howtos/project
 [go-templ]: https://marketplace.upbound.io/functions/upbound/function-go-templating
 [import-composite-types]: #import-composite-types

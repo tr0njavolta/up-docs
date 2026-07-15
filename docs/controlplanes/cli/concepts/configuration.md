@@ -44,4 +44,4 @@ deployment patterns in the Upbound ecosystem. All profiles created in previous
 versions are automatically treated as cloud profiles in newer versions, ensuring
 backward compatibility.
 
-[context]: /controlplanes/cli/howtos/profile-config
+[context]: /manuals/cli/howtos/profile-config

@@ -115,6 +115,6 @@ plane.
 :::
 
 [crossplane-providers]: https://docs.crossplane.io/latest/packages/providers/
-[image-configs]: https://docs.upbound.io/controlplanes/uxp/concepts/packages/image-configs/
+[image-configs]: https://docs.upbound.io/manuals/uxp/concepts/packages/image-configs/
 [marketplace]: https://marketplace.upbound.io/providers
 [sigstore-cosign]: https://github.com/sigstore/cosign

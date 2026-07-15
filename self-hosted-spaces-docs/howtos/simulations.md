@@ -100,6 +100,6 @@ The Upbound team is working to improve these limitations. Your feedback is alway
 For more information, follow the [tutorial][tutorial] on Simulations.
 
 
-[tutorial]: /controlplanes/cli/howtos/simulations
+[tutorial]: /manuals/cli/howtos/simulations
 [reach-out-to-upbound]: https://www.upbound.io/contact-us
 [reach-out-to-upbound-1]: https://www.upbound.io/contact-us

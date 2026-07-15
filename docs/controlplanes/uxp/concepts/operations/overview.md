@@ -581,9 +581,9 @@ and required resource access patterns.
 1. **Return meaningful output** - Use the output field to track what the
    operation accomplished for monitoring and debugging
 
-[cronOperation]: /controlplanes/uxp/concepts/operations/cronoperation
-[watchOperation]: /controlplanes/uxp/concepts/operations/watchoperation
+[cronOperation]: /manuals/uxp/concepts/operations/cronoperation
+[watchOperation]: /manuals/uxp/concepts/operations/watchoperation
 [rbac-manager]: https://docs.crossplane.io/v2.0/guides/pods/#rbac-manager-pod 
-[compositions-rbac]: /controlplanes/uxp/concepts/composition/compositions#grant-access-to-composed-resources
+[compositions-rbac]: /manuals/uxp/concepts/composition/compositions#grant-access-to-composed-resources
 [cli-docs]: https://docs.crossplane.io/latest/get-started/install
 [docker]: https://www.docker.com

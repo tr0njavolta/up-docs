@@ -68,11 +68,11 @@ Learn about example use cases of Intelligent Control Planes by [reading the guid
 
 [function-ai-status-transformer]: https://marketplace.upbound.io/functions/upbound/function-claude-status-transformer/v0.1.0
 
-[intelligent-compositions]: /controlplanes/uxp/concepts/composition/intelligent-compositions
-[intelligent-operations]: /controlplanes/uxp/concepts/operations/intelligent-operations
+[intelligent-compositions]: /manuals/uxp/concepts/composition/intelligent-compositions
+[intelligent-operations]: /manuals/uxp/concepts/operations/intelligent-operations
 [mcp-servers]: #model-context-protocol-mcp-servers
-[add-ons]: /controlplanes/uxp/concepts/add-ons
-[add-on-concept]: /controlplanes/uxp/concepts/packages/add-ons
+[add-ons]: /manuals/uxp/concepts/add-ons
+[add-on-concept]: /manuals/uxp/concepts/packages/add-ons
 [intelligent-control-planes-guides]: /guides/intelligent-control-planes/scale-database
 [function-claude]: https://marketplace.upbound.io/functions/upbound/function-claude
 [function-openai]: https://marketplace.upbound.io/functions/upbound/function-openai

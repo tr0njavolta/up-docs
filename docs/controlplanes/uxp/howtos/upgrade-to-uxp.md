@@ -360,8 +360,8 @@ After upgrading to Upbound Crossplane, try out these features:
 
 [xp-upgrade]: https://docs.crossplane.io/latest/guides/upgrade-to-crossplane-v2/
 [builders-workshop]: https://docs.upbound.io/getstarted/builders-workshop/project-foundations/
-[web-ui]: https://docs.upbound.io/insights/overview/#key-features
-[query-api]: https://docs.upbound.io/insights/query-api/
+[web-ui]: https://docs.upbound.io/manuals/console/self-service/#key-features
+[query-api]: https://docs.upbound.io/manuals/console/query-api/
 [rds]: https://docs.upbound.io/guides/intelligent-control-planes/scale-database/
 [slack]: https://crossplane.slack.com/archives/C01TRKD4623
 

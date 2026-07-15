@@ -602,9 +602,9 @@ Status: False
 Reason: TerminatingCompositeResource
 ```
 
-[xrs]: /controlplanes/uxp/concepts/composition/composite-resources/
-[composition]: /controlplanes/uxp/concepts/composition/compositions/
-[composition-match]: /controlplanes/uxp/concepts/composition/compositions/#match-composite-resources
+[xrs]: /manuals/uxp/concepts/composition/composite-resources/
+[composition]: /manuals/uxp/concepts/composition/compositions/
+[composition-match]: /manuals/uxp/concepts/composition/compositions/#match-composite-resources
 [pods]: https://docs.crossplane.io/v2.0/guides/pods/#crossplane-pod 
 [k8s]: https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/ 
 

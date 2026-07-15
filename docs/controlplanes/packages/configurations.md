@@ -37,11 +37,11 @@ use by anyone with a `Community` plan on Upbound running on [Upbound
 Crossplane][uxp]. For full access and use details, read the [policies
 page][policies-page] on access, support and more.
 
-[configurations]: /controlplanes/uxp/concepts/packages/configurations/
-[signed-by-upbound]: /controlplanes/packages/providers/signature-verification
-[pull-an-official-provider]: /controlplanes/packages/policies
-[policies-page]: /controlplanes/packages/policies
-[uxp]: /controlplanes/uxp/overview
+[configurations]: /manuals/uxp/concepts/packages/configurations/
+[signed-by-upbound]: /manuals/packages/providers/signature-verification
+[pull-an-official-provider]: /manuals/packages/policies
+[policies-page]: /manuals/packages/policies
+[uxp]: /manuals/uxp/overview
 [upbound-marketplace]: https://marketplace.upbound.io/configurations
 [account-on-upbound]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_configurations
 [this-query]: https://marketplace.upbound.io/configurations

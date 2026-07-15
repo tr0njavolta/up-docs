@@ -134,7 +134,7 @@ suitable for composition:
 - [function-claude-status-transformer][functionStatusTransformer]
 - [function-pod-analyzer][functionPodAnalyzer]
 
-[functions]: /controlplanes/uxp/concepts/packages/functions
+[functions]: /manuals/uxp/concepts/packages/functions
 [functionClaude]: https://marketplace.upbound.io/
 [functionOpenAi]: https://marketplace.upbound.io/
 [functionStatusTransformer]: https://marketplace.upbound.io/

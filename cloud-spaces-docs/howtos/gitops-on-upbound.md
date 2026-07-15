@@ -290,10 +290,10 @@ spec:
 
 You can now create _Objects_ in the control plane which wrap Space APIs.
 
-[generate-a-kubeconfig]: /controlplanes/cli/concepts/contexts
+[generate-a-kubeconfig]: /manuals/cli/concepts/contexts
 [control-plane-groups]: /cloud-spaces/concepts/groups
 [control-planes]: /cloud-spaces/concepts/control-planes
-[upbound-iam-resources]: /insights/administration/iam
+[upbound-iam-resources]: /manuals/platform/iam
 [space-apis]: /self-hosted-spaces/reference/
 [space-apis-1]: /self-hosted-spaces/reference/
 [control-plane-groups-2]: /cloud-spaces/concepts/groups

@@ -26,8 +26,8 @@ Upbound repositories support these Crossplane package types: `Configurations`, `
 * **`Provider`** packages combine a [Kubernetes controller][kubernetes-controller] container, associated _Custom Resource Definitions_ (`CRDs`) and metadata. The Crossplane open source [AWS provider package][aws-provider-package] is an example a provider's metadata and `CRDs`.
 
 
-[up-cli]: /controlplanes/cli/overview
-[upbound-marketplace]: /controlplanes/marketplace/overview
-[store-configurations-in-a-repostiory]: /controlplanes/marketplace/repositories/store-configurations
+[up-cli]: /manuals/cli/overview
+[upbound-marketplace]: /manuals/marketplace/overview
+[store-configurations-in-a-repostiory]: /manuals/marketplace/repositories/store-configurations
 [kubernetes-controller]: https://kubernetes.io/docs/concepts/architecture/controller/
 [aws-provider-package]: https://github.com/crossplane-contrib/provider-aws/tree/master/package

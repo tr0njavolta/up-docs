@@ -36,7 +36,7 @@ relevant contextual scopes you interact with often: a **Spaces context** and a
 
 In `up`, the commands you can execute are context-sensitive.
 
-[howto]: /controlplanes/cli/howtos/context-config
+[howto]: /manuals/cli/howtos/context-config
 [space]: /self-hosted-spaces/overview/
 [kubernetes-compatible-api]: https://kubernetes.io/docs/concepts/overview/kubernetes-api/
 

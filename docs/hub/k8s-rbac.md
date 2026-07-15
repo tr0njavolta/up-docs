@@ -2,7 +2,6 @@
 title: Authorize actions in control planes
 sidebar_position: 8
 description: A guide to implementing and configuring Kuberentes RBAC in Upbound
-slug: /hub/k8s-rbac
 ---
 
 :::note
@@ -294,9 +293,9 @@ subjects:
 Users in `team1` can now access the control plane and only have the ability to manage _SQLInstances_ in their designated namespace.
 
 
-[upbound-rbac]: /hub/rbac
-[upbound-rbac-1]: /hub/rbac
-[upbound-console]: /hub/teams/#add-users
-[upbound-console-2]: /hub/rbac/#assign-group-role-permissions
+[upbound-rbac]: /manuals/platform/rbac
+[upbound-rbac-1]: /manuals/platform/rbac
+[upbound-console]: /manuals/platform/teams/#add-users
+[upbound-console-2]: /manuals/platform/rbac/#assign-group-role-permissions
 [kubernetes-role-based-access-control]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 [configuration-azure-data]: https://marketplace.upbound.io/configurations/upbound/configuration-azure-database

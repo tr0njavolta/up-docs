@@ -763,12 +763,12 @@ write to the pipeline context. Crossplane passes the context to all following
 functions. When Crossplane has called all functions it discards the pipeline
 context.
 
-[xrds]: /controlplanes/uxp/concepts/composition/composite-resource-definitions/
-[xrs]: /controlplanes/uxp/concepts/composition/composite-resources/
+[xrds]: /manuals/uxp/concepts/composition/composite-resource-definitions/
+[xrs]: /manuals/uxp/concepts/composition/composite-resources/
 [function-patch-and-transform]: https://docs.crossplane.io/v2.0/guides/function-patch-and-transform/ 
-[packages]: /controlplanes/uxp/concepts/packages/functions/
-[providers]: /controlplanes/uxp/concepts/packages/providers/
-[managed-resources]: /controlplanes/uxp/concepts/managed-resources/overview
+[packages]: /manuals/uxp/concepts/packages/functions/
+[providers]: /manuals/uxp/concepts/packages/providers/
+[managed-resources]: /manuals/uxp/concepts/managed-resources/overview
 [rbac-manager]: https://docs.crossplane.io/v2.0/guides/pods/#rbac-manager-pod
-[cli]: /controlplanes/cli/overview
-[guides]: /controlplanes/cli/howtos/compositions/python/
+[cli]: /manuals/cli/overview
+[guides]: /manuals/cli/howtos/compositions/python/

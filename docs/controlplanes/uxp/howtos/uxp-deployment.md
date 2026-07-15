@@ -97,4 +97,4 @@ Read [license management][license-management] to learn how to add a license to u
 
 [spaces]: /self-hosted-spaces/overview
 [migration]: /getstarted/upgrade-to-upbound/upgrade-to-uxp/
-[license-management]: /controlplanes/uxp/howtos/license-management
+[license-management]: /manuals/uxp/howtos/license-management

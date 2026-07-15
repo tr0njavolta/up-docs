@@ -56,5 +56,5 @@ spec:
 
 Your UXP instance can now pull any version of an Official Package.
 
-[official-package-support]: /controlplanes/uxp/official-package-support
-[robot]: /insights/administration/robots
+[official-package-support]: /manuals/uxp/official-package-support
+[robot]: /manuals/platform/robots

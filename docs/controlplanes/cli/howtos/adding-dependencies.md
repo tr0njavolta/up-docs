@@ -172,12 +172,12 @@ up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.17.0
 Now, Upbound rewrites your dependencies to your private registry while
 maintaining the original reference in the configuration.
 
-[configuration]: /controlplanes/packages/configurations/
+[configuration]: /manuals/packages/configurations/
 [marketplace]: https://marketplace.upbound.io/providers
-[function]: /controlplanes/packages/functions
-[composition]: /controlplanes/uxp/concepts/composition/overview
+[function]: /manuals/packages/functions
+[composition]: /manuals/uxp/concepts/composition/overview
 [up-dependency-add]: /reference/cli-reference
 [up-dependency-update-cache]: /reference/cli-reference
 [up-dependency-clean-cache]: /reference/cli-reference
 [authoring-a-composition-resource-definition-xrd]: /guides/projects/authoring-xrds
-[installed]: /controlplanes/cli/overview
+[installed]: /manuals/cli/overview

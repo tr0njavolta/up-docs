@@ -372,7 +372,7 @@ See the [Query API documentation][query-api-documentation] for more information 
 <!-- vale write-good.TooWordy = YES -->
 
 [postgresql-setup]: #self-hosted-postgresql-configuration
-[up-cli-installed]: /controlplanes/cli/overview
+[up-cli-installed]: /manuals/cli/overview
 [query-api-documentation]: /self-hosted-spaces/howtos/query-api
 
 [helm-chart-reference]: /reference/spaces-helm-reference/

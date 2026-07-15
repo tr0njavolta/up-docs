@@ -433,5 +433,5 @@ vpc-staging   True     myvpcs.aws.example.upbound.io-727b3c8   Automatic   map[c
 `vpc-staging` matches the label applied to Revision `revision:2`.
 :::
 
-[composition]: /controlplanes/uxp/concepts/composition/compositions/
+[composition]: /manuals/uxp/concepts/composition/compositions/
 [canary]: https://martinfowler.com/bliki/CanaryRelease.html

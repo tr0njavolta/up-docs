@@ -16,5 +16,5 @@ Crossplane supports these package types: `Configurations`, `Functions` and `Prov
 For information on package access, availability, support policies, and licensing, see the [Package Policies][package-policy] documentation.
 
 [aws-provider-package]: https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.21.0
-[package-policy]: /controlplanes/packages/policies
+[package-policy]: /manuals/packages/policies
 [kubernetes-controller]: https://kubernetes.io/docs/concepts/architecture/controller/

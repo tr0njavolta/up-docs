@@ -311,11 +311,11 @@ definition, composition, and claim.
 <!-- vale gitlab.FutureTense = YES -->
 
 
-[authentication-keys]: /controlplanes/packages/providers/authentication#aws-access-keys
-[web-identity]: /controlplanes/packages/providers/authentication#aws-webidentity
-[service-accounts]: /controlplanes/packages/providers/authentication#aws-irsa
-[provider-azure]: /controlplanes/packages/providers/authentication#azure-service-principal
-[provider-gcp]: /controlplanes/packages/providers/authentication#gcp-service-account-keys
+[authentication-keys]: /manuals/packages/providers/authentication#aws-access-keys
+[web-identity]: /manuals/packages/providers/authentication#aws-webidentity
+[service-accounts]: /manuals/packages/providers/authentication#aws-irsa
+[provider-azure]: /manuals/packages/providers/authentication#azure-service-principal
+[provider-gcp]: /manuals/packages/providers/authentication#gcp-service-account-keys
 
 
 [install-crossplane]: https://docs.crossplane.io/latest/get-started/install/

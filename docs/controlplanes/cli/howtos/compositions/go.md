@@ -596,10 +596,10 @@ if err := response.SetDesiredCompositeResource(rsp, &resource.Composite{Resource
 * [Crossplane Go SDK Documentation][crossplane-go-sdk-documentation] - Complete SDK reference
 * [Go Generated Code Guide][go-generated-code-guide] - Understanding protobuf generated code
 
-<!-- [go]: /controlplanes/cli/projects/compositions/go -->
-[go-templates]: /controlplanes/cli/howtos/compositions/go-template
-[kcl]: /controlplanes/cli/howtos/compositions/kcl
-[python]: /controlplanes/cli/howtos/compositions/python
+<!-- [go]: /manuals/cli/projects/compositions/go -->
+[go-templates]: /manuals/cli/howtos/compositions/go-template
+[kcl]: /manuals/cli/howtos/compositions/kcl
+[python]: /manuals/cli/howtos/compositions/python
 [go]: https://www.golang.org
 [official-tutorials]: https://go.dev/learn/
 [s3-provider]: https://marketplace.upbound.io/providers/upbound/provider-aws-s3
