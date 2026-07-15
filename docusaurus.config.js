@@ -107,6 +107,30 @@ const config = {
                 sidebarPath: require.resolve("./src/sidebars/cloud-spaces.js"),
             },
         ],
+        [
+            "@docusaurus/plugin-client-redirects",
+            {
+                // Flatten: /manuals/* moved to /controlplanes/* and /insights/*.
+                // Reverse-map each new path to its old URL. Most-specific first
+                // so /insights/administration/ beats /insights/.
+                createRedirects(existingPath) {
+                    const map = [
+                        ["/controlplanes/uxp/", "/manuals/uxp/"],
+                        ["/controlplanes/cli/", "/manuals/cli/"],
+                        ["/controlplanes/packages/", "/manuals/packages/"],
+                        ["/controlplanes/marketplace/", "/manuals/marketplace/"],
+                        ["/insights/administration/", "/manuals/platform/"],
+                        ["/insights/", "/manuals/platform/insights/"],
+                    ];
+                    for (const [next, old] of map) {
+                        if (existingPath.startsWith(next)) {
+                            return [old + existingPath.slice(next.length)];
+                        }
+                    }
+                    return undefined;
+                },
+            },
+        ],
                 "./scripts/plan-plugin.js",
         function (context, options) {
             return {
@@ -182,35 +206,15 @@ const config = {
                         to: "/",
                     },
                     {
-                        type: "dropdown",
-                        label: "Guides",
+                        label: "Hub",
                         position: "left",
-                        to: "/guides/",
-                        items: [
-                            {
-                                label: "Intelligent Control Planes",
-                                to: "/guides/intelligent-control-planes/",
-                            },
-                            {
-                                label: "Platform Solutions",
-                                to: "/guides/solutions/get-started/",
-                            },
-                            {
-                                label: "Use Cases",
-                                to: "/guides/usecases/",
-                            },
-                        ],
+                        to: "/hub/overview/",
                     },
                     {
                         type: "dropdown",
-                        label: "Manuals",
-                        to: "/manuals/",
+                        label: "Control Planes",
                         position: "left",
                         items: [
-                            {
-                                label: "UXP (Upbound Crossplane)",
-                                to: "/manuals/uxp/overview/",
-                            },
                             {
                                 label: "Cloud Spaces",
                                 to: "/cloud-spaces/overview/",
@@ -220,24 +224,12 @@ const config = {
                                 to: "/self-hosted-spaces/overview/",
                             },
                             {
-                                label: "CLI",
-                                to: "/manuals/cli/overview/",
+                                label: "UXP" ,
+                                to: "/controlplanes/uxp/overview/",
                             },
-                            {
-                                label: "Console",
-                                to: "/manuals/console/upbound-console/",
-                            },
-                            {
-                                label: "Packages",
-                                to: "/manuals/packages/overview/",
-                            },
-                            {
-                                label: "Marketplace",
-                                to: "/manuals/marketplace/overview/",
-                            },
-                            {
-                                label: "Platform",
-                                to: "/manuals/platform/overview/",
+                                                        {
+                                label: "CLI & Tooling",
+                                to: "/controlplanes/cli/overview/",
                             },
                         ],
                     },

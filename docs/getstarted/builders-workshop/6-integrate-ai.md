@@ -612,9 +612,9 @@ explore additional [AI-powered operations][aiOperations] for other
 infrastructure scenarios, or try out an [Intelligent Control Plane
 solution][intelligentControlPlanes].
 
-[up]: /manuals/cli/overview
+[up]: /controlplanes/cli/overview
 [project-foundations]: /getstarted/builders-workshop/project-foundations
 [anthropic-key]: https://docs.anthropic.com/en/api/admin-api/apikeys/get-api-key
-[Configuration]: /manuals/uxp/concepts/packages/configurations
-[aiOperations]: /manuals/uxp/concepts/operations/intelligent-operations/
+[Configuration]: /controlplanes/uxp/concepts/packages/configurations
+[aiOperations]: /controlplanes/uxp/concepts/operations/intelligent-operations/
 [intelligentControlPlanes]: /guides/intelligent-control-planes/

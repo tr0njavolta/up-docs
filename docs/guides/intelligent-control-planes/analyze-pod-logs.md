@@ -108,9 +108,9 @@ up project stop
 
 Read the concept documentation for [Intelligent Control Planes][intelligent-controllers] to learn more about using AI-powered functions in your function pipelines.
 
-[upbound-crossplane]: /manuals/uxp/overview
-[watch-operations]: /manuals/uxp/concepts/operations/watch-operation
-[intelligent-controllers]: /manuals/uxp/concepts/intelligent-control-planes/
+[upbound-crossplane]: /controlplanes/uxp/overview
+[watch-operations]: /controlplanes/uxp/concepts/operations/watch-operation
+[intelligent-controllers]: /controlplanes/uxp/concepts/intelligent-control-planes/
 [guide-repo]: https://github.com/upbound/configuration-deployment-analysis
-[project]: /manuals/cli/concepts/projects
-[intelligent-composition]: /manuals/uxp/concepts/composition/intelligent-compositions
+[project]: /controlplanes/cli/concepts/projects
+[intelligent-composition]: /controlplanes/uxp/concepts/composition/intelligent-compositions

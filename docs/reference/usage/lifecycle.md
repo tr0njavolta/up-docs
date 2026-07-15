@@ -87,8 +87,8 @@ Customers with paid support contracts can receive pre-release cuts on an as-need
 
 
 [spaces]: /self-hosted-spaces/overview
-[uxp]: /manuals/uxp/overview
-[official-providers]: /manuals/packages/policies
+[uxp]: /controlplanes/uxp/overview
+[official-providers]: /controlplanes/packages/policies
 
 [crossplane-release-cycle]: https://docs.crossplane.io/knowledge-base/guides/release-cycle/
 [alpha-features]: https://docs.crossplane.io/knowledge-base/guides/feature-lifecycle/#alpha-features

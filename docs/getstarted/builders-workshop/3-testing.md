@@ -786,6 +786,6 @@ In the next guide, you'll deploy your tested composition to a control plane and 
 [project-foundations]: /getstarted/builders-workshop/project-foundations
 [up-account]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_get_started
 
-[up-cli]: /manuals/cli/overview
+[up-cli]: /controlplanes/cli/overview
 [kubectl-installed]: https://kubernetes.io/docs/tasks/tools/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/

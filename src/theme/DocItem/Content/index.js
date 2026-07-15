@@ -9,7 +9,7 @@ import CopyPageMenu from '@site/src/components/CopyPageMenu';
 import styles from './styles.module.css';
 
 // Card-grid index pages have little real content to copy, so skip the menu there.
-const EXCLUDED_PATHS = ['/guides/', '/manuals/', '/reference/'];
+const EXCLUDED_PATHS = ['/guides/', '/reference/'];
 
 function useSyntheticTitle() {
   const { metadata, frontMatter, contentTitle } = useDoc();

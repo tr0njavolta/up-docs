@@ -454,15 +454,15 @@ Continue with:
 - [Provider authentication][auth-docs]: connect providers to your own cloud account
 - [Upbound Marketplace][marketplace]: providers and functions for AWS, Azure, GCP, and more
 
-[up-cli]: /manuals/cli/overview/
+[up-cli]: /controlplanes/cli/overview/
 [kubectl-install]: https://kubernetes.io/docs/tasks/tools/
 [aws-cli]: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 [kind]: https://kind.sigs.k8s.io/docs/user/quick-start/#installation
 [anthropic-console]: https://console.anthropic.com/
 [aws-rds]: https://us-east-1.console.aws.amazon.com/rds/home?region=us-east-1#databases:
-[cronops-ref]: /manuals/uxp/concepts/operations/cron-operation/
-[watchops-ref]: /manuals/uxp/concepts/operations/watch-operation/
-[fn-docs]: /manuals/uxp/concepts/composition/overview
-[auth-docs]: /manuals/packages/providers/authentication/
-[aws-auth-docs]: /manuals/packages/providers/authentication/#aws-authentication
+[cronops-ref]: /controlplanes/uxp/concepts/operations/cron-operation/
+[watchops-ref]: /controlplanes/uxp/concepts/operations/watch-operation/
+[fn-docs]: /controlplanes/uxp/concepts/composition/overview
+[auth-docs]: /controlplanes/packages/providers/authentication/
+[aws-auth-docs]: /controlplanes/packages/providers/authentication/#aws-authentication
 [marketplace]: https://marketplace.upbound.io/

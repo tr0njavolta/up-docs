@@ -16,7 +16,7 @@ Self-hosted Spaces are a business critical feature of Upbound and require a lice
 - An Upbound organization account string, provided by your Upbound account representative
 - A `token.json` license, provided by your Upbound account representative
 - [`kind`](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) installed locally
-- The [`up` CLI](../../../manuals/cli/overview/) v0.37.0 or newer
+- The [`up` CLI](../../../controlplanes/cli/overview/) v0.37.0 or newer
 
 ## Provision a kind cluster
 
@@ -116,7 +116,7 @@ up ctx -
 ```
 
 :::tip
-Learn more about navigating Upbound with the [`up ctx` command reference](../../../manuals/cli/overview/).
+Learn more about navigating Upbound with the [`up ctx` command reference](../../../controlplanes/cli/overview/).
 :::
 
 ## Connect your Space to Upbound (optional)

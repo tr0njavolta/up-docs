@@ -19,5 +19,5 @@ server connecting users to their control plane.
 
 Read the [concept][ctp-concept] documentation to learn about Upbound control planes.
 
-[uxp]: /manuals/uxp/overview
+[uxp]: /controlplanes/uxp/overview
 [ctp-concept]: /cloud-spaces/concepts/control-planes

@@ -423,9 +423,9 @@ The importer applies the status of all resources during import. The importer det
 
 [cli-command]: /reference/cli-reference
 [up-cli]: /reference/cli-reference
-[up-cli-1]: /manuals/cli/overview
+[up-cli-1]: /controlplanes/cli/overview
 [create-command]: /reference/cli-reference
 [up-ctx]: /reference/cli-reference
 [configuration-aws-network]: https://marketplace.upbound.io/configurations/upbound/configuration-aws-network
 [spaces]: /self-hosted-spaces/overview
-[uxp]: /manuals/uxp/overview
+[uxp]: /controlplanes/uxp/overview

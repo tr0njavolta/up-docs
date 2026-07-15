@@ -5,7 +5,7 @@ const sections = [
   {
     title: 'Upbound Crossplane (UXP)',
     description: 'Enterprise-grade Crossplane distribution with enhanced compositions, functions, operations, and package management.',
-    link: '/manuals/uxp/overview'
+    link: '/controlplanes/uxp/overview'
   },
   {
     title: 'Cloud Spaces',
@@ -18,30 +18,25 @@ const sections = [
     link: '/self-hosted-spaces/overview/'
   },
   {
-    title: 'CLI',
-    description: 'Command-line tools for managing Upbound configurations, contexts, and project tooling.',
-    link: '/manuals/cli/overview'
+    title: 'Platform',
+    description: 'Identity management, RBAC, organizations, teams, and SSO integration for enterprise deployments.',
+    link: '/insights/administration/overview'
   },
   {
-    title: 'Console',
-    description: 'Web-based management interface with MCP Query API and self-service capabilities.',
-    link: '/manuals/console/upbound-console/'
+    title: 'CLI',
+    description: 'Command-line tools for managing Upbound configurations, contexts, and project tooling.',
+    link: '/controlplanes/cli/overview'
   },
   {
     title: 'Official Packages',
     description: 'Production-ready provider packages for cloud and infrastructure platforms with authentication and migration guides.',
-    link: '/manuals/packages/overview'
+    link: '/controlplanes/packages/overview'
   },
   {
     title: 'Marketplace',
     description: 'Package discovery, publishing, and repository management platform for internal and public distribution.',
-    link: '/manuals/marketplace/overview'
+    link: '/controlplanes/marketplace/overview'
   },
-  {
-    title: 'Platform',
-    description: 'Identity management, RBAC, organizations, teams, and SSO integration for enterprise deployments.',
-    link: './platform/overview'
-  }
 ];
 
 const ManualsCards = () => <CardGrid sections={sections} />;

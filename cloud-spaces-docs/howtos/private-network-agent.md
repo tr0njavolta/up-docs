@@ -44,7 +44,7 @@ Before you begin, make sure you have:
 - A destination Kubernetes cluster in your private network.
 - Outbound connectivity from the private network to `connect.upbound.io:4222` (TCP/TLS). No inbound rules required.
 - `kubectl` access to both the managed control plane and the destination cluster.
-- The [Upbound CLI](/manuals/cli/overview/) (`up`) installed.
+- The [Upbound CLI](/controlplanes/cli/overview/) (`up`) installed.
 - Helm v3 installed.
 
 ## Set up the destination cluster

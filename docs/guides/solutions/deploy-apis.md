@@ -23,5 +23,5 @@ The [Upbound Marketplace][marketplace] has a collection of Upbound-published and
 
 You can also build your own APIs by creating a control plane project. Upbound recommends that you create a project in a separate repository, build it into a Configuration package, then add it to your solution instance. Learn about [using control plane project tooling][projectTooling] in the build guides.
 
-[projectTooling]: /manuals/cli/howtos/project
+[projectTooling]: /controlplanes/cli/howtos/project
 [marketplace]: https://marketplace.upbound.io/configurations

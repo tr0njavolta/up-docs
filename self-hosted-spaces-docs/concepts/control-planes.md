@@ -211,11 +211,11 @@ Upbound gives users the ability to configure the collection of telemetry (logs, 
 [cli-reference]: /reference/cli-reference
 [up-ctx]: /reference/cli-reference
 [up-ctx-f]: /reference/cli-reference
-[cli-documentation]: /manuals/cli/concepts/contexts
+[cli-documentation]: /controlplanes/cli/concepts/contexts
 [upbound-marketplace]: https://marketplace.upbound.io
 [upbound-marketplace-1]: https://marketplace.upbound.io
 [gitops-with-control-planes]: /cloud-spaces/howtos/gitops-on-upbound
-[connect-control-planes-to-external-services]: /manuals/platform/oidc
+[connect-control-planes-to-external-services]: /insights/administration/oidc
 [spaces-documentation]: /self-hosted-spaces/howtos/secrets-management
 [spaces-documentation-1]: /self-hosted-spaces/howtos/backup-and-restore
 [otel]: https://otel.com

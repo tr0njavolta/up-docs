@@ -310,7 +310,7 @@ Any important warnings or necessary information
 
 - **UXP v2 is now enabled by default.** Users can create UXP v2 ControlPlanes without additional configuration. This can be disabled by explicitly setting `controlPlanes.uxp.v2.enabled` to `false` if needed.
 - **Query API v1alpha1 has been removed.** The query API has been updated with breaking changes including removal of v1alpha1 and Freshness support. Database user permissions required for apollo have changed; please see the [documentation](/self-hosted-spaces/howtos/query-api/) for details.
-- UXP v2 [AddOns](https://docs.upbound.io/manuals/uxp/concepts/add-ons/) are disabled by default. They can be enabled via `controlPlanes.uxp.enableAddons`.
+- UXP v2 [AddOns](https://docs.upbound.io/controlplanes/uxp/concepts/add-ons/) are disabled by default. They can be enabled via `controlPlanes.uxp.enableAddons`.
 - VCluster has been upgraded from v0.24.1 to v0.24.2 to support Kubernetes 1.33.
 - Bumped supported cert-manager version to v1.18.2.
 

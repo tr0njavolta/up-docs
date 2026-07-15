@@ -300,8 +300,8 @@ Build][build] manuals.
 [up-account]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_get_started
 
 [project-foundations]: /getstarted/builders-workshop/project-foundations
-[up-cli]: /manuals/cli/overview
+[up-cli]: /controlplanes/cli/overview
 [kubectl-installed]: https://kubernetes.io/docs/tasks/tools/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
-[build]: /manuals/cli/howtos/project
+[build]: /controlplanes/cli/howtos/project
 [build-and-push]: /getstarted/builders-workshop/build-and-push

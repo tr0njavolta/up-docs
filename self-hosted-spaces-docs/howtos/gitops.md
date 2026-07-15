@@ -114,10 +114,10 @@ stringData:
 EOF
 ```
 
-[generate-a-kubeconfig]: /manuals/cli/concepts/contexts
+[generate-a-kubeconfig]: /controlplanes/cli/concepts/contexts
 [control-plane-groups]: /self-hosted-spaces/concepts/groups
 [control-planes]: /self-hosted-spaces/concepts/control-planes
-[upbound-iam-resources]: /manuals/platform/identity-management
+[upbound-iam-resources]: /insights/administration/identity-management
 [space-apis]: /self-hosted-spaces/reference/
 [space-apis-1]: /self-hosted-spaces/reference/
 [control-plane-groups-2]: /self-hosted-spaces/concepts/groups

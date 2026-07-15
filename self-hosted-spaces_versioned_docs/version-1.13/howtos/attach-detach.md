@@ -184,9 +184,9 @@ Only users with editor or administrative permissions can make changes using the 
 
 
 [enable-the-query-api]: /self-hosted-spaces/howtos/query-api
-[enable-upbound-rbac]: /manuals/platform/rbac
+[enable-upbound-rbac]: /insights/administration/rbac
 [upbound]: /manuals/console/upbound-console
-[organization]: /manuals/platform/organizations
+[organization]: /insights/administration/organizations
 [query-api]: /self-hosted-spaces/howtos/query-api
 [jq-install]: https://jqlang.org/download/
 

@@ -229,7 +229,7 @@ To route requests from external clients (kubectl, ArgoCD, etc.) to control plane
 [ClusterIssuer]: https://cert-manager.io/docs/concepts/issuer/
 [installation ideas]: https://cert-manager.io/docs/installation/
 [Issuer Configuration]: https://cert-manager.io/docs/configuration/
-[official-provider-families]: /manuals/packages/providers/provider-families
+[official-provider-families]: /controlplanes/packages/providers/provider-families
 [aws-eks]: https://aws.amazon.com/eks/
 [google-cloud-gke]: https://cloud.google.com/kubernetes-engine
 [microsoft-aks]: https://azure.microsoft.com/en-us/products/kubernetes-service

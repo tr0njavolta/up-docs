@@ -3,150 +3,71 @@ title: Quickstart
 pagination_prev: null
 pagination_next: null
 ---
+Get a control plane, the Hub, and a sample project running on your laptop in a
+few minutes.
 
-In this quickstart, you'll run your first control plane project with UXP.
+**Prerequisites:**
+* `kind`
+* `kubectl`
+* `helm`
+* [up CLI][upCli]
+* An Upbound account
 
-Make sure you have
+## Step 1: Run the installation script
 
-- kind installed on your machine
-- kubectl
-- an upbound account
-- the upbound cli installed
+The script creates a kind cluster, installs the control plane and Hub
+components, and initializes a sample project. It prompts you to log in to
+Upbound the first time it runs.
 
+<details>
 
-## Step 1: Log in to Upbound
+    <summary> Quickstart install script </summary>
+    ```shell title="quickstart.sh" manifest="/manifests/getstarted/quickstart.sh"
+    ```
+</details>
 
-Upbound requires a login to use the Community version of UXP.
+Download and run it:
 
 ```shell
-up login
-
+curl -fsSL https://docs.upbound.io/manifests/getstarted/quickstart.sh -o quickstart.sh
+bash quickstart.sh
 ```
 
-This opens up a browser window where you'll add your Upbound account
-information. Once you're authenticated, you can close the window.
+The script keeps a Console port-forward running in your terminal. Leave it
+running and open a new terminal for the following steps.
 
-You'll have access to a console experience with your Upbound account.
+## Step 2: Deploy an example resource
 
-## Step 2: Hub
-
-Insights steps. Kind of convuluted right now, but needs to be done - should just
-be a demo as described 
-
-Install
-
-The install has three steps. First, create a KIND cluster with the right port mappings. Next, install the chart with demo mode enabled. Finally, wait for the Pods to come up.
-Create a KIND cluster
-
-The demo's bundled Envoy gateway listens on NodePort 30443 for HTTPS. Map that NodePort to a host port so your browser can reach the Hub UI.
-
-Save this as kind-demo.yaml:
-
-kind: Cluster
-apiVersion: kind.x-k8s.io/v1alpha4
-name: hub-demo
-nodes:
-  - role: control-plane
-    extraPortMappings:
-      - containerPort: 30443
-        hostPort: 8443
-        protocol: TCP
-
-Create the cluster:
-
-kind create cluster --config kind-demo.yaml
-
-KIND writes a kind-hub-demo context into your kubeconfig and switches to it.
-Install the Hub chart
-
-Install the umbrella hub chart with demo mode enabled. The `<chart-ref>` placeholder is the chart's published OCI/registry coordinates. Substitute the value from your release notes.
-```
-helm install hub <chart-ref> \
-  --namespace hub \
-  --create-namespace \
-  --set global.demo.enabled=true
+```shell
+kubectl apply -f my-webapp/examples/webapps/example.yaml
 ```
 
-The demo flag turns on every bundled dependency at once. With global.demo.enabled=true the chart also installs:
+## Step 3: See it in the Console
 
-    An ephemeral PostgreSQL 18 instance with database hub and user hub.
-    A Keycloak 26 instance pre-imported with a realm called hub, an OIDC client, and a single user admin / admin in an admin group.
-    The Envoy Gateway controller and a Gateway that terminates TLS with a self-signed wildcard cert covering *.127.0.0.1.nip.io, exposed on NodePort 30443.
-    A ControlPlane named default/default registered against the bundled Keycloak as its IdentityProvider.
-    A hub-connector running in the same cluster, pre-registered against default/default, so the demo's own resources are queryable through Hub from the moment it starts.
+The project runs on the same cluster as the Hub, so the resource appears in the
+Console automatically, with no extra connection step. Open the Console and find
+your new `webservice` resource.
 
-Wait for Pods to be ready
+To watch the Hub reflect configuration changes, scale the replica count up:
 
-kubectl -n hub wait --for=condition=ready pod --all --timeout=5m
+```shell
+kubectl patch webapp webservice -n default --type=merge -p '{"spec":{"parameters":{"replicas":3}}}'
+```
 
-The first start pulls images for hub-api, hub-connector, hub-webui, the bundled PostgreSQL and Keycloak, and the Envoy Gateway. Expect a few minutes on the first install.
+The Console shows the new replica count as the control plane reconciles.
 
-When the command returns, list the Pods to confirm:
+## Step 4: Clean up
 
-kubectl -n hub get pods
-
-You should see one Pod each for hub-api, hub-connector, hub-webui, the demo Postgres, the demo Keycloak, and the Envoy gateway data plane.
-
-
-## Kind cluster
-
-do i need another one with the hub situation. Can I make the CTA in the previous
-guide to create an account and describe how to download here? Or should this be
-bundled further?
-
-## Run the REAL quickstart
-
-➜ up project init -t project-template-k8s-webapp -l python my-webapp
-
-➜ up project init -t project-template-k8s-webapp -l python my-webapp
-Initializing project from template "project-template-k8s-webapp"...
-Initializing project from template project-template-k8s-webapp for python...
-🙌 Successfully initialized project "my-webapp" in directory "/Users/rae/up-docs/my-webapp" from https://github.com/upbound/project-template-k8s-webapp.git (main)
-
-➜ up project run --local --ingress
-✓ Collecting resources
-✓ Generating language schemas
-✓ Creating local development control plane
-✓ Checking dependencies
-✓ Building functions
-✓ Building configuration package
-✓ Loading packages into control plane
-✓ Applying init resources
-✓ Installing package on development control plane
-✓ Waiting for package to be ready
-✓ Applying extra resources
-💻 Local dev control plane running in kind cluster "up-my-webapp".
-🌐 WebUI endpoint: http://127-0-0-1.nip.io:62400
-Kubeconfig updated. Current context is "kind-up-my-webapp".
-
-➜ cd examples/webapps
-
-➜ k apply -f example.yaml
-➜ webapp.platform.example.com/webservice created
-
-wire up port forwarding to hit the nginx endpoint
-
-curl it - see stuff
-
-## Look at the hub/insights/whatever it's called
-
-See all your stuff. much wow, very ux
-
-## Change the manifest
-
-nginx > httpd
-
-hit the endpoints and see the curl command change
-
-What hub reconsiliation? or k logs --watch
-
-## Remove resoures
-
-k delete webapp
-
-kind delete clusters
+```shell
+kubectl delete -f my-webapp/examples/webapps/example.yaml
+kind delete cluster --name quickstart
+```
 
 ## Next steps
 
-Create your own control plane project with real cloud resources
+- [Builders workshop][workshop] for real cloud resources.
+- [Hub overview][hub] for the full-fleet story.
 
+[upCli]: /controlplanes/cli/overview
+[hub]: /hub/overview
+[workshop]: /getstarted/builders-workshop/project-foundations

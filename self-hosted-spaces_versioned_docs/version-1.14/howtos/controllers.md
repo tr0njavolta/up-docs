@@ -385,5 +385,5 @@ No, *Controllers* are a proprietary package format and are only available for co
 </details>
 <!-- vale on -->
 
-[cli]: /manuals/uxp/overview
+[cli]: /controlplanes/uxp/overview
 

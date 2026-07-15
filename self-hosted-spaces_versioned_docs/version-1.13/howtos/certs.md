@@ -273,4 +273,4 @@ openssl s_client -connect proxy.upbound-127.0.0.1.nip.io:443 -showcerts
 ```
 
 [istioctl]: https://istio.io/latest/docs/ops/diagnostic-tools/istioctl/
-[up-profile]: /manuals/cli/howtos/profile-config/
+[up-profile]: /controlplanes/cli/howtos/profile-config/

@@ -281,4 +281,4 @@ subjects:
 
 [structured-auth-config]: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration
 [crossplane-managed-clusterroles]: https://github.com/crossplane/crossplane/blob/master/design/design-doc-rbac-manager.md#managed-rbac-clusterroles
-[upbound-rbac]: /manuals/platform/rbac
+[upbound-rbac]: /insights/administration/rbac

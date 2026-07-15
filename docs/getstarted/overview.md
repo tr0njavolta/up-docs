@@ -20,9 +20,11 @@ next level.
 <!-- vale Google.We = NO -->
 Upbound allows you to expose infrastructure across clouds, vendors, and systems
 through a single programmable API surface that works for humans and intelligent
-agents alike. Upbound powers this API surface with **Upbound Crossplane 2.0
-(UXP)** - our next-generation control plane that delivers enterprise-grade
-reliability, performance, and developer experience. 
+agents alike. Upbound powers this API surface with **Upbound Crossplane (UXP)**,
+Upbound's enterprise distribution of Crossplane. Run UXP on a single cluster the
+same way you'd run open source Crossplane, then host it at scale with Spaces. It's
+the same distribution either way, delivering enterprise-grade reliability,
+performance, and developer experience. 
 
 <!-- vale Microsoft.HeadingPunctuation = NO -->
 
@@ -47,7 +49,7 @@ Find more installation methods on the [Up CLI installation guide][up].
   },
   {
     title: 'Already running open source Crossplane?',
-    description: 'Follow the upgrade guide to migrate your existing Crossplane install to Upbound Crossplane.',
+    description: 'Follow the upgrade guide to move your existing Crossplane install to Upbound Crossplane.',
     link: '/getstarted/upgrade-to-upbound/upgrading-to-upbound'
   }
 ]} />
@@ -75,4 +77,4 @@ connects with the service, and manages the lifecycle on your behalf.
 
 
 <!-- vale gitlab.SentenceLength = YES -->
-[up]: /manuals/cli/overview
+[up]: /controlplanes/cli/overview
