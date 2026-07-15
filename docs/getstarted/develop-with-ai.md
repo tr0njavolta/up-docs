@@ -303,5 +303,5 @@ The control plane MCP server runs as a sidecar container alongside
 
 
 [marketplace]: https://marketplace.upbound.io
-[intelligentOps]: /controlplanes/uxp/concepts/operations/intelligent-operations/
+[intelligentOps]: /manuals/uxp/concepts/operations/intelligent-operations/
 [kubectl-ai]: https://github.com/GoogleCloudPlatform/kubectl-ai

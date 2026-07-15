@@ -783,5 +783,5 @@ plane, such as Providers, or pre-built Functions.
 Your Upbound Crossplane control plane has an API server you can communicate
 with, whether over a CLI, GitOps, GUI, or direct REST API calls.
 
-[up]: /controlplanes/cli/overview
-[provider authentication instructions]: /controlplanes/uxp/concepts/packages/provider-authentication
+[up]: /manuals/cli/overview
+[provider authentication instructions]: /manuals/uxp/concepts/packages/provider-authentication

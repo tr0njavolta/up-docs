@@ -193,11 +193,11 @@ external services:
 * [Perform an operation on a resource][operations]
 
 [aws-documentation]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
-[up]: /controlplanes/cli/overview
+[up]: /manuals/cli/overview
 [marketplace]: https://marketplace.upbound.io
-[functions]: /controlplanes/uxp/concepts/composition/composite-resource-definitions
-[operations]: /controlplanes/uxp/concepts/operations/overview
-[providers]:  /controlplanes/uxp/concepts/packages/providers
+[functions]: /manuals/uxp/concepts/composition/composite-resource-definitions
+[operations]: /manuals/uxp/concepts/operations/overview
+[providers]:  /manuals/uxp/concepts/packages/providers
 [composition]: /getstarted/introduction/project
 
 

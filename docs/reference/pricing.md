@@ -166,7 +166,7 @@ control planes.
 [upbound console]: https://console.upbound.io
 [operation]: https://docs.crossplane.io/latest/operations/
 [pricing]: https://upbound.io/pricing
-[license management]: /controlplanes/uxp/howtos/license-management/#license-management-in-the-upbound-console-enterprise-and-above
+[license management]: /manuals/uxp/howtos/license-management/#license-management-in-the-upbound-console-enterprise-and-above
 [support]: https://help.upbound.io/
 
 

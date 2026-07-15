@@ -77,4 +77,4 @@ connects with the service, and manages the lifecycle on your behalf.
 
 
 <!-- vale gitlab.SentenceLength = YES -->
-[up]: /controlplanes/cli/overview
+[up]: /manuals/cli/overview

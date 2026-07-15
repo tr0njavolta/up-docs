@@ -1075,8 +1075,8 @@ the built-in test suite.
 
 [up-account]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_get_started
 [project-foundations]: /getstarted/builders-workshop/project-foundations
-[up-cli]: /controlplanes/cli/overview
+[up-cli]: /manuals/cli/overview
 [kubectl-installed]: https://kubernetes.io/docs/tasks/tools/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
-[go-compositions]: /controlplanes/cli/howtos/compositions/go
-[go-template-compositions]: /controlplanes/cli/howtos/compositions/go-template
+[go-compositions]: /manuals/cli/howtos/compositions/go
+[go-template-compositions]: /manuals/cli/howtos/compositions/go-template

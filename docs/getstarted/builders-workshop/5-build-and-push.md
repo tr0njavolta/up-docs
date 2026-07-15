@@ -114,7 +114,7 @@ Continue the workshop with [Create an AI-augmented operation][integrate-ai] to
 add AI-powered monitoring to your control plane.
 
 [project-foundations]: /getstarted/builders-workshop/project-foundations
-[configurations]: /controlplanes/uxp/concepts/packages/configurations
-[repositories]: /controlplanes/marketplace/repositories/overview
+[configurations]: /manuals/uxp/concepts/packages/configurations
+[repositories]: /manuals/marketplace/repositories/overview
 [marketplace]: https://marketplace.upbound.io/
 [integrate-ai]: /getstarted/builders-workshop/integrate-ai

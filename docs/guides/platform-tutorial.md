@@ -1038,17 +1038,17 @@ Continue with:
 - [Provider authentication][auth-docs]: connect providers to your own cloud account
 - [Upbound Marketplace][marketplace]: providers and add-ons for AWS, Azure, GCP, and more
 
-[up-cli]: /controlplanes/cli/overview/
+[up-cli]: /manuals/cli/overview/
 [kubectl-install]: https://kubernetes.io/docs/tasks/tools/
 [up-cli-releases]: https://github.com/upbound/up/releases
 [aws-cli]: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 [kind]: https://kind.sigs.k8s.io/docs/user/quick-start/#installation
-[fn-go]: /controlplanes/cli/howtos/compositions/go/
-[fn-python]: /controlplanes/cli/howtos/compositions/python/
-[fn-go-template]: /controlplanes/cli/howtos/compositions/go-template/
-[xrd-concept]:/controlplanes/uxp/concepts/composition/composite-resource-definitions/ 
-[fn-docs]: /controlplanes/uxp/concepts/composition/overview/
-[auth-docs]: /controlplanes/packages/providers/authentication/
-[aws-auth-docs]: /controlplanes/packages/providers/authentication/#aws-authentication
+[fn-go]: /manuals/cli/howtos/compositions/go/
+[fn-python]: /manuals/cli/howtos/compositions/python/
+[fn-go-template]: /manuals/cli/howtos/compositions/go-template/
+[xrd-concept]:/manuals/uxp/concepts/composition/composite-resource-definitions/ 
+[fn-docs]: /manuals/uxp/concepts/composition/overview/
+[auth-docs]: /manuals/packages/providers/authentication/
+[aws-auth-docs]: /manuals/packages/providers/authentication/#aws-authentication
 [marketplace]: https://marketplace.upbound.io/
 

@@ -161,7 +161,7 @@ To clean up the platform, delete the root `Application` from the bootstrap contr
 [registerAccount]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_idp
 [awsCreds]: https://docs.aws.amazon.com/sdkref/latest/guide/feature-static-credentials.html
 [design]: /solutions/design
-[upCli]: /controlplanes/cli/overview
+[upCli]: /manuals/cli/overview
 [starterGroups]: /img/solutions/starter-groups.png
 [frontendCtp]: /img/solutions/frontend-ctp.png
 [controlplaneView]: /img/solutions/control-plane-view.png
