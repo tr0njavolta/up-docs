@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 ## Overview
 
-This page walks you through connecting a Kubernetes cluster as a space to
+This page walks you through connecting a self-hosted Spaces cluster to
 Upbound Platform. Connecting a space allows its resources to be observed in the
 Console or hub API, and automatically connects the control planes it manages.
 
