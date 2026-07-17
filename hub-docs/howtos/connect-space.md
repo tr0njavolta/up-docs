@@ -20,7 +20,7 @@ namespace on the space cluster.
 
 :::note
 To connect a control plane that's not managed by Upbound Spaces, see [how to
-connect a control plane](./connect-control-plane.md).
+connect a control plane](connect-control-plane.md).
 :::
 
 ## Prerequisites
@@ -33,11 +33,13 @@ connect a control plane](./connect-control-plane.md).
   targets the hub.
 - [Helm](https://helm.sh/) 3.
 
-{/* TODO(branden): Link to a guide for configuring kubectl with a hub context once it exists. See GLO-1321. */}
+<!-- vale proselint.Annotations = NO -->
+{/* TODO(branden): Link to a guide for configuring kubectl with a hub context once it exists. See `GLO-1321`. */}
+<!-- vale proselint.Annotations = YES -->
 
 ## Step 1: Declare the space
 
-Declare the space in Upbound Platform to assign its name and obtain a connector
+Declare the space in Upbound Platform to assign its name and get a connector
 registration token.
 
 <Tabs groupId="connect-ui">
@@ -74,11 +76,11 @@ REGISTRATION_TOKEN=$(kubectl --context=hub create -f space.yaml \
 
 ## Step 2: Get the registration token
 
-Capture the registration token from Step 1. You'll use it to deploy the
+Capture the registration token from Step 1. Use it to deploy the
 connector in Step 3.
 
 :::warning
-The registration token is shown once. It is valid for 24 hours, can be used only
+The registration token is shown once. It's valid for 24 hours, can be used only
 once, and can't be retrieved after being created. You may reissue the token,
 which invalidates the existing token.
 :::
@@ -258,9 +260,10 @@ phase:
 kubectl --context=hub get space <space-name> -o jsonpath='{.status.phase}'
 ```
 
-If it does not become `Ready`, the connector has not completed registration.
-Confirm the space connector pods are `Ready` (Step 4). If they are, the connector
-most likely cannot reach the hub. See the next section.
+If it doesn't become `Ready`, the connector hasn't completed registration.
+Confirm the space connector pods are `Ready` (Step 4). If the pods are `Ready`
+but the phase stays `Pending`, the connector can't reach the hub. See the next
+section.
 
 ### The connector can't reach the hub
 
@@ -280,7 +283,7 @@ helm upgrade hub-connector oci://xpkg.upbound.io/upbound/hub-connector \
 
 The connector deploys a per-control-plane connector into each control plane's
 system namespace on the space cluster. If the space is `Ready` but its member
-control planes do not appear in the hub, confirm the per-control-plane
+control planes don't appear in the hub, confirm the per-control-plane
 connectors came up:
 
 ```bash
@@ -293,5 +296,5 @@ that the control planes you expect exist on the space cluster.
 
 ## Next steps
 
-- [RBAC and OIDC group mapping](./rbac.md): Grant users and groups access to the
+- [RBAC and OIDC group mapping](rbac.md): Grant users and groups access to the
   space and its control planes.

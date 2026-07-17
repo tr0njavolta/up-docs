@@ -15,7 +15,7 @@ observed in the Console or hub API.
 
 :::note
 To connect control planes managed by Upbound Spaces, see [how to connect a
-space](./connect-space.md).
+space](connect-space.md).
 :::
 
 ## Prerequisites
@@ -28,12 +28,14 @@ space](./connect-space.md).
   targets the hub.
 - [Helm](https://helm.sh/) 3.
 
-{/* TODO(branden): Link to a guide for configuring kubectl with a hub context once it exists. See GLO-1321. */}
+<!-- vale proselint.Annotations = NO -->
+{/* TODO(branden): Link to a guide for configuring kubectl with a hub context once it exists. See `GLO-1321`. */}
+<!-- vale proselint.Annotations = YES -->
 
 ## Step 1: Declare the control plane
 
 Declare the control plane in Upbound Platform to assign its realm and name, then
-obtain a connector registration token.
+get a connector registration token.
 
 <Tabs groupId="connect-ui">
 <TabItem value="console" label="Console">
@@ -71,11 +73,11 @@ REGISTRATION_TOKEN=$(kubectl --context=hub create -f controlplane.yaml \
 
 ## Step 2: Get the registration token
 
-Capture the registration token from Step 1. You'll use it to deploy the
+Capture the registration token from Step 1. Use it to deploy the
 connector in Step 3.
 
 :::warning
-The registration token is shown once. It is valid for 24 hours, can be used only
+The registration token is shown once. It's valid for 24 hours, can be used only
 once, and can't be retrieved after being created. You may reissue the token,
 which invalidates the existing token.
 :::
@@ -240,9 +242,9 @@ kubectl --context=hub --namespace <realm> \
   get controlplane <control-plane-name> -o jsonpath='{.status.phase}'
 ```
 
-If it does not become `Ready`, the connector has not completed registration.
-Confirm the connector pods are `Ready` (Step 4). If they are, the connector most
-likely cannot reach the hub. See the next section.
+If it doesn't become `Ready`, the connector hasn't completed registration.
+Confirm the connector pods are `Ready` (Step 4). If the pods are `Ready` but the
+phase stays `Pending`, the connector can't reach the hub. See the next section.
 
 ### The connector can't reach the hub
 
@@ -261,11 +263,11 @@ helm upgrade hub-connector oci://xpkg.upbound.io/upbound/hub-connector \
 ### No resources appear for the control plane
 
 By default the connector syncs only resources authorized by the
-`crossplane-admin` ClusterRole. If the resources you expect are not covered by
-that role, they do not sync. Widen `connector.sync.limitToClusterRoles`, or set
+`crossplane-admin` ClusterRole. If the resources you expect aren't covered by
+that role, they don't sync. Widen `connector.sync.limitToClusterRoles`, or set
 it to `[]` to sync everything, then upgrade the release.
 
 ## Next steps
 
-- [RBAC and OIDC group mapping](./rbac.md): Grant users and groups access to the
+- [RBAC and OIDC group mapping](rbac.md): Grant users and groups access to the
   control plane and its resources.
