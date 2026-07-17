@@ -25,13 +25,15 @@ connect a control plane](./connect-control-plane.md).
 
 ## Prerequisites
 
-- A target space: the Kubernetes cluster running Upbound Spaces whose resources
-  and control planes you want to observe, and a kubeconfig context for it.
-- Upbound Platform hub, reachable from the target space.
+- A space to connect: the Kubernetes cluster running Upbound Spaces whose
+  resources and control planes you want to observe, and a kubeconfig context for
+  it.
+- Upbound Platform hub, reachable from the space.
 - Access to the Console, or `kubectl` configured with a `hub` context that
   targets the hub.
 - [Helm](https://helm.sh/) 3.
-- The `hub-connector` Helm chart reference.
+
+{/* TODO(branden): Link to a guide for configuring kubectl with a hub context once it exists. See GLO-1321. */}
 
 ## Step 1: Declare the space
 
@@ -121,16 +123,22 @@ REGISTRATION_TOKEN=$(echo '{"apiVersion":"hub.upbound.io/v1beta1","kind":"Space"
 
 ## Step 3: Deploy the connector
 
-Deploy the connector to the target space. The connector completes the space's
+Deploy the connector to the space. The connector completes the space's
 registration, syncs its resources, and connects its control planes.
+
+Set the kubeconfig context for the space cluster:
+
+```bash
+SPACE_CONTEXT=<space-context>
+```
 
 Create a namespace and a secret holding the registration token on the space
 cluster:
 
 ```bash
-kubectl --context=<space-context> create namespace upbound-system
+kubectl --context="$SPACE_CONTEXT" create namespace upbound-system
 
-kubectl --context=<space-context> --namespace upbound-system \
+kubectl --context="$SPACE_CONTEXT" --namespace upbound-system \
   create secret generic hub-connector-credentials \
   --from-literal=registrationToken="$REGISTRATION_TOKEN"
 ```
@@ -138,8 +146,8 @@ kubectl --context=<space-context> --namespace upbound-system \
 Install the connector chart with Spaces integration enabled:
 
 ```bash
-helm install hub-connector <connector-chart-ref> \
-  --kube-context <space-context> \
+helm install hub-connector oci://xpkg.upbound.io/upbound/hub-connector \
+  --kube-context "$SPACE_CONTEXT" \
   --namespace upbound-system \
   --set connector.spaces.enabled=true \
   --set connector.hub.url=<hub-url>
@@ -147,23 +155,19 @@ helm install hub-connector <connector-chart-ref> \
 
 Notes:
 
-- `connector.hub.tokenExchangeUrl` defaults to `connector.hub.url`. Set it only
-  when the token-exchange endpoint differs from the hub URL.
 - `connector.credentials.existingSecretRef.name` defaults to
   `hub-connector-credentials`. Override it only if you named the secret
   differently.
 - Override the provisioned connectors' settings under
   `connector.spaces.controlPlaneConnector.*` (for example `excludeResources` or
   `resources`). Each field defaults to the space connector's own configuration.
-- `connector.hub.allowInsecure` defaults to `false`. Set it to `true` only when
-  the hub is served over plaintext HTTP, such as an in-cluster Service.
 
 ## Step 4: Verify the connector started
 
 Confirm the connector pods reach `Ready`:
 
 ```bash
-kubectl --context=<space-context> --namespace upbound-system \
+kubectl --context="$SPACE_CONTEXT" --namespace upbound-system \
   wait --for=condition=Ready pod \
   --selector app.kubernetes.io/name=hub-connector --timeout=120s
 ```
@@ -172,7 +176,7 @@ The space connector deploys a per-control-plane connector into each control
 plane's host namespace. Confirm those pods are `Ready` as well:
 
 ```bash
-kubectl --context=<space-context> --all-namespaces \
+kubectl --context="$SPACE_CONTEXT" --all-namespaces \
   get pods --selector app.kubernetes.io/name=hub-connector
 ```
 
@@ -231,7 +235,7 @@ kubectl --context=hub get --raw \
 Check the pod status and events:
 
 ```bash
-kubectl --context=<space-context> --namespace upbound-system \
+kubectl --context="$SPACE_CONTEXT" --namespace upbound-system \
   describe pod --selector app.kubernetes.io/name=hub-connector
 ```
 
@@ -241,7 +245,7 @@ expired or was already used, reissue it (Step 2), update the secret, and restart
 the connector:
 
 ```bash
-kubectl --context=<space-context> --namespace upbound-system \
+kubectl --context="$SPACE_CONTEXT" --namespace upbound-system \
   rollout restart deployment hub-connector
 ```
 
@@ -260,15 +264,13 @@ most likely cannot reach the hub. See the next section.
 
 ### The connector can't reach the hub
 
-The connector pushes to `connector.hub.url` and exchanges tokens at the
-token-exchange endpoint. From the space cluster, confirm both URLs are correct
-and reachable, and that any firewall or network policy allows egress to the hub.
-If the hub is served over plaintext HTTP, set `connector.hub.allowInsecure=true`.
-Correct the values and upgrade the release:
+The connector pushes to the hub at `connector.hub.url`. From the space cluster,
+confirm that URL is correct and reachable, and that any firewall or network
+policy allows egress to the hub. Correct the value and upgrade the release:
 
 ```bash
-helm upgrade hub-connector <connector-chart-ref> \
-  --kube-context <space-context> \
+helm upgrade hub-connector oci://xpkg.upbound.io/upbound/hub-connector \
+  --kube-context "$SPACE_CONTEXT" \
   --namespace upbound-system \
   --reuse-values \
   --set connector.hub.url=<hub-url>
@@ -282,7 +284,7 @@ control planes do not appear in the hub, confirm the per-control-plane
 connectors came up:
 
 ```bash
-kubectl --context=<space-context> --all-namespaces \
+kubectl --context="$SPACE_CONTEXT" --all-namespaces \
   get pods --selector app.kubernetes.io/name=hub-connector
 ```
 

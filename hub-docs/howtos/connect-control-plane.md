@@ -20,14 +20,15 @@ space](./connect-space.md).
 
 ## Prerequisites
 
-- A target control plane: the Kubernetes cluster whose resources you want to
+- A control plane to connect: the Kubernetes cluster whose resources you want to
   observe, and a kubeconfig context for it.
-- Upbound Platform hub, reachable from the target control plane.
-- A realm to place the control plane in.
+- Upbound Platform hub, reachable from the control plane.
+- A realm for the control plane, and admin permissions within that realm.
 - Access to the Console, or `kubectl` configured with a `hub` context that
   targets the hub.
 - [Helm](https://helm.sh/) 3.
-- The `hub-connector` Helm chart reference.
+
+{/* TODO(branden): Link to a guide for configuring kubectl with a hub context once it exists. See GLO-1321. */}
 
 ## Step 1: Declare the control plane
 
@@ -119,15 +120,21 @@ REGISTRATION_TOKEN=$(echo '{"apiVersion":"hub.upbound.io/v1beta1","kind":"Contro
 
 ## Step 3: Deploy the connector
 
-Deploy the connector to the target control plane. The connector completes
-the control plane's registration and syncs its resources.
+Deploy the connector to the control plane. The connector completes the control
+plane's registration and syncs its resources.
+
+Set the kubeconfig context for the control plane:
+
+```bash
+CONTROL_PLANE_CONTEXT=<control-plane-context>
+```
 
 Create a namespace and a secret holding the registration token:
 
 ```bash
-kubectl --context=<control-plane-context> create namespace upbound-system
+kubectl --context="$CONTROL_PLANE_CONTEXT" create namespace upbound-system
 
-kubectl --context=<control-plane-context> --namespace upbound-system \
+kubectl --context="$CONTROL_PLANE_CONTEXT" --namespace upbound-system \
   create secret generic hub-connector-credentials \
   --from-literal=registrationToken="$REGISTRATION_TOKEN"
 ```
@@ -135,37 +142,33 @@ kubectl --context=<control-plane-context> --namespace upbound-system \
 Install the connector chart, pointing it at the hub:
 
 ```bash
-helm install hub-connector <connector-chart-ref> \
-  --kube-context <control-plane-context> \
+helm install hub-connector oci://xpkg.upbound.io/upbound/hub-connector \
+  --kube-context "$CONTROL_PLANE_CONTEXT" \
   --namespace upbound-system \
   --set connector.hub.url=<hub-url>
 ```
 
 Notes:
 
-- `connector.hub.tokenExchangeUrl` defaults to `connector.hub.url`. Set it only
-  when the token-exchange endpoint differs from the hub URL.
 - `connector.credentials.existingSecretRef.name` defaults to
   `hub-connector-credentials`. Override it only if you named the secret
   differently.
 - `connector.sync.limitToClusterRoles` limits which resources the connector syncs
   to those authorized by the listed ClusterRoles. It defaults to `crossplane-admin`,
   so only Crossplane resources are synced. Set it to `[]` to sync all resources.
-- `connector.hub.allowInsecure` defaults to `false`. Set it to `true` only when
-  the hub is served over plaintext HTTP, such as an in-cluster Service.
 
 ## Step 4: Verify the connector started
 
 Confirm the connector pods reach `Ready`:
 
 ```bash
-kubectl --context=<control-plane-context> --namespace upbound-system \
+kubectl --context="$CONTROL_PLANE_CONTEXT" --namespace upbound-system \
   wait --for=condition=Ready pod \
   --selector app.kubernetes.io/name=hub-connector --timeout=120s
 ```
 
 ```bash
-kubectl --context=<control-plane-context> --namespace upbound-system \
+kubectl --context="$CONTROL_PLANE_CONTEXT" --namespace upbound-system \
   get pods --selector app.kubernetes.io/name=hub-connector
 ```
 
@@ -178,7 +181,7 @@ View the control plane and its resources in Upbound Platform.
 
 1. Open the control planes view. The control plane you created shows a status of
    **Ready**.
-2. Open its resources view to see the resources synced from the target control plane.
+2. Open its resources view to see the resources synced from the control plane.
 
 </TabItem>
 <TabItem value="kubectl" label="kubectl">
@@ -213,7 +216,7 @@ kubectl --context=hub get --raw \
 Check the pod status and events:
 
 ```bash
-kubectl --context=<control-plane-context> --namespace upbound-system \
+kubectl --context="$CONTROL_PLANE_CONTEXT" --namespace upbound-system \
   describe pod --selector app.kubernetes.io/name=hub-connector
 ```
 
@@ -223,7 +226,7 @@ expired or was already used, reissue it (Step 2), update the secret, and restart
 the connector:
 
 ```bash
-kubectl --context=<control-plane-context> --namespace upbound-system \
+kubectl --context="$CONTROL_PLANE_CONTEXT" --namespace upbound-system \
   rollout restart deployment hub-connector
 ```
 
@@ -243,15 +246,13 @@ likely cannot reach the hub. See the next section.
 
 ### The connector can't reach the hub
 
-The connector pushes to `connector.hub.url` and exchanges tokens at the
-token-exchange endpoint. From the target control plane, confirm both URLs are
-correct and reachable, and that any firewall or network policy allows egress to
-the hub. If the hub is served over plaintext HTTP, set
-`connector.hub.allowInsecure=true`. Correct the values and upgrade the release:
+The connector pushes to the hub at `connector.hub.url`. From the control plane,
+confirm that URL is correct and reachable, and that any firewall or network
+policy allows egress to the hub. Correct the value and upgrade the release:
 
 ```bash
-helm upgrade hub-connector <connector-chart-ref> \
-  --kube-context <control-plane-context> \
+helm upgrade hub-connector oci://xpkg.upbound.io/upbound/hub-connector \
+  --kube-context "$CONTROL_PLANE_CONTEXT" \
   --namespace upbound-system \
   --reuse-values \
   --set connector.hub.url=<hub-url>
