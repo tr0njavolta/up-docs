@@ -1,5 +1,6 @@
 ---
 title: Hub
+slug: /
 sidebar_position: 0
 description: Upbound Hub is the central management layer of the Upbound Platform.
 ---
