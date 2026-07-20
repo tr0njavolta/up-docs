@@ -5,12 +5,12 @@ description: Install Hub with Helm against external Postgres and OIDC.
 ---
 
 This page walks you through installing and managing a self-hosted version of the
-Hub. Through this process, you will set up a PostgreSQL database, connect an
+Hub. Through this process, you set up a PostgreSQL database, connect an
 OIDC provider and configure your ingress routes.
 
 ## Prerequisites
 
-Before starting, work through [the prerequisites page](./prerequisites.md) and
+Before starting, work through [the prerequisites page][prerequisites] and
 confirm each item is ready. This page assumes you have:
 
 - A Kubernetes cluster with a Gateway API or Ingress controller installed and a
@@ -18,11 +18,11 @@ confirm each item is ready. This page assumes you have:
 - DNS records for the hostnames `api.<your-domain>` and `ui.<your-domain>`
   pointing at the cluster's load balancer or Gateway address
 - A reachable PostgreSQL database with credentials Hub can use. See [the
-  databases overview](./databases/overview.md) for version, extension, and
+  databases overview][overview] for version, extension, and
   authentication-mode guidance
 - An OIDC provider registered with Hub's callback URL
   `https://api.<your-domain>/oidc/callback`, with a group claim configured. See
-  [the OIDC overview](./oidc-configuration.md) for what Hub needs and how to set it up
+  [the OIDC overview][oidc-configuration] for what Hub needs and how to set it up
   per-provider
 
 You should also know:
@@ -34,7 +34,7 @@ You should also know:
 
 ## Install
 
-### 1. Create the Namespace
+### 1. Create the namespace
 
 ```bash
 kubectl create namespace hub
@@ -43,7 +43,7 @@ kubectl create namespace hub
 The rest of this guide installs all Hub resources into `hub`. Substitute your
 own namespace name if you prefer.
 
-### 2. Create the Postgres Credentials Secret
+### 2. Create the Postgres credentials secret
 
 Skip this step if you are using AWS RDS with IAM authentication. Instead, follow
 the corresponding section on the database section for your specific provider.
@@ -56,22 +56,24 @@ kubectl -n hub create secret generic hub-api-postgres \
   --from-literal=password='<your-postgres-password>'
 ```
 
-You will reference this Secret from `values.yaml` in step 4 via
+You reference this Secret from `values.yaml` in step 4 via
 `hub-api.postgresql.auth.passwordSecretRef`.
 
 :::note
-Hub does not require the Secret name `hub-api-postgres`. Any Secret in the same
+Hub doesn't require the Secret name `hub-api-postgres`. Any Secret in the same
 namespace as the release works as long as the key holding the password matches
 the `key` field you set in values.
 :::
 
-### 3. Create the OIDC Client-Secret Secret
+### 3. Create the OIDC client-secret secret
 
+<!-- vale Microsoft.Adverbs = NO -->
 Hub reads the OIDC client secret directly out of Helm values when it builds the
 bootstrap configuration. To keep the client secret out of your `values.yaml`
 file (and out of source control), pass it on the `helm install` command line via
-`--set-file` or `--set` rather than committing it. If your workflow requires the
+`--set-file` or `--set`. Don't commit it. If your workflow requires the
 value to live in a Kubernetes Secret you reconcile separately, create it now:
+<!-- vale Microsoft.Adverbs = YES -->
 
 ```bash
 kubectl -n hub create secret generic hub-api-oidc \
@@ -86,8 +88,7 @@ OIDC_CLIENT_SECRET=$(kubectl -n hub get secret hub-api-oidc \
   -o jsonpath='{.data.clientSecret}' | base64 -d)
 ```
 
-The variable `OIDC_CLIENT_SECRET` is used by the `helm install` command in step
-5.
+The `helm install` command in step 5 uses the `OIDC_CLIENT_SECRET` variable.
 
 ### 4. Write `values.yaml`
 
@@ -167,7 +168,7 @@ hub-api:
         key: password
 ```
 
-A few notes on the template:
+Notes on the template:
 
 - `global.gateway.create` controls whether the chart owns the Gateway resource.
   If your platform team already manages a shared Gateway, leave `create: false`
@@ -179,12 +180,12 @@ A few notes on the template:
   `host`/`port`/`database`/`user`/`sslmode` keys.
 
 :::note
-The chart exposes many more values than the ones shown here. See [the values
-reference](../reference/values.md) for the full surface. Anything not set in
+The chart exposes many more values than the ones shown here. See the values
+reference for the full surface. Anything not set in
 `values.yaml` falls back to the chart default.
 :::
 
-### 5. Install the Chart
+### 5. Install the chart
 
 Install the chart with `values.yaml` and the OIDC client secret passed inline:
 
@@ -195,7 +196,7 @@ helm install hub <chart-ref> \
   --set hub-api.api.sampleEmailBasedOIDCConfig.clientSecret="$OIDC_CLIENT_SECRET"
 ```
 
-If you did not extract the OIDC client secret into a shell variable in step 3,
+If you didn't extract the OIDC client secret into a shell variable in step 3,
 substitute the literal value (quoted) for `$OIDC_CLIENT_SECRET`.
 
 Wait for the install to finish and for all Pods to become Ready:
@@ -218,32 +219,31 @@ Check that all Hub Pods are Ready:
 kubectl -n hub get pods
 ```
 
-You should see Ready replicas for `hub-api` and `hub-webui`. The `hub-connector`
-Deployment is included in the umbrella chart but is not used by `hub-api`
-itself. It activates only when you install a connector on an observed cluster.
+You should see Ready replicas for `hub-api` and `hub-webui`. The umbrella chart includes the `hub-connector`
+Deployment, but `hub-api` itself doesn't use it. It activates only when you install a connector on an observed cluster.
 
-Open `https://ui.<your-domain>` in a browser. You should be redirected to your
+Open `https://ui.<your-domain>` in a browser. The browser should redirect to your
 OIDC provider for login, then returned to the Hub UI.
 
-If that flow succeeds, you should arrive at the Hub home page but have no access
-to resources since a fresh install has no registered control planes or role
-bindings by default. The next section will add those.
+If that flow succeeds, you arrive at the Hub home page but have no access
+to resources. A fresh install has no registered control planes or role
+bindings by default. The next section adds those.
 
 ## Configure
 
 The bootstrap steps below register your first ControlPlane and grant your OIDC
 admin group organisation-wide admin rights.
 
-### Bootstrap the First ControlPlane
+### Bootstrap the first control plane
 
-Apply a ControlPlane resource for the cluster (or clusters) you will register a
+Apply a ControlPlane resource for the cluster (or clusters) you register a
 `hub-connector` against. The example below registers a `production` ControlPlane
 in the `default` realm and trusts your OIDC IdentityProvider for user
 lookups on that ControlPlane.
 
 Save as `bootstrap-controlplane.yaml`:
 
-**TODO - set up the connection to the Hub API server to apply resources**
+<!--- TODO(nickthomson): set up connection to the hub API server to apply resources --->
 
 ```yaml
 apiVersion: hub.upbound.io/v1alpha1
@@ -268,9 +268,9 @@ in `hub-api.api.sampleEmailBasedOIDCConfig.providerName`. Hub uses that
 IdentityProvider to resolve users referenced by role bindings on this
 ControlPlane.
 
-### Mint a Registration Token
+### Mint a registration token
 
-After the ControlPlane is created, mint a registration token for it. The token
+After you create the ControlPlane, mint a registration token for it. The token
 is what `hub-connector` presents when it first contacts `hub-api`:
 
 ```bash
@@ -285,18 +285,17 @@ spec:
     name: production
 EOF
 ```
-
+<!-- vale write-good.Passive = NO -->
 Read the issued token off the resource's status and store it somewhere safe. The
-token is shown once. You will hand it to the `hub-connector` install on the
-observed cluster. The [architecture
-reference](../reference/architecture.md#authentication-flow) describes the
-token-exchange flow the connector uses. The [demo
-quickstart](../quickstart/connect-second-cluster.md#install-hub-connector-in-the-second-cluster)
-shows the standalone connector install pattern that carries over here, with the
+token is shown once. You hand it to the `hub-connector` install on the
+observed cluster. The standalone connector install pattern carries over here, with the
 connector's `connector.hub.url` pointing at your gateway instead of a
 Docker-network address.
+<!-- vale write-good.Passive = YES -->
 
-### Bootstrap the Admin OrganizationRoleBinding
+<!-- vale Google.Headings = NO -->
+### Bootstrap the admin OrganizationRoleBinding
+<!-- vale Google.Headings = YES -->
 
 Grant your OIDC admin group organisation-wide admin rights. The `name` on the
 `Group` subject must match the value Hub sees in the OIDC token's group claim,
@@ -330,7 +329,7 @@ Applying them post-install with `kubectl` (as above) keeps role bindings out of
 the chart values and makes them easier to change without a Helm upgrade.
 :::
 
-### Confirm Admin Access
+### Confirm admin access
 
 Refresh `https://ui.<your-domain>` in the browser you logged in with above. The
 role binding takes effect immediately:
@@ -339,25 +338,29 @@ role binding takes effect immediately:
   the ControlPlane list (with no resources yet, since it has no connector
   attached) and has full admin actions available.
 - A member of any other group sees the ControlPlane list but has no actions
-  available until additional role bindings are applied.
+  available until you apply additional role bindings.
 
+<!-- vale Google.Quotes = NO -->
 If login completes but the UI shows "no permissions", confirm:
+<!-- vale Google.Quotes = YES -->
 
 1. The group in your OIDC token matches the subject `name` in
    `bootstrap-org-admin.yaml` (including the `<providerName>:` prefix).
 2. Your OIDC provider is sending the group claim. Inspect the JWT at the
    provider's debug endpoint or in your browser's network tab.
 
-## Next Step
+## Next step
 
 You have a working self-hosted Hub. Before letting traffic that matters depend
-on it, work through [the production overview](./production-overview.md) for
+on it, work through [the production overview][production-overview] for
 sizing, high availability, autoscaling, RBAC, and upgrade guidance.
 
 To attach a control plane, install the standalone `hub-connector` chart on the
-observed cluster with the registration token you minted above. The [demo
-quickstart](../quickstart/connect-second-cluster.md#install-hub-connector-in-the-second-cluster)
-shows a worked example of the same install pattern against a Docker-network
-address; for self-hosted installs the connector's `connector.hub.url` and
+observed cluster with the registration token you minted above. For self-hosted installs the connector's `connector.hub.url` and
 `connector.hub.tokenExchangeUrl` point at the public hostname of your gateway
 instead, and `connector.hub.allowInsecure` stays at its default of `false`.
+
+[oidc-configuration]: /hub/howtos/oidc-configuration
+[overview]: /hub/howtos/databases/overview
+[prerequisites]: /hub/howtos/prerequisites
+[production-overview]: /hub/howtos/production-overview

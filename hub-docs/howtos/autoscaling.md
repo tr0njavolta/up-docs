@@ -7,11 +7,11 @@ description: Scale hub-api with the Horizontal Pod Autoscaler.
 This page covers how to scale `hub-api` Pods horizontally with the Kubernetes
 Horizontal Pod Autoscaler.
 
-## Horizontal Pod Autoscaler
+## Horizontal pod autoscaler
 
 The chart includes an opt-in `HorizontalPodAutoscaler` for `hub-api`. When
 enabled, the HPA scales the `hub-api` Deployment based on observed CPU
-utilisation against the Pod's CPU request.
+utilization against the Pod's CPU request.
 
 Enable it in your `values.yaml`:
 
@@ -32,29 +32,34 @@ hub-api:
       targetCPUUtilizationPercentage: 70
 ```
 
-The HPA requires the Kubernetes metrics server to be running in the cluster.
-Without it, the HPA cannot read CPU metrics and will not scale.
+The HPA requires a running Kubernetes metrics server in the cluster.
+Without it, the HPA can't read CPU metrics and doesn't scale.
 
+<!-- vale write-good.Passive = NO -->
 :::note
 The HPA needs CPU `requests` set on the `hub-api` container to compute
 utilisation. The chart leaves `resources` empty by default. Set requests and
-limits explicitly before enabling the HPA, or scaling decisions will be
+limits explicitly before enabling the HPA, or scaling decisions are
 undefined.
 :::
+<!-- vale write-good.Passive = YES -->
 
-### Custom Metrics
+### Custom metrics
 
 CPU and memory are the only metrics the chart wires today. Hub-specific signals
-(query rate against `hub-api`, ingestion backlog from `hub-connector`, Postgres
-connection saturation) are exposed via Prometheus but are not yet pre-wired into
+(hub-api query rate, hub-connector ingestion backlog, PostgreSQL connection
+saturation) are available via Prometheus. These aren't yet integrated into
 the chart's HPA template. If you need to scale on those signals, install a
-custom metrics adapter such as the Prometheus Adapter and manage your own
+custom metrics adapter such as the Prometheus Adapter. Then manage your own
 `HorizontalPodAutoscaler` resource alongside the chart. Native chart support for
 custom metrics is on the roadmap.
 
-## Next Step
+## Next step
 
-- [Production overview](./production-overview.md). Review the rest of the hardening
+- [Production overview][production-overview]. Review the rest of the hardening
   checklist.
-- [High availability](./high-availability.md). Pair autoscaling with replica
+- [High availability][high-availability]. Pair autoscaling with replica
   counts, PodDisruptionBudgets, and anti-affinity.
+
+[high-availability]: /hub/howtos/high-availability
+[production-overview]: /hub/howtos/production-overview
