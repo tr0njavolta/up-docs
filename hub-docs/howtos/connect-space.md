@@ -190,13 +190,21 @@ View the space, its resources, and control planes in Upbound Platform.
 <TabItem value="console" label="Console">
 
 1. Open the spaces view. The space you created shows a status of **Ready**.
+
+   ![The Upbound Platform spaces view showing the connected space with a Ready status.](/img/hub-connect-space-ready.png)
+
 2. Open the control planes view. Two kinds of control plane appear for the space:
    - The representative control plane for the space, named `space-<space-name>`,
      in the `default` realm.
    - The space's member control planes, named `<space-name>.<control-plane-name>`.
      Each is created in the realm that matches its namespace in the space.
+
+   ![The control planes view showing the space representative control plane alongside its member control planes.](/img/hub-connect-space-control-planes.png)
+
 3. Open a control plane's resources view to see the resources synced from that
    control plane.
+
+   ![A member control plane resources view listing its synced resources.](/img/hub-connect-space-resources.png)
 
 </TabItem>
 <TabItem value="kubectl" label="kubectl">
