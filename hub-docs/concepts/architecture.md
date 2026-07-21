@@ -27,6 +27,7 @@ flowchart TB
     ing --> webui
     webui <--> api
     api --> pg
+  ing <--> api
   end
 
   browser["Browser / CLI clients"]
