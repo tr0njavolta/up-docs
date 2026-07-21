@@ -1,29 +1,30 @@
 ---
 title: Database setup
 sidebar_position: 1
-description: PostgreSQL requirements and authentication modes for Hub.
+description: PostgreSQL Requirements and authentication modes for Hub.
 ---
 
-This page describes what Hub requires from its PostgreSQL database, the
-authentication modes the chart supports, and how to pick a provisioning path for
-your cloud.
+This page describes hub requirements for the PostgreSQL database you provide.
+You learn about the authentication modes supported in the hub Helm chart and
+how to choose a provisioning path for your cloud.
 
-Unlike the demo, a self-hosted Hub points at an externally managed PostgreSQL
-instance that you provide. Because the chart does not deploy Postgres for you in
-this path, you provision the database, create a role for `hub-api`, and supply
-the connection details through Helm values.
+The hub requires an externally managed PostgreSQL instance that you provision,
+create `hub-api` roles for, and give connection details through Helm values.
 
-## Postgres Requirements
+<!-- vale Google.Headings = NO -->
+## PostgreSQL requirements
+<!-- vale Google.Headings = YES -->
 
 `hub-api` is a PostgreSQL client that holds long-lived connections and runs
-schema migrations on startup. The database you provide must satisfy the
-following:
+schema migrations on startup. 
+
+Your database must have:
 
 - **PostgreSQL version**: 18 or newer. Hub's schema uses Postgres 18's native
   `uuidv7()` function as the default for primary keys, so earlier major versions
-  cannot run the migrations. Any actively-supported 18.x release is acceptable,
+  can't run the migrations. Any actively supported 18.x release is acceptable,
   including managed offerings (AWS RDS, GCP Cloud SQL, Azure Database for
-  PostgreSQL) on Postgres 18 engine versions.
+  PostgreSQL) on PostgreSQL 18 engine versions.
 - **Required extensions**: `hub-api` runs `CREATE EXTENSION IF NOT EXISTS
   hstore` from its first migration. The role that runs migrations needs
   privileges to create that extension, or a database administrator must create
@@ -37,7 +38,7 @@ following:
   mainstream managed Postgres service.
 - **A dedicated database and role**: provision a database for Hub (the default
   name is `postgres`, but any name works) and a role with full privileges on it.
-  Hub does not share schemas with other applications.
+  Hub doesn't share schemas with other applications.
 - **TLS**: required for any production deployment. IAM authentication (see
   below) forces TLS regardless of the `sslmode` Helm value.
 - **Network reachability**: the database must be reachable from the namespace
@@ -49,20 +50,20 @@ following:
 Hub holds a small connection pool per `hub-api` Pod. Plan for `replicas x
 pool_size` connections from the application tier, plus the migration job that
 runs on every `helm upgrade`. The pool size is conservative by default. The
-[sizing guide](../sizing.md) covers tuning it.
+[sizing guide][sizing] covers tuning it.
 :::
 
-## Authentication Modes
+## Authentication modes
 
 The chart exposes two authentication modes through
 `hub-api.postgresql.auth.mode`. Pick one before you provision the database role.
 
-### Password Authentication
+### Password authentication
 
 Set `hub-api.postgresql.auth.mode=password` (the default). `hub-api` connects
 using a static username and password.
 
-The password may be supplied two ways:
+You can supply the password two ways:
 
 - **Kubernetes Secret reference (recommended).** Create a Secret in the Hub
   namespace containing the password under a key, then point the chart at it:
@@ -83,7 +84,7 @@ The password may be supplied two ways:
   ```
 
 - **Inline value (not recommended).** Pass the password directly via
-  `hub-api.postgresql.auth.password`. The value is written into the rendered
+  `hub-api.postgresql.auth.password`. The chart writes the value into the rendered
   manifest, which means it appears in `helm get values`, in any CD tool's
   manifest cache, and in cluster audit logs. Use this only for quick
   experiments.
@@ -91,12 +92,13 @@ The password may be supplied two ways:
 Password mode works against any PostgreSQL, whether self-managed, AWS RDS, GCP
 Cloud SQL, or Azure Database for PostgreSQL.
 
-### Cloud IAM Authentication
-
+### Cloud IAM authentication
+<!-- vale write-good.Passive = NO -->
 Set `hub-api.postgresql.auth.mode=iam` and `hub-api.postgresql.auth.cloud=aws`
 to authenticate using short-lived IAM tokens minted per connection. No static
-password is stored anywhere, and Hub forces `sslmode=require` at minimum, since
+password is stored anywhere, and the hub forces `sslmode=require` at minimum, since
 cloud Postgres providers reject IAM auth over plaintext.
+<!-- vale write-good.Passive = YES -->
 
 ```yaml
 hub-api:
@@ -113,23 +115,23 @@ hub-api:
         region: <aws-region>
 ```
 
-The chart wires the IAM credentials through the `hub-api` ServiceAccount, so the
+The chart wires the IAM credentials through the `hub-api` ServiceAccount. The
 underlying credential source is whatever the cluster provides (for AWS: IRSA or
 EKS Pod Identity). The provider-specific sub-page covers the exact setup.
 
 :::note
-IAM auth requires the database role to be linked to the IAM identity at the
-Postgres side (such as `GRANT rds_iam TO hub;` on AWS RDS). The provider
+IAM auth requires you link the database role to the IAM identity at the
+PostgreSQL side (such as `GRANT rds_iam TO hub;` on AWS RDS). The provider
 sub-page walks through this.
 :::
 
-## Choose Your Provider
-
+## Choose your provider
+<!-- vale write-good.Passive = NO -->
 The chart's auth seam is provider-neutral, but only **AWS RDS** is wired
 end-to-end today. See the provider page for full provisioning and IAM setup
 steps:
 
-- [AWS RDS](./aws-rds.md), which covers provisioning PostgreSQL on Amazon RDS and
+- [AWS RDS][aws-rds], which covers provisioning PostgreSQL on Amazon RDS and
   connecting Hub using either password or IAM authentication.
 
 **GCP Cloud SQL** and **Azure Database for PostgreSQL** are both supported today
@@ -139,15 +141,20 @@ and Hub treats them like any other PostgreSQL. Their managed IAM-authentication
 paths (Cloud SQL IAM database authentication and Azure AD authentication for
 PostgreSQL) are on the roadmap but not yet implemented. The values
 `hub-api.postgresql.auth.cloud=gcp` and `=azure` are reserved for that work and
-are not accepted today.
+aren't accepted today.
+<!-- vale write-good.Passive = YES -->
 
 If you self-manage Postgres, treat it the same way. Provision the role and
 password yourself, then point Hub at the host with password mode.
 
-## Next Step
+## Next step
 
 Pick your provider and provision the database, then return to the install
 procedure:
 
-- [Provision PostgreSQL on AWS RDS](./aws-rds.md)
-- [Install Hub against your provisioned database](../install.md)
+- [Provision PostgreSQL on AWS RDS][aws-rds]
+- [Install Hub against your provisioned database][install]
+
+[aws-rds]: /hub/howtos/databases/aws-rds
+[install]: /hub/howtos/install
+[sizing]: /hub/howtos/sizing

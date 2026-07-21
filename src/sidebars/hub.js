@@ -7,14 +7,6 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Quickstart',
-      items: [
-        'quickstart/demo',
-        'quickstart/connect-second-cluster',
-      ],
-    },
-    {
-      type: 'category',
       label: 'Concepts',
       items: [
         'concepts/architecture',

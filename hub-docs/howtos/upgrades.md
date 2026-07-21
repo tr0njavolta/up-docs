@@ -5,30 +5,33 @@ description: Upgrade Hub and understand schema migrations and rollbacks.
 ---
 
 This page walks you through upgrading a running Hub installation to a newer
-chart version, including how schema migrations are applied and what to consider
+chart version. It covers how the chart applies schema migrations and what to consider
 before rolling back.
 
-## How Releases Work
+## How releases work
 
+<!-- vale Microsoft.Adverbs = NO -->
+<!-- vale write-good.Passive = NO -->
 Hub releases as a single train. The `hub` umbrella chart pins matching versions
 of all three binaries (`hub-api`, `hub-connector`, and `hub-webui`), and they
-are released together at the same chart version. Each subchart can be installed
-and managed separately, see the feature compatibility document to understand
+are released together at the same chart version. You can install and manage each subchart
+separately, see the feature compatibility document to understand
 compatibility guarantees between versions.
+<!-- vale Microsoft.Adverbs = YES -->
 
 Schema migrations are applied automatically as part of every chart upgrade. The
 chart runs the embedded migration tool in a dedicated Job, registered as a Helm
-`pre-upgrade` hook. Helm blocks on that Job until it succeeds before it rolls
-out any new `hub-api` Pods, so a single Job applies the schema change once
+`pre-upgrade` hook. Helm blocks on that Job until it succeeds before rolling
+out any new `hub-api` Pods. A single Job applies the schema change once,
 rather than every replica racing it during a rolling update. Only after the
 migration Job succeeds does Helm proceed to roll the new `hub-api` Pods.
 
 Migrations are **forward-only**. The migration tool has no down-migrations. Once
 a newer chart version has run its migrations against your database, the schema
-reflects the newer version, and there is no automated path back to the previous
+reflects the newer version. There's no automated path back to the previous
 schema.
 
-## Plan an Upgrade
+## Plan an upgrade
 
 Before running `helm upgrade`, work through the following:
 
@@ -39,7 +42,7 @@ Before running `helm upgrade`, work through the following:
    version currently installed against the version you intend to install. If you
    are skipping multiple versions, read the notes for every intermediate
    release. Migrations from each are applied in order, and a step you skip may
-   include a breaking values change you need to honour.
+   include a breaking values change you need to honor.
 3. **Diff your values.** If you keep your `values.yaml` in source control,
    compare it against the new chart's defaults. Run `helm show values
    <chart-ref> --version <new-version>` to see the new defaults and check for
@@ -59,11 +62,11 @@ Before running `helm upgrade`, work through the following:
    can take longer. Notify any clients of `hub-api` of the expected window.
 
 :::warning
-Database migrations cannot be reversed automatically. Always take a backup of
+Database migrations can't be reversed automatically. Always take a backup of
 the Hub database before upgrading.
 :::
 
-## Upgrade Procedure
+## Upgrade procedure
 
 The upgrade is a standard `helm upgrade` against the `hub` chart.
 
@@ -117,12 +120,12 @@ The upgrade is a standard `helm upgrade` against the `hub` chart.
 :::note
 If the migration Job fails, the `pre-upgrade` hook fails and `helm upgrade`
 aborts before any new Pods roll out. Your existing release keeps running
-unchanged. The failed Job is retained until the next upgrade attempt, so you can
-inspect its logs, fix the underlying problem (such as a missing Postgres
+unchanged. The failed Job is retained until the next upgrade attempt. You can
+inspect its logs, fix the underlying problem (such as a missing PostgreSQL
 privilege), and re-run the upgrade.
 :::
 
-## Roll Back
+## Roll back
 
 Helm supports rolling the chart back with `helm rollback`, but Hub's database
 migrations are forward-only and Helm has no awareness of the schema. A naive
@@ -133,7 +136,7 @@ Before running `helm rollback`, check the release notes for the version range
 you are crossing. Two cases:
 
 - **The release notes state the target version is schema-compatible with the
-  schema currently in your database.** This is the common case for minor or
+  schema currently in your database.** This scenario is the common case for minor or
   patch rollbacks where no migration ran, or where the migrations between the
   two versions are additive only. In this case `helm rollback` is safe:
 
@@ -143,23 +146,26 @@ you are crossing. Two cases:
 
     Find `<previous-revision>` with `helm history hub -n hub`.
 
-- **The release notes state the target version is not schema-compatible with the
-  current schema.** A `helm rollback` alone will not work. You need to restore
+- **The release notes state the target version isn't schema-compatible with the
+  current schema.** A `helm rollback` alone doesn't work. You need to restore
   the database to a backup taken before the offending upgrade, then run `helm
   rollback` to align the chart. Plan for downtime; treat this as a database
   restore operation, not a Helm operation.
 
-If the release notes do not state compatibility explicitly, assume the rollback
+If the release notes don't state compatibility explicitly, assume the rollback
 is unsafe and contact support before proceeding.
 
 :::warning
-`helm rollback` does not reverse database migrations. Rolling the chart back
-without verifying schema compatibility can leave `hub-api` unable to start, or
-running with subtly inconsistent behaviour against a schema it does not
+`helm rollback` doesn't reverse database migrations. Rolling the chart back
+without verifying schema compatibility can leave `hub-api` unable to start. It can
+also run with subtly inconsistent behavior against a schema it doesn't
 understand.
 :::
 
-## Next Step
+## Next step
 
-- [Production overview](./production-overview.md). The rest of the production hardening
+- [Production overview][production-overview]. The rest of the production hardening
   checklist.
+<!-- vale write-good.Passive = YES -->
+
+[production-overview]: /hub/howtos/production-overview

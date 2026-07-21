@@ -4,23 +4,23 @@ sidebar_position: 2
 description: Enable optional Hub features through Helm values.
 ---
 
-Hub keeps a number of features behind feature flags. Each flagged feature is at
-either the alpha or beta stage of the [feature lifecycle](./feature-releases.md),
+Hub keeps several features behind feature flags. Each flagged feature is at
+either the alpha or beta stage of the [feature lifecycle][feature-releases],
 which sets its default state:
-
+<!-- vale write-good.Passive = NO -->
 - **Alpha** features are disabled by default. You opt in explicitly.
 - **Beta** features are enabled by default. The flag stays available so you can
   turn the feature off.
 
 Once a feature reaches general availability its flag is removed and the feature
-is always on, so GA features do not appear here. See the [feature
-lifecycle](./feature-releases.md) for the stability, support, and
+is always on, so GA features don't appear here. See the [feature
+lifecycle][feature-releases] for the stability, support, and
 API-compatibility expectations at each stage.
 
 ## How feature flags work
 
 `hub-api` embeds a flag server that speaks
-[OFREP](https://openfeature.dev/specification/appendix-c/) and reads its flag
+[OFREP][ofrep] and reads its flag
 definitions from a JSON file. The chart generates that file as a ConfigMap from
 the `hub-core.api.features.*` values and mounts it into the `hub-api` Pod, so you
 toggle features through Helm values rather than editing flag definitions by
@@ -39,6 +39,7 @@ each feature's maturity: alpha features default to `false`, beta features to
 `true`. The **Underlying flag** column is the name that appears in the generated
 `flags.json` and in the `hub-api` startup logs.
 
+<!-- vale Google.WordList = NO -->
 | Helm value | Underlying flag | Default | What it enables |
 |------------|-----------------|---------|-----------------|
 | `hub-core.api.features.agentSessions.enabled` | `enable-agent-sessions` | `false` | The `agent.hub.upbound.io/v1alpha1` API group, adding chat and session endpoints under `/apis/agent.hub.upbound.io/v1alpha1/` for Crossplane troubleshooting. Requires an Anthropic API key (see below). |
@@ -50,7 +51,7 @@ each feature's maturity: alpha features default to `false`, beta features to
 
 ### Agent sessions require an Anthropic API key
 
-The agent feature calls the Anthropic API and does not start without a key.
+The agent feature calls the Anthropic API and doesn't start without a key.
 Provide it through a Kubernetes Secret and point the chart at it:
 
 ```yaml
@@ -106,7 +107,7 @@ helm upgrade --install hub <chart-ref> \
 ```
 
 The upgrade rolls the `hub-api` Pods, and the feature becomes active once they
-are `Ready`. The `hub-api` startup logs enumerate every flag it evaluates, so
+are `Ready`. The `hub-api` startup logs list every flag it evaluates, so
 you can confirm the running binary picked up your change.
 
 Disabling a beta feature works the same way in reverse. Set its value to `false`
@@ -120,7 +121,12 @@ Two escape hatches exist for teams that manage flag definitions themselves:
   ConfigMap you maintain (it must contain a `flags.json` key). The chart then
   skips generating one from `features.*`, and you own the flag definitions.
 - **OFREP endpoint.** The flag server serves OFREP on port `8016` for
-  client-side evaluation. It is not exposed publicly by default. To route it
+  client-side evaluation. It's not exposed publicly by default. To route it
   through the public HTTPRoute, set
   `hub-core.api.featureFlags.httpRoute.enabled=true`, which mounts it at
   `/ofrep`.
+
+<!-- vale write-good.Passive = YES -->
+
+[feature-releases]: /hub/reference/feature-releases
+[ofrep]: https://openfeature.dev/specification/appendix-c/
