@@ -4,98 +4,99 @@ sidebar_position: 2
 description: Provision Amazon RDS for PostgreSQL and connect Hub with IAM auth.
 ---
 
-This page walks you through provisioning Amazon RDS for PostgreSQL. You'll grant
+This page walks you through provisioning Amazon RDS for PostgreSQL. You grant
 Hub a database role that authenticates with AWS IAM, then point the chart at the
 resulting endpoint.
 
 IAM authentication is the recommended path for self-hosted Hub on AWS. The
 `hub-api` Pod mints a short-lived RDS auth token per database connection from
 credentials supplied by IAM Roles for Service Accounts (IRSA) or EKS Pod
-Identity. No static database password is stored in the cluster.
+Identity. Your cluster doesn't store a static database password.
 
-A password-auth fallback is documented at the end of the page for environments
-that cannot use IAM.
+
+If you can't use IAM in your environment, review the [password-auth
+fallback](#password-authentication-fallback) instructions.
 
 ## Prerequisites
-
+<!-- vale write-good.Passive = NO -->
 Before you begin, have the following ready:
 
 - An AWS account with permissions to create RDS instances, IAM roles, IAM
-  policies, and (if you do not already have one) an OIDC provider for your EKS
+  policies, and (if you don't already have one) an OIDC provider for your EKS
   cluster.
 - A Kubernetes cluster running on AWS with a working AWS workload-identity
   mechanism: either [IAM Roles for Service
-  Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html)
+  Accounts][iam-roles-for-service-accounts]
   on EKS or [EKS Pod
-  Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html).
+  Identity][eks-pod-identity].
   Self-managed clusters can use IRSA as long as the API server's
   service-account-issuer is registered as an IAM OIDC provider.
 - `psql` (or another PostgreSQL client) installed locally, reachable to the RDS
   instance for the one-time bootstrap. A bastion or VPN is fine.
+<!-- vale write-good.Passive = YES -->
 
 :::note
 This page assumes you have already read [the self-hosted
-overview](../../concepts/architecture.md) and [the database overview](./overview.md). It does
+overview][architecture] and [the database overview][overview]. It does
 not repeat generic Postgres requirements covered there.
 :::
 
+<!-- vale Microsoft.HeadingAcronyms = NO -->
+<!-- vale Google.Headings = NO -->
 ## Provision RDS
+<!-- vale Google.Headings = YES -->
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
-Provision the database with whichever IaC tool you already use. The full
-provisioning walkthrough lives in the AWS documentation. This section lists only
-the settings that matter for Hub.
+Provision the database with whichever IaC tool you already use. This section
+lists only the settings that matter for Hub.
 
 Read these AWS guides end-to-end before provisioning:
 
-- [Creating a PostgreSQL DB
-  instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html)
-- [IAM database authentication for MariaDB, MySQL, and
-  PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
-- [VPC security groups for
-  RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.RDSSecurityGroups.html)
+- [Creating a PostgreSQL DB instance][creating-a-postgresql-db-instance]
+- [IAM database authentication for MariaDB, MySQL, and PostgreSQL][iam-database-authentication-for-mariadb-mysql-and-postgresql]
+- [VPC security groups for RDS][vpc-security-groups-for-rds]
 
 When you create the instance, set the following:
 
 - **Engine**: PostgreSQL 18 or newer.
-- **IAM database authentication**: enabled. This is a per-instance flag. You
-  cannot turn it on for a single database or role without it being enabled at
-  the instance level.
-- **Network**: place the instance in private subnets and attach a security group
-  that allows inbound TCP 5432 from the security group attached to the worker
+- **IAM database authentication**: enabled. This setting works as a per-instance
+  flag. You must enable it at the instance level before you can use it for any
+  single database or role.
+ - **Network**: place the instance in private subnets
+  and attach a security group that allows inbound TCP 5432 from the security group attached to the worker
   nodes that run `hub-api`.
-- **TLS**: RDS terminates TLS by default. Note the CA bundle you will need to
+- **TLS**: RDS terminates TLS by default. Note the CA bundle you need to
   trust, since RDS rotates these on a published schedule.
 
 Record three values once the instance is available:
 
-- The RDS endpoint hostname (e.g.
-  `hub.cluster-xxxx.us-east-1.rds.amazonaws.com`).
-- The instance's **DbiResourceId** (a string starting with `db-…`). You can find
+- the RDS endpoint hostname (for example,`hub.cluster-xxxx.us-east-1.rds.amazonaws.com`).
+- the instance's **DbiResourceId** (a string starting with `db-…`). You can find
   it in the RDS console under the instance's **Configuration** tab, or via `aws
-  rds describe-db-instances`. The IAM policy you create later targets this ID,
+  rds describe-db-instances`. An IAM policy you create later targets this ID,
   not the instance name.
-- The AWS region (e.g. `us-east-1`).
+- the AWS region (for example, `us-east-1`).
 
 :::warning
 Enabling IAM database authentication on an existing instance triggers a reboot.
 Schedule it.
 :::
 
-## Configure IAM Authentication
+## Configure IAM authentication
 
 IAM auth for RDS has three sides that must agree:
 
 1. An IAM role the `hub-api` Pod can assume.
 2. A policy on that role granting `rds-db:connect` for the database user Hub
-   will log in as.
+   logs in as.
 3. A PostgreSQL role with the same name as the IAM user, granted the `rds_iam`
    role inside the database.
 
-### Create the Database Role
+### Create the database role
 
-Connect to the instance as the master user and create the role Hub will use. The
-role must be granted `rds_iam` for RDS to accept IAM-issued tokens for it, and
-it needs ownership of the Hub database so migrations can create and alter
+Connect to the instance as the master user and create the role Hub uses. The
+role needs the `rds_iam` grant so RDS accepts IAM-issued tokens for it. It also
+needs ownership of the Hub database so migrations can create and alter
 objects.
 
 ```sql
@@ -124,11 +125,11 @@ CREATE EXTENSION IF NOT EXISTS hstore;
 
 :::note
 `rds_iam` and password authentication are mutually exclusive on RDS. A role
-granted `rds_iam` cannot also log in with a password. Do not set a password on
+granted `rds_iam` can't also log in with a password. Don't set a password on
 `hub`.
 :::
 
-### Create the IAM Policy
+### Create the IAM policy
 
 The policy below grants `rds-db:connect` for the `hub` database role on a
 specific RDS instance. Replace `<region>`, `<account-id>`, and
@@ -159,12 +160,12 @@ aws iam create-policy \
 
 Record the resulting policy ARN.
 
-### Bind the Policy to the hub-api ServiceAccount
+### Bind the policy to the hub-api ServiceAccount
 
 Pick one of the two binding mechanisms below. IRSA is older and works on any EKS
 cluster with an OIDC provider. Pod Identity is simpler to manage when available.
 
-#### Option A: IAM Roles for Service Accounts (IRSA)
+#### Option A: IAM roles for service accounts (IRSA)
 
 Confirm your EKS cluster has an IAM OIDC provider:
 
@@ -173,13 +174,13 @@ aws eks describe-cluster --name <cluster-name> \
   --query "cluster.identity.oidc.issuer" --output text
 ```
 
-If the issuer URL is not yet registered with IAM, follow [Create an IAM OIDC
-provider](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
+If the issuer URL isn't yet registered with IAM, follow [Create an IAM OIDC
+provider][create-an-iam-oidc-provider]
 before continuing.
 
 Save this as `hub-api-trust-policy.json`, substituting your account ID, region,
 and the OIDC provider hostname returned above. The ServiceAccount name `hub-api`
-and namespace `hub` must match what the chart will create.
+and namespace `hub` must match what the chart creates.
 
 ```json
 {
@@ -214,14 +215,14 @@ aws iam attach-role-policy \
   --policy-arn <hub-rds-connect-policy-arn>
 ```
 
-When you install Hub, the chart will create the `hub-api` ServiceAccount. You
-will annotate it with the role ARN through Helm values (shown in the next
+When you install Hub, the chart creates the `hub-api` ServiceAccount. You
+annotate it with the role ARN through Helm values (shown in the next
 section).
 
-#### Option B: EKS Pod Identity
+#### Option B: EKS pod identity
 
 [EKS Pod
-Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html)
+Identity][eks-pod-identity]
 replaces the OIDC trust policy with a simpler ServiceAccount-to-role association
 managed by EKS.
 
@@ -241,7 +242,7 @@ Create a role whose trust policy lets the Pod Identity agent assume it:
 ```
 
 Attach the RDS connect policy as in Option A, then create the association after
-Hub is installed:
+you install hub:
 
 ```bash
 aws eks create-pod-identity-association \
@@ -251,17 +252,19 @@ aws eks create-pod-identity-association \
   --role-arn arn:aws:iam::<account-id>:role/hub-api
 ```
 
+<!-- vale write-good.Passive = NO -->
 With Pod Identity, the ServiceAccount itself needs no annotations. The
 association is keyed by namespace and ServiceAccount name on the EKS side.
 
-## Configure Hub
+## Configure hub
 
 The IAM-auth Helm values omit any password Secret. `hub-api` reads the auth mode
 and cloud from environment variables emitted by the chart. It then builds an RDS
-auth token from the Pod's IAM credentials and uses that token as the PostgreSQL
+auth token from the Pod's IAM credentials. It uses that token as the PostgreSQL
 password on every new pool connection. TLS is required: the chart forces
 `sslmode=require` whenever IAM mode is selected, even if you leave
 `postgresql.sslmode` unset.
+<!-- vale write-good.Passive = YES -->
 
 Save this as `values.yaml`, filling in the placeholders:
 
@@ -296,12 +299,12 @@ helm upgrade --install hub <chart-ref> \
   -f values.yaml
 ```
 
-If you are reaching this page from [the self-hosted install
-guide](../install.md), merge the snippet above into the `values.yaml` you are
-already building rather than running a separate install.
+If you reached this page from [the self-hosted install
+guide][install], merge the snippet above into the `values.yaml` you're
+already building. Don't run a separate install.
 
 :::note
-The chart's `postgresql.connectionString` value is ignored when `auth.mode=iam`.
+The chart ignores its `postgresql.connectionString` value when `auth.mode=iam`.
 Use the discrete `host`, `port`, `database`, and `user` fields.
 :::
 
@@ -318,7 +321,7 @@ starts. Both use the same IAM auth path, so a successful rollout means both the
 migrator and the server authenticated against RDS.
 
 If the Pod is crash-looping, check its logs for one of these:
-
+<!-- vale write-good.Passive = NO -->
 - `IAM database auth requires TLS`. `postgresql.sslmode` was set to `disable`.
   Remove the override or set it to `require`.
 - `database auth aws region is required`. `postgresql.auth.aws.region` is empty
@@ -326,15 +329,16 @@ If the Pod is crash-looping, check its logs for one of these:
   `values.yaml`.
 - `PAM authentication failed` (in the RDS log). The IAM role is missing
   `rds-db:connect` for the resource, the DbiResourceId in the policy is wrong,
-  or the database role was not granted `rds_iam`.
+  or the database role wasn't granted `rds_iam`.
 
-Finally, log in to Hub and confirm at least one ControlPlane has been registered
+Log in to Hub and confirm at least one ControlPlane has been registered
 or can be created. Schema is in place when the UI lists resources without
 errors.
+<!-- vale write-good.Passive = YES -->
 
-## Password Authentication (Fallback)
+## Password authentication (fallback)
 
-Use this section only if you cannot use IAM authentication, such as when running
+Use this section only if you can't use IAM authentication, such as when running
 outside AWS or on a Kubernetes cluster without workload identity. Password mode
 stores a long-lived credential in a Secret. Rotate it through whatever
 secret-management tool your organisation already uses.
@@ -365,7 +369,7 @@ hub-api:
         key: password
 ```
 
-The database role must be created with a password rather than the `rds_iam`
+Create the database role with a password rather than the `rds_iam`
 grant:
 
 ```sql
@@ -376,7 +380,17 @@ GRANT ALL PRIVILEGES ON DATABASE hub TO hub;
 Everything else (TLS, security groups, schema bootstrap) works the same as the
 IAM path.
 
-## Next Step
+## Next step
 
-Return to [the self-hosted install guide](../install.md) to finish wiring Hub
+Return to [the self-hosted install guide][install] to finish wiring Hub
 against the database you just provisioned.
+
+[architecture]: /hub/concepts/architecture
+[create-an-iam-oidc-provider]: https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
+[creating-a-postgresql-db-instance]: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html
+[eks-pod-identity]: https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html
+[iam-database-authentication-for-mariadb-mysql-and-postgresql]: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html
+[iam-roles-for-service-accounts]: https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html
+[install]: /hub/howtos/install
+[overview]: /hub/howtos/databases/overview
+[vpc-security-groups-for-rds]: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.RDSSecurityGroups.html

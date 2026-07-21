@@ -1,49 +1,56 @@
 ---
 title: Prerequisites
 sidebar_position: 1
-description: Cluster, ingress, DNS, Postgres, and OIDC requirements for a self-hosted Hub.
+description: Cluster, ingress, Domain Name System, Postgres, and OIDC requirements for a self-hosted Hub.
 ---
 
-This page is the pre-flight checklist your cluster and surrounding
-infrastructure must satisfy before you install and manage self-hosted Hub.
+Before you start the installation process, this page helps you understand
+the requirements necessary to best support the hub. 
 
-Unlike the demo, a self-hosted install relies on externally-managed Postgres, an
-external OIDC provider, and a real TLS certificate. You are required to bring
-those yourself.
+<!-- vale write-good.Passive = NO -->
+This pre-flight checklist is required before you move to the [installation]
+step.
+<!-- vale write-good.Passive = YES -->
 
-Work through every section below. The [install page](./install.md) assumes each
-item here is already in place.
+## Cluster requirements
 
-## Cluster Requirements
+First, you need a Kubernetes cluster.
 
-You need a Kubernetes cluster that you administer with `cluster-admin`.
+The cluster must:
 
-- **Kubernetes version**: 1.29 or later. The chart relies on stable Gateway API
+- Run on version 1.29 or later. The chart relies on stable Gateway API
   CRDs and on Pod security primitives available in 1.29+. Earlier versions are
   not tested and may render templates that the API server rejects.
-- **Cluster-admin access**: the install creates a Namespace, ServiceAccounts,
+- Allow you `cluster-admin` access. The install creates a Namespace, ServiceAccounts,
   RBAC, Deployments, Services, Secrets, and (optionally) Gateway API resources.
   You can scope the install RBAC down after first install. See the chart's
   generated manifests for the bound roles.
 
 :::note
-Hub does not require any cluster-scoped operators beyond what you choose to use
+Hub doesn't require any cluster-scoped operators beyond what you choose to use
 for ingress, TLS, or Postgres. The chart installs into a single Namespace.
 :::
 
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 ## Ingress and TLS
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
-`hub-api` and `hub-webui` are served over HTTPS on operator-provided hostnames.
-You choose how traffic enters the cluster. Whatever path you pick must route to
-both Services and present a TLS certificate that end users' browsers trust.
 
+Hub serves the `hub-api` and `hub-webui` services over HTTPS on
+operator-provided hostnames. You can use any conformant controller for
+outside traffic to reach them.
+
+<!-- vale Microsoft.Adverbs = NO -->
 The chart can render Kubernetes Gateway API resources for you when you set
-`global.gateway.enabled=true`. In that mode you supply a pre-existing `Gateway`
-(recommended) or have the chart create one. Either way, the chart does not
-install a Gateway controller. You install one separately.
+`global.gateway.enabled=true`. In that mode you point it at a pre-existing
+`Gateway` (recommended) or have the chart create one. The chart never installs
+the Gateway controller itself and you must install that separately.
+<!-- vale Microsoft.Adverbs = YES -->
 
 You need:
-
+<!-- vale Google.We = NO -->
+<!-- vale write-good.TooWordy = NO -->
+<!-- vale Google.WordList = NO -->
 - **A Gateway controller or Ingress controller already installed in the
   cluster.** Any conformant option works (Envoy Gateway, Istio, Cilium, Contour,
   NGINX Ingress, and similar). The chart's Gateway API templates are agnostic,
@@ -51,23 +58,28 @@ You need:
   `global.gateway.gatewayClassName` or via the `parentRef` of an existing
   `Gateway`.
 - **A real TLS certificate** covering the hostnames you publish (see DNS below).
-  [cert-manager](https://cert-manager.io/) configured against an ACME issuer
+  [cert-manager][cert-manager] configured against an ACME issuer
   (Let's Encrypt, ZeroSSL, an internal ACME server) is the common pattern. You
   can also terminate TLS upstream (at an AWS load balancer using ACM, or at a
   cloud provider's Gateway) and leave
   `global.gateway.listeners.https.tls.certificateRefs` empty.
 - **A LoadBalancer or external Service IP** that your DNS records can point at.
-  The chart does not manage external IP allocation.
+  The chart doesn't manage external IP allocation.
+<!-- vale Google.We = YES -->
+<!-- vale write-good.TooWordy = YES -->
+<!-- vale Google.WordList = YES -->
 
 For Gateway API documentation, see the upstream [Gateway API
-project](https://gateway-api.sigs.k8s.io/). For cert-manager, see the
-[cert-manager docs](https://cert-manager.io/docs/).
-
+project][gateway-api-project]. For cert-manager, see the
+[cert-manager docs][cert-manager-docs].
+<!-- vale Google.Headings = NO -->
 ## DNS
-
+<!-- vale Google.Headings = YES -->
+<!-- vale write-good.Passive = NO -->
 Hub is designed to span multiple subdomains. The defaults the chart composes are
 `<subdomain>.<your-domain>` for each. You control the apex domain, and the
 subdomain prefixes are configurable.
+<!-- vale write-good.Passive = YES -->
 
 | Hostname (default) | Serves |
 |--------------------|--------|
@@ -86,26 +98,30 @@ For each hostname you publish, you need:
 - TLS certificate coverage. A single wildcard certificate (`*.<your-domain>`) is
   the simplest. Per-host certificates also work.
 
+<!-- vale write-good.Weasel = NO -->
 The hostname you choose for `hub-api` is the value you set as
 `hub-api.api.externalURL` at install time. `hub-api` uses it to construct the
-OIDC callback URI it registers with your provider, so the value must be
+OIDC callback URI it registers with your provider. The value must be
 reachable from end-user browsers exactly as configured.
+<!-- vale write-good.Weasel = YES -->
 
-## External Postgres
+<!-- vale Google.Headings = NO -->
+## External PostgreSQL
+<!-- vale Google.Headings = YES -->
 
 Hub stores all resource state in PostgreSQL. Provision the database before
-install. The chart consumes a connection but does not deploy Postgres in the
+install. The chart consumes a connection but doesn't deploy Postgres in the
 self-hosted path.
 
 You need a PostgreSQL 18 (or later) instance reachable from the cluster, with a
 dedicated database and a role Hub can use. [The databases
-overview](./databases/overview.md) and the provider sub-guides it links to cover
+overview][overview] and the provider sub-guides it links to cover
 the version, required extensions, authentication modes, TLS settings, and
 per-cloud provisioning steps. That page is the source of truth.
 
 ## External OIDC Provider
 
-Hub does not include its own identity provider in the self-hosted path.
+Hub doesn't include its own identity provider in the self-hosted path.
 Configure Hub against an OIDC-compliant provider you already operate or
 subscribe to.
 
@@ -113,16 +129,23 @@ The provider needs OIDC discovery, plus `email` and group claims. It also has to
 accept a redirect URI Hub computes from your `hub-api` hostname. Common
 providers (Amazon Cognito, Microsoft Entra ID, Google Workspace, Okta, Auth0,
 Keycloak) all qualify. The full contract, the staged setup order, and the
-per-provider walkthroughs are on [the OIDC overview](./oidc-configuration.md). That
+per-provider walkthroughs are on [the OIDC overview][oidc-configuration]. That
 page is the source of truth.
 
-## Next Step
+## Next step
 
 With every requirement above understood, set up each dependency before you
 install. Start with your identity provider:
 
-- [OIDC configuration](./oidc-configuration.md). The provider contract and
+- [OIDC configuration][oidc-configuration]. The provider contract and
   per-provider setup.
-- [Databases](./databases/overview.md). Postgres requirements and provisioning.
+- [Databases][overview]. Postgres requirements and provisioning.
 
-Once your provider and database are ready, [install Hub](./install.md).
+Once your provider and database are ready, [install Hub][installation].
+
+[cert-manager]: https://cert-manager.io/
+[cert-manager-docs]: https://cert-manager.io/docs/
+[gateway-api-project]: https://gateway-api.sigs.k8s.io/
+[installation]: /hub/howtos/install
+[oidc-configuration]: /hub/howtos/oidc-configuration
+[overview]: /hub/howtos/databases/overview
