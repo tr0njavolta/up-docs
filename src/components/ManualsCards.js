@@ -3,6 +3,11 @@ import CardGrid from './CardGrid';
 
 const sections = [
   {
+    title: 'Upbound hub',
+    description: 'Configure the central management layer for the Upbound platform.',
+    link: '/hub/overview/'
+  },
+  {
     title: 'Upbound Crossplane (UXP)',
     description: 'Enterprise-grade Crossplane distribution with enhanced compositions, functions, operations, and package management.',
     link: '/manuals/uxp/overview'

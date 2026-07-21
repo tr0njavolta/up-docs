@@ -249,3 +249,10 @@ exceptions:
   - WPA
   - AGE
   - STS
+  - ACM
+  - ACME
+  - JWKS
+  - OFREP
+  - ORB
+  - RRB
+  - SIG
