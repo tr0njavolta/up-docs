@@ -47,56 +47,6 @@ module.exports = {
             items: [
                 {
                     type: "category",
-                    label: "Insights",
-                    items: [
-                        "manuals/platform/insights/overview",
-                        {
-                            type: "category",
-                            label: "Install",
-                            link: {
-                                type: "doc",
-                                id: "manuals/platform/insights/install/overview",
-                            },
-                            items: [
-                                "manuals/platform/insights/install/self-hosted",
-                                {
-                                    type: "category",
-                                    label: "OIDC",
-                                    link: {
-                                        type: "doc",
-                                        id: "manuals/platform/insights/install/oidc/overview",
-                                    },
-                                    items: [
-                                        "manuals/platform/insights/install/oidc/entra-id",
-                                        "manuals/platform/insights/install/oidc/keycloak",
-                                        "manuals/platform/insights/install/oidc/generic",
-                                    ],
-                                },
-                            ],
-                        },
-                        "manuals/platform/insights/connections",
-                        "manuals/platform/insights/navigating",
-                        "manuals/platform/insights/query-api",
-                        "manuals/platform/insights/ai",
-                        {
-                            type: "category",
-                            label: "Production",
-                            link: {
-                                type: "doc",
-                                id: "manuals/platform/insights/production/overview",
-                            },
-                            items: [
-                                "manuals/platform/insights/production/scalability",
-                                "manuals/platform/insights/production/security",
-                            ],
-                        },
-                        "manuals/platform/insights/use-cases",
-                        "manuals/platform/insights/feature-flags",
-                        "manuals/platform/insights/reference",
-                    ],
-                },
-                {
-                    type: "category",
                     label: "Identity & Access",
                     items: [
                         "manuals/platform/identity/iam",
