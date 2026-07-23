@@ -1,6 +1,6 @@
 ---
 title: Catalog API overview
-sidebar_position: 4
+sidebar_position: 5
 description: How the Catalog API is structured — its resources, the flags that gate them, and how access is scoped.
 ---
 

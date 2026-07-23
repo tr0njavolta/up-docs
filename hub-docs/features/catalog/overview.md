@@ -11,6 +11,8 @@ look up images, see how the resources they declare are used, and search across
 everything Hub has indexed. This page explains what Catalog is, how its stages
 fit together, and where to go next to turn it on.
 
+![The Catalog page in the Console](/img/hub/catalog/catalog-list.png)
+
 :::note
 Catalog is an alpha feature. It is disabled by default, and its API may change in
 incompatible ways between releases. See the [feature
@@ -63,6 +65,7 @@ ingest runs. A complete Catalog runs all three stages.
 To start using Catalog, see:
 
 **How-to guides**
+- [Browsing the Catalog](./console.md)
 - [Enable and configure Catalog](./configuration.md)
 
 **Reference**
