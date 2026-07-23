@@ -184,11 +184,11 @@ View the control plane and its resources in Upbound Platform.
 1. Open the control planes view. The control plane you created shows a status of
    **Ready**.
 
-   ![The Upbound Platform control planes view showing the connected control plane with a Ready status.](/img/hub-connect-control-plane-ready.png)
+   ![The Upbound Platform control planes view showing the connected control plane with a Ready status.](/img/hub/connect-control-plane/ready.png)
 
 2. Open its resources view to see the resources synced from the control plane.
 
-   ![The control plane resources view listing the resources synced from the connected control plane.](/img/hub-connect-control-plane-resources.png)
+   ![The control plane resources view listing the resources synced from the connected control plane.](/img/hub/connect-control-plane/resources.png)
 
 </TabItem>
 <TabItem value="kubectl" label="kubectl">
