@@ -1,5 +1,6 @@
 ---
 title: Hub
+slug: /
 sidebar_position: 0
 description: Hub is the central cluster in an Upbound Platform deployment, where the platform's central components install.
 ---

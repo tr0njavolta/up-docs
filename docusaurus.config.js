@@ -237,7 +237,7 @@ const config = {
                             },
                             {
                                 label: "Hub",
-                                to: "/hub/overview/",
+                                to: "/hub/",
                             },
                             {
                                 label: "Platform",
@@ -306,7 +306,7 @@ const config = {
             prism: {
                 theme: prismThemes.github,
                 darkTheme: prismThemes.dracula,
-                additionalLanguages: ["bash", "yaml", "json", "go", "python"],
+                additionalLanguages: ["bash", "yaml", "json", "go", "python", "http"],
             },
             colorMode: {
                 defaultMode: "light",

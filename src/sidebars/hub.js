@@ -14,6 +14,24 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Features',
+      items: [
+        {
+          type: 'category',
+          label: 'Catalog',
+          link: { type: 'doc', id: 'features/catalog/overview' },
+          customProps: { badge: 'Preview' },
+          items: [
+            'features/catalog/configuration',
+            'features/catalog/external-registry',
+            'features/catalog/console',
+            'features/catalog/reference',
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
       label: 'Deploy',
       items: [
         'howtos/prerequisites',

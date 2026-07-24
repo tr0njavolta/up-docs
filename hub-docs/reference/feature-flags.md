@@ -22,70 +22,71 @@ API-compatibility expectations at each stage.
 `hub-api` embeds a flag server that speaks
 [OFREP][ofrep] and reads its flag
 definitions from a JSON file. The chart generates that file as a ConfigMap from
-the `hub-api.api.features.*` values and mounts it into the `hub-api` Pod. You
-toggle features through Helm values rather than editing flag definitions by
-hand.
+the `hub-core.api.featureFlags.gates.*` values and mounts it into the `hub-api`
+Pod, so you toggle features through Helm values rather than editing flag
+definitions by hand. Each gate is named after the capability it controls, as a
+single PascalCase token such as `Catalog` or `Registry`.
 
-`hub-api.api.featureFlags.enabled` controls the flag server itself,
-which defaults to `true`. Leave it on. When it's `false`, `hub-api` starts with
+The flag server itself is controlled by `hub-core.api.featureFlags.enabled`,
+which defaults to `true`. Leave it on. When it is `false`, `hub-api` starts with
 no flag client and every gated feature is forced off regardless of the
-`features.*` values.
+`gates.*` values.
 
 ## Available feature flags
 
-The values below are the umbrella-chart paths; drop the leading `hub-api.` if
-you install the `hub-api` subchart on its own. The **Default** column follows
-each feature's maturity: alpha features default to `false`, beta features to
-`true`. The **Underlying flag** column is the name that appears in the generated
-`flags.json` and in the `hub-api` startup logs.
+Set a gate with `hub-core.api.featureFlags.gates.<Gate>`; drop the leading
+`hub-core.` if you install the `hub-api` subchart on its own. The gate name is
+also the name that appears in the generated `flags.json` and in the `hub-api`
+startup logs. The **Default** column follows each feature's maturity: alpha
+features default to `false`, beta features to `true`.
 
 <!-- vale Google.WordList = NO -->
-| Helm value | Underlying flag | Default | What it enables |
-|------------|-----------------|---------|-----------------|
-| `hub-api.api.features.agentSessions.enabled` | `enable-agent-sessions` | `false` | The `agent.hub.upbound.io/v1alpha1` API group, adding chat and session endpoints under `/apis/agent.hub.upbound.io/v1alpha1/` for Crossplane troubleshooting. Requires an Anthropic API key (see below). |
-| `hub-api.api.features.catalog.enabled` | `hub-api.catalog.enabled` | `false` | The catalog read API (`catalog.hub.upbound.io/v1alpha1`), covering Image list and get, usage, curated, OpenAPI subresources, and ImageSearch. |
-| `hub-api.api.features.catalog.ingestEnabled` | `hub-api.catalog.ingest.enabled` | `false` | The catalog ingest pipeline that derives catalog records from package resource events and writes them to the catalog tables. |
-| `hub-api.api.features.catalog.enrichmentEnabled` | `hub-api.catalog.enrichment.enabled` | `false` | The catalog enrichment handler that fetches OCI manifests and package layers from registries. |
-| `hub-api.api.features.registryAPI.enabled` | `hub-api.registry.api.enabled` | `false` | The `registry.hub.upbound.io` API group, providing the `Connection` resource (with its `verify` subresource) and the `Repository` resource. |
-| `hub-api.api.features.resourcesCELFiltering.enabled` | `hub-api.resources-cel-filtering.enabled` | `false` | CEL-based filtering on resource-list endpoints. |
-<!-- vale Google.WordList = YES -->
+| Gate | Default | What it enables |
+|------|---------|-----------------|
+| `AgentSessions` | `false` | The `agent.hub.upbound.io/v1alpha1` API group, adding chat and session endpoints under `/apis/agent.hub.upbound.io/v1alpha1/` for Crossplane troubleshooting. Requires an Anthropic API key (see below). |
+| `Catalog` | `false` | The Catalog feature as a unit: the read API (`catalog.hub.upbound.io/v1alpha1`) covering Image list and get, usage, curated, OpenAPI subresources, and ImageSearch, plus the ingest and enrichment pipeline that populates it. |
+| `Registry` | `false` | The `registry.hub.upbound.io` API group, providing the `Connection` resource (with its `verify` subresource) and the `Repository` resource. |
+| `ResourceFilterExpression` | `false` | CEL-based filtering on resource-list endpoints. |
 
 ### Agent sessions require an Anthropic API key
 
 The agent feature calls the Anthropic API and doesn't start without a key.
-Provide it through a Kubernetes Secret and point the chart at it:
+Enable the gate, then provide the key through a Kubernetes Secret and point the
+chart at it:
 
 ```yaml
-hub-api:
+hub-core:
   api:
+    featureFlags:
+      gates:
+        AgentSessions: true
     features:
       agentSessions:
-        enabled: true
         anthropicApiKey:
           existingSecretRef:
             name: hub-agent-anthropic
             key: ANTHROPIC_API_KEY
 ```
 
-### Catalog stages
+### Catalog
 
-`catalog.enabled` turns on the read API. `ingestEnabled` and `enrichmentEnabled`
-control the background pipeline that populates and enriches what the read API
-serves. They're independent toggles, so enable the stages your deployment
-needs.
+The `Catalog` gate turns the feature on as a unit: the read API and the ingest
+and enrichment pipeline that populates it move together behind the one gate. See
+[Catalog](../features/catalog/overview.md) for what the feature does and [Enable
+and configure Catalog](../features/catalog/configuration.md) for the full setup,
+including the `Registry` gate for private registries.
 
-## Enabling a feature flag
+## Enabling a feature gate
 
-Add the feature to your `values.yaml`:
+Add the gates to your `values.yaml`:
 
 ```yaml
-hub-api:
+hub-core:
   api:
-    features:
-      catalog:
-        enabled: true
-      resourcesCELFiltering:
-        enabled: true
+    featureFlags:
+      gates:
+        Catalog: true
+        ResourceFilterExpression: true
 ```
 
 Apply it with a normal install or upgrade:
@@ -96,33 +97,33 @@ helm upgrade --install hub <chart-ref> \
   --values values.yaml
 ```
 
-To flip a single flag inline:
+To flip a single gate inline:
 
 ```bash
 helm upgrade --install hub <chart-ref> \
   --namespace hub \
   --reuse-values \
-  --set hub-api.api.features.resourcesCELFiltering.enabled=true
+  --set hub-core.api.featureFlags.gates.ResourceFilterExpression=true
 ```
 
 The upgrade rolls the `hub-api` Pods, and the feature becomes active once they
-are `Ready`. The `hub-api` startup logs list every flag it evaluates, so
+are `Ready`. The `hub-api` startup logs list every gate it evaluates, so
 you can confirm the running binary picked up your change.
 
-Disabling a beta feature works the same way in reverse. Set its value to `false`
+Disabling a beta feature works the same way in reverse. Set its gate to `false`
 to turn off a feature that defaults to on.
 
 ## Managing flags outside the chart
 
 Two escape hatches exist for teams that manage flag definitions themselves:
 
-- **External ConfigMap.** Set `hub-api.api.featureFlags.configMapRef.name` to a
+- **External ConfigMap.** Set `hub-core.api.featureFlags.configMapRef.name` to a
   ConfigMap you maintain (it must contain a `flags.json` key). The chart then
-  skips generating one from `features.*`, and you own the flag definitions.
+  skips generating one from `gates.*`, and you own the flag definitions.
 - **OFREP endpoint.** The flag server serves OFREP on port `8016` for
   client-side evaluation. It's not exposed publicly by default. To route it
   through the public HTTPRoute, set
-  `hub-api.api.featureFlags.httpRoute.enabled=true`, which mounts it at
+  `hub-core.api.featureFlags.httpRoute.enabled=true`, which mounts it at
   `/ofrep`.
 
 <!-- vale write-good.Passive = YES -->
