@@ -4,8 +4,7 @@ sidebar_position: 5
 description: How the Catalog API is structured — its resources, the flags that gate them, and how access is scoped.
 ---
 
-This page describes the Catalog API surface: the API group, its resources and
-subresources, the feature flags that gate them, and how access is scoped. Catalog
+This page describes the Catalog API's resources and subresources. Catalog
 is an alpha feature, so this API may change in incompatible ways between releases.
 See the [feature lifecycle](../../reference/feature-releases.md).
 
@@ -18,9 +17,9 @@ under:
 /apis/catalog.hub.upbound.io/v1alpha1/
 ```
 
-The endpoints exist only when the read API is enabled. When
-`hub-core.api.features.catalog.enabled` is `false`, every Catalog endpoint returns
-`404`. See [Enable and configure Catalog](./configuration.md).
+The endpoints exist only when the `Catalog` feature gate is on. When the gate is
+off, every Catalog endpoint returns `404`. See [Enable and configure
+Catalog](./configuration.md).
 
 ## Resources
 
@@ -37,21 +36,7 @@ The endpoints exist only when the read API is enabled. When
 | --- | --- |
 | `usage` | Where the image runs across connected control planes. |
 | `curated` | Curated package data for the image such as labels and notes. |
-| OpenAPI | Schemas and API documentation for resources declared in the package. |
-
-## Feature flags
-
-Catalog runs as three independently toggled stages. Only the read API affects the
-endpoints above; ingest and enrichment control the pipeline that populates them.
-
-| Stage | Helm value | Default |
-| --- | --- | --- |
-| Read API | `hub-core.api.features.catalog.enabled` | `false` |
-| Ingest | `hub-core.api.features.catalog.ingestEnabled` | `false` |
-| Enrichment | `hub-core.api.features.catalog.enrichmentEnabled` | `false` |
-
-For the full flag catalog and how to toggle flags, see [Feature
-flags](../../reference/feature-flags.md).
+| `openapi` | Schemas and API documentation for resources declared in the package. |
 
 ## Access and authorization
 

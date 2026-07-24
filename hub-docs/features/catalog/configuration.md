@@ -1,13 +1,22 @@
 ---
 title: Enable and configure Catalog
 sidebar_position: 2
-description: Turn on Catalog's read API, ingest, and enrichment stages through Helm values.
+description: Turn on the Catalog and Registry feature gates through Helm values.
 ---
 
-This guide explains how to enable Catalog on a self-hosted Hub and turn on its
-ingest and enrichment stages. Catalog is an alpha feature, so every stage is off
-until you opt in through Helm values. For what each stage does, see the [Catalog
-overview](./overview.md).
+Catalog is controlled by a single feature gate. A related feature to
+configure image registry connections is enabled separately.
+
+Catalog is an alpha feature, so both gates are off until you opt in.
+For what Catalog does, see the [Catalog overview](./overview.md).
+
+For more information on configuring external registries,
+see [External registries.](./external-registry.md)
+
+| Gate | Turns on |
+| --- | --- |
+| `Catalog` | The catalog read API and Crossplane package indexing. |
+| `Registry` | The API for connecting private or self-hosted image registries. |
 
 ## Prerequisites
 
@@ -15,57 +24,81 @@ Before you enable Catalog, ensure:
 
 - A running Hub installation. See [Install Hub](../../howtos/install.md).
 - Helm access to the Hub release, so you can run `helm upgrade`.
-- The feature flag server is enabled. It is on by default through
-  `hub-core.api.featureFlags.enabled`. When it is `false`, every gated feature,
-  including Catalog, is forced off. See [Feature
+- The feature flag server is enabled. It is on by default. See [Feature
   flags](../../reference/feature-flags.md).
-- For enrichment, network egress from the `hub-core` namespace to the registries
+- Network egress from the `hub-core` namespace to the registries
   that host your package images.
 
 ## Enable Catalog
 
-Turn on all three stages for a complete catalog. Ingest fills the tables,
-enrichment adds registry detail, and the read API serves the result.
-
-1. Add the Catalog values to your `values.yaml`.
+1. Add the `Catalog` gate to your `values.yaml`.
 
    ```yaml
    hub-core:
      api:
-       features:
-         catalog:
-           enabled: true          # read API
-           ingestEnabled: true    # populate the catalog tables
-           enrichmentEnabled: true # enrich records from registries
+       featureFlags:
+         gates:
+           Catalog: true
    ```
 
-   Similarly, set the stages to `false` to disable.
+   Set it to `false` to disable Catalog.
 
-2. Apply the values with an install or upgrade.
+2. Apply the values with an upgrade.
 
    ```shell
-   helm upgrade --install oci://xpkg.upbound.io/upbound/hub --create-namespace \
+   helm upgrade hub oci://xpkg.upbound.io/upbound/hub \
      --namespace hub \
      --values values.yaml
+   ```
+
+   Or flip the gate inline without a values file. Pass `--reuse-values` so the
+   upgrade keeps the rest of your release's configuration and changes only this
+   gate:
+
+   ```shell
+   helm upgrade hub oci://xpkg.upbound.io/upbound/hub \
+     --namespace hub --reuse-values \
+     --set hub-core.api.featureFlags.gates.Catalog=true
    ```
 
    The upgrade rolls the `hub-core` Pods. Catalog becomes active once they are
    `Ready`.
 
-3. Confirm `hub-core` picked up the flags.
+3. Confirm `hub-core` picked up the gate.
 
-   The `hub-core` startup logs enumerate every flag it evaluates. Check that the
-   Catalog flags read `true`:
+   The `hub-core` startup logs enumerate every gate it evaluates. Check that
+   `Catalog` reads `true`:
 
    ```shell
    kubectl logs -n hub deployment/hub-core | grep -i catalog
    ```
 
-## Configure registry access for enrichment
+## Enable the Registry gate for private registries
 
-Enrichment fetches OCI manifests and package layers from the registries that host
-your images. Public registries need no extra configuration. Private registries
-require credentials, which you supply as `Connection` resources in the
+Public registries need no extra configuration once Catalog is on.
+Private or bring-your-own registries also require the `Registry` gate, which
+serves API group where you declare the credentials Hub uses to pull.
+
+Enable both gates together:
+
+```yaml
+hub-core:
+  api:
+    featureFlags:
+      gates:
+        Catalog: true
+        Registry: true
+```
+
+Or set the `Registry` gate inline:
+
+```shell
+helm upgrade hub oci://xpkg.upbound.io/upbound/hub \
+  --namespace hub --reuse-values \
+  --set hub-core.api.featureFlags.gates.Registry=true
+```
+
+With the gate on, supply credentials as `Connection` resources in the
 `registry.hub.upbound.io` API group. See [External
 registries](./external-registry.md) for the full setup, including credential
 scoping and verification.

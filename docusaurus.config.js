@@ -237,7 +237,7 @@ const config = {
                             },
                             {
                                 label: "Hub",
-                                to: "/hub/overview/",
+                                to: "/hub/",
                             },
                             {
                                 label: "Platform",

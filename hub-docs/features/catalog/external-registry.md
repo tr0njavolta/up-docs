@@ -5,46 +5,44 @@ description: Connect Hub to private or public OCI registries so the catalog can 
 ---
 
 Connect Hub to your own OCI registries, such as private Artifactory
-instances, public registries, or air-gapped mirrors, so Hub can
+instances, public registries, or air-gapped mirrors. This allows Hub to
 authenticate to them and index images you declare or observe on connected
-control planes into the Catalog. This capability is the bring-your-own (BYO) OCI registry
-feature, served by the `registry.hub.upbound.io/v1alpha1` API group.
+control planes into the Catalog.
 
 :::note
-External registry support and catalog enrichment are alpha features. They are
-disabled by default, and their APIs may change in incompatible ways between
+External registry connection is an alpha feature. It is
+disabled by default, and the APIs may change in incompatible ways between
 releases. See the [feature lifecycle](../../reference/feature-releases.md).
 :::
 
 ## Concepts
 
-Two resources describe how Hub reaches a registry and what it indexes.
+Two resources describe how Hub reaches a registry.
 
 | Resource | What it declares |
 | --- | --- |
 | `Connection` | How Hub authenticates to a registry: a host, an optional path scope, and credentials. |
 | `Repository` | What to index: the full OCI path of a repository, and optionally which `Connection` to use for it. |
 
-Both resources are realm-scoped. For example, credentials
-declared in one realm are never used to pull for another.
+Both resources belong to a realm. For example, credentials
+declared in one realm are never used to pull for another implicitly.
 
 ## How the catalog uses connections
 
- When a connected control plane installs a Crossplane package,
- Hub records it in the catalog and enriches the entry by pulling
- the package's manifest and content layers from the registry.
+When a connected control plane installs a Crossplane package,
+Hub records its data in the catalog by pulling
+the package's manifest and content layers from the registry.
 
-Enrichment is independent of whether the control plane's own image pull
-succeeds. The control plane uses its own `packagePullSecrets`, while Hub pulls
-with the realm keychain. Enrichment completes even when the two use different
-network paths or credentials.
+Cataloguing is independent of whether the control plane's own image pull
+succeeds. A connected control plane uses its own `packagePullSecrets`, while Hub pulls
+with the realm keychain.
 
 ### The realm keychain
 
 Within a realm, all `Connection` resources form a keychain. When Hub needs to
-pull an image, for cataloguing or to verify a `Repository`, it selects the
+pull an image, for cataloguing or to verify a `Connection`, it selects the
 `Connection` whose `scope` is the longest prefix of the image path. One realm can
-hold several credentials for the same host, each scoped to a different path.
+hold multiple credentials for the same host, each scoped to a different path.
 
 A `Repository` can opt out of keychain resolution by pinning a single
 `Connection` with `spec.connectionRef`. Pin a connection when policy requires
@@ -52,19 +50,11 @@ that a repository's credentials can't be resolved via the keychain.
 
 ## Enable the feature
 
-The registry API and the catalog pipeline it feeds are gated by feature flags.
-Set these Helm values on your Hub deployment:
-
-| Helm value | Enables |
-| --- | --- |
-| `hub-core.api.features.registryAPI.enabled` | The `registry.hub.upbound.io` API group: `Connection`, `Repository`, and the `verify` subresource. |
-| `hub-core.api.features.catalog.enabled` | The catalog read API (`catalog.hub.upbound.io`). |
-| `hub-core.api.features.catalog.ingestEnabled` | Ingest of the packages your control planes install into the catalog. |
-| `hub-core.api.features.catalog.enrichmentEnabled` | Enrichment of catalog entries by pulling manifests and layers from registries, using the realm keychain. |
-
-For how to set flags and the underlying flag names, see [Feature
-flags](../../reference/feature-flags.md). To enable and verify the catalog
-stages, see [Enable and configure Catalog](./configuration.md).
+The registry API requires the `Registry` feature gate for the
+`Connection` and `Repository` resources. See [Enable and configure
+Catalog](./configuration.md), which covers the Helm values and how to verify
+them. For the full gate catalog, see [Feature
+flags](../../reference/feature-flags.md).
 
 Confirm the registry group is available via `/apis/registry.hub.upbound.io/v1alpha1`:
 
@@ -352,7 +342,7 @@ DELETE /apis/registry.hub.upbound.io/v1alpha1/namespaces/<realm>/connections/<na
 
 | Symptom | Fix |
 | --- | --- |
-| `404` on the registry API group | Enable `hub-core.api.features.registryAPI.enabled`. |
+| `404` on the registry API group | Enable the `Registry` gate (`hub-core.api.featureFlags.gates.Registry=true`). |
 | `401` on Hub API calls | The bearer token expired. Obtain a fresh one. |
 | Verify succeeds but enrichment fails with an auth error | The `Connection` `scope` must be a prefix of the image path, and the `Connection` must be in the same realm as the control plane. |
 | Verify tier-2 returns `forbidden` | The credential authenticates but isn't authorized to pull that image. Grant read on the repository. |
