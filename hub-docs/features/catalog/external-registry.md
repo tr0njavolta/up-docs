@@ -10,7 +10,7 @@ authenticate to them and index images you declare or observe on connected
 control planes into the Catalog.
 
 :::note
-External registry connection is an alpha feature. It is
+External registry connection is an alpha feature. It's
 disabled by default, and the APIs may change in incompatible ways between
 releases. See the [feature lifecycle](../../reference/feature-releases.md).
 :::
@@ -115,7 +115,7 @@ Placeholders like `<realm>` and `<name>` mark values you supply.
 A `Connection` declares a registry host, an optional `scope`, and an auth method.
 The two currently supported methods are `Anonymous` and `Static`. The Hub performs
 anonymous requests by default if there is no matching `Connection` on the
-keychain, so it is not required unless you want to force requests to be anonymous.
+keychain, so it's not required unless you want to force requests to be anonymous.
 
 **Endpoint**
 
@@ -162,7 +162,7 @@ The following rules apply and are validated:
 The `verify` action tests a `Connection` synchronously against the live registry.
 It has two tiers.
 
-### Tier 1: reachability and authentication
+### Tier 1: Reachability and authentication
 
 **Endpoint**
 
@@ -192,7 +192,7 @@ POST /apis/registry.hub.upbound.io/v1alpha1/namespaces/<realm>/connections/<name
 }
 ```
 
-### Tier 2: authorization probe
+### Tier 2: Authorization probe
 
 Add a `testImage` to check that the credential is authorized to pull a specific
 image, not just that it authenticates.
@@ -319,7 +319,7 @@ DELETE /apis/registry.hub.upbound.io/v1alpha1/namespaces/<realm>/connections/<na
 | `static` | when `Static` | Credential material: `username`, `password`, `auth`, `identityToken`, `registryToken`. |
 | `scope` | no | Docker-config `auths` key: a host or `host/path` prefix. Defaults to `host`. Longest-prefix match wins. |
 | `insecure` | no | Use plain HTTP instead of HTTPS. Default `false`. |
-| `displayName` | no | Human-readable name for UIs. |
+| `displayName` | no | Human-readable name for user interfaces. |
 | `description` | no | Free-form text. |
 
 ### Repository spec
@@ -358,7 +358,7 @@ the upstream registry into the catalog, is planned.
 
 ## See also
 
-- [Catalog overview](./overview.md)
-- [Enable and configure Catalog](./configuration.md)
-- [Catalog API overview](./reference.md)
+- [Catalog overview](overview.md)
+- [Enable and configure Catalog](configuration.md)
+- [Catalog API overview](reference.md)
 - [Feature flags](../../reference/feature-flags.md)

@@ -233,3 +233,6 @@ PDBs
 retarget
 prepended
 upgradeability
+queryable
+Artifactory
+passwordless

@@ -10,7 +10,8 @@ Instead of inspecting each control plane on its own, you query one Catalog API t
 look up images, see how the resources they declare are used, and search across
 everything Hub has indexed.
 
-Unlike the Resource API, which returns the live resources running across your fleet (pods, managed resources, and so on), Catalog indexes the package images that declare those types.
+Unlike the Resource API, which returns the live resources running across your fleet (pods and managed resources),
+Catalog indexes the package images that declare those types.
 
 This page explains what Catalog is and where to go
 next to turn it on.
@@ -18,7 +19,7 @@ next to turn it on.
 ![The Catalog page in the Console](/img/hub/catalog/catalog-list.png)
 
 :::note
-Catalog is an alpha feature. It is disabled by default, and its API may change in
+Catalog is an alpha feature. It's disabled by default, and its API may change in
 incompatible ways between releases. See the [feature
 lifecycle](../../reference/feature-releases.md) for what the alpha stage
 guarantees, and avoid relying on Catalog for production workloads.
@@ -28,13 +29,13 @@ guarantees, and avoid relying on Catalog for production workloads.
 
 The Catalog API serves package data through two resources:
 
-- `Image` — list and get the package images Hub has indexed. `Image` exposes two
+- `Image`—list and get the package images Hub has indexed. `Image` exposes two
   subresources:
-  - `usage` — the image's footprint across your fleet: which control planes run
+  - `usage`—the image's footprint across your fleet: which control planes run
     it and how many resources of its types they have.
-  - `openapi` — the OpenAPI schemas for the resource types the package declares,
+  - `openapi`—the OpenAPI schemas for the resource types the package declares,
     so you can inspect an API without installing the package.
-- `ImageSearch` — search across the indexed images and their descriptions.
+- `ImageSearch`—search across the indexed images and their descriptions.
 
 All catalog image data is visible to the organization, but a user only sees
 the correlated resources and control planes for realms where they have access.
@@ -52,10 +53,10 @@ the correlated resources and control planes for realms where they have access.
 To start using Catalog, see:
 
 **How-to guides**
-- [Browsing the Catalog](./console.md)
-- [Enable and configure Catalog](./configuration.md)
+- [Browsing the Catalog](console.md)
+- [Enable and configure Catalog](configuration.md)
 
 **Reference**
-- [Catalog API overview](./reference.md)
+- [Catalog API overview](reference.md)
 - [Feature flags](../../reference/feature-flags.md)
 - [Feature lifecycle](../../reference/feature-releases.md)
